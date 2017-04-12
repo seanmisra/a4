@@ -11,6 +11,32 @@
 |
 */
 
+Route::get('/', 'HomeController'); 
+
+Route::get('/breeds', 'DictionaryController'); 
+
+Route::get('/breeds/{dog?}', 'DogController'); 
+
+if (Config::get('app.env') == 'local') 
+    Route::get('/admin', 'AdminController');
+
+
+/*
+//test code - delete later // 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/breeds/{dog?}', function($dog = null) {
+    if ($dog == null)
+        return 'Show list of all breeds here'; 
+    else 
+        return 'Show '.$dog.' breed here';  
+}); 
+
+if (Config::get('app.env') == 'local') {
+    Route::get('/admin', function() {
+        return view('admin');
+    });
+}*/
