@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController'); 
+Route::get('/', 'HomeController@start'); 
+
+Route::get('/search', 'HomeController@search'); 
 
 Route::get('/breeds', 'DictionaryController'); 
 
