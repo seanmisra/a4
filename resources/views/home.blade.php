@@ -32,16 +32,6 @@
 
     <main>
         <h2>Search | Match</h2> 
-        
-        @if(count($errors) > 0)
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            The dog breeds available are: Labrador, Bulldog, German Shepherd, Golden Retriever, Beagle, Rottweiler, Poodle
-        @endif
-        
         <form method='GET' action='{{ action("HomeController@search") }}'>
             <div class = 'form-group'>
                 <input type='text' name='search' placeholder='Type breed...' required>

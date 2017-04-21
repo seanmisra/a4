@@ -16,6 +16,10 @@
             width: 800px;
             font-size: 16px;
         }
+        
+        .similarBreed:hover {
+            opacity: .7; 
+        }
     </style>
 @endpush
 
@@ -99,10 +103,10 @@
     <footer>
         <br>
         <h3>Similar Breeds</h3>
-        <img height=100 src='images/sample_dog.jpg'>
-        <img height=100 src='images/sample_dog.jpg'>
-        <img height=100 src='images/sample_dog.jpg'>
-        <img height=100 src='images/sample_dog.jpg'>
+        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
+        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
+        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
+        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
         
         <br>
         <p>©2017</p>
