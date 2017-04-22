@@ -18,7 +18,7 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), $rules); 
         
         //checking dogs with in_array (change to validation regex later)
-        if ($validator->fails() && in_array($dog, $allDogs))
+        if ($validator->fails() || !(in_array($dog, $allDogs)))
             return redirect('/breeds')->withErrors($validator)->withInput(Input::all());       
         else {
             return view('dog')->with([
