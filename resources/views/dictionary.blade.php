@@ -50,28 +50,17 @@
 
         <select class='form-control' id='breedMenu'>
             {{-- below option with several ternaries is for the Close Trip option --}}
-            <option value='Test'>Breed One</option>
-            <option value='Test'>Breed Two</option>
-            <option value='Test'>Breed Three</option>
-            <option value='Test'>Breed Four</option>
-            <option value='Test'>Breed Five</option>
-            <option value='Test'>Breed Six</option>
-            <option value='Test'>Breed Seven</option>
-            <option value='Test'>Breed Eight</option>
-            <option value='Test'>Breed Nine</option>
-            <option value='Test'>Breed Ten</option>
+            @foreach($allGroups as $group)
+                <option value='Test'>{{ $group }}</option>
+            @endforeach
+            
         </select>
         
         <br><br>
         <ul class="list-group">
-            <li class="list-group-item">Doggy One</li>
-            <li class="list-group-item">Doggy Two</li>
-            <li class="list-group-item">Doggy Three</li>
-            <li class="list-group-item">Doggy Four</li>
-            <li class="list-group-item">Doggy Five</li>
-            <li class="list-group-item">Doggy Six</li>
-            <li class="list-group-item">Doggy Seven</li>
-            <li class="list-group-item">Doggy Eight</li>
+            @foreach($allDogs as $dog)
+                <li class="list-group-item">{{ $dog['name'] }}</li>
+            @endforeach
         </ul>
         
     </main>
