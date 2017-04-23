@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Input;
 use App\Dog; 
+use Session; 
 
 class HomeController extends Controller
 {
@@ -17,8 +18,11 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), $rules); 
         
         //checking dogs with in_array (change to validation regex later)
-        if ($validator->fails() || !(in_array($dog, $allDogs)))
-            return redirect('/breeds')->withErrors($validator)->withInput(Input::all());       
+        if ($validator->fails() || !(in_array($dog, $allDogs))) {
+            Session::flash('message', 'The breed <strong>'.$dog. '</strong> was not found. Search for breeds here.'); 
+            
+            return redirect('/breeds')->withErrors($validator)->withInput(Input::all());   
+        }
         else {
             // get group
             $group = Dog::where('name', 'LIKE', $dog)->pluck('group');

@@ -37,14 +37,9 @@
         
     <main>
         
-        @if(count($errors) > 0)
+        @if(Session::get('message')!=null)
             <div class='alert alert-danger'>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                The dog breeds available are: Labrador, Bulldog, German Shepherd, Golden Retriever, Beagle, Rottweiler, Poodle
+                <div class='message'>{!! Session::get('message') !!}</div>
             </div>
         @endif
 
