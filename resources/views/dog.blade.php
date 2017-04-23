@@ -30,7 +30,7 @@
 @section('content')
     <header>
         <h1>{{ $dog }}</h1>
-        <p>Bigger Group<p>
+        <p>{{ $group }} Group<p>
         <br>
         <img height=250 src='images/sample_dog.jpg'>
     </header>
@@ -43,44 +43,41 @@
                 <tr class="active">
                     <td>Energy</td>
                     <td>
-                        <span class="glyphicon glyphicon-star"></span> 
-                        <span class="glyphicon glyphicon-star"></span>
+                        @for($x = 0; $x<$energy; $x++)
+                            <span class="glyphicon glyphicon-star"></span>
+                        @endfor
                     </td>
                 </tr>
                 <tr class="active">
                     <td>Social Skills</td>
                     <td>
-                        <span class="glyphicon glyphicon-star"></span> 
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
+                        @for($x = 0; $x<$social; $x++)
+                            <span class="glyphicon glyphicon-star"></span>
+                        @endfor
                     </td>
                 </tr>
                 <tr class="active">
                     <td>Intelligence</td>
                     <td>
-                        <span class="glyphicon glyphicon-star"></span> 
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
+                        @for($x = 0; $x<$intelligence; $x++)
+                            <span class="glyphicon glyphicon-star"></span>
+                        @endfor
                     </td>
                 </tr>
                 <tr class="active">
                     <td>Cleanliness</td>
                     <td>
-                        <span class="glyphicon glyphicon-star"></span> 
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-
+                        @for($x = 0; $x<$cleanliness; $x++)
+                            <span class="glyphicon glyphicon-star"></span>
+                        @endfor
                     </td>
                 </tr>
                 <tr class="active">
                     <td>Adventure-Seeking</td>
                     <td>
-                        <span class="glyphicon glyphicon-star"></span> 
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
+                     @for($x = 0; $x<$adventure; $x++)
+                            <span class="glyphicon glyphicon-star"></span>
+                        @endfor
                     </td>
                 </tr>
             </tbody>
