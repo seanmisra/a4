@@ -86,15 +86,15 @@
         <br>
         <h2>Did you Know?</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor.</p>
-        <p><a ref="#">Refresh</a></p>
+        <p><a href="#">Refresh</a></p>
         
         <br>
         <h2>Keywords</h2>
-        <a ref="#">Cute</a> | <a ref="#">Active</a> | <a ref="#">Hairy</a> | <a ref="#">Trick guru</a>
+        <a href="#">Cute</a> | <a href="#">Active</a> | <a href="#">Hairy</a> | <a href="#">Trick guru</a>
         <br>
-        <a ref="#">Smelly</a> | <a ref="#">Very hungry</a> | <a ref="#">Loyal</a> | <a ref="#">Big</a>
+        <a href="#">Smelly</a> | <a href="#">Very hungry</a> | <a href="#">Loyal</a> | <a ref="#">Big</a>
         <br>
-        <a ref="#">Trouble-maker</a> | <a ref="#">Dirty</a> | <a ref="#">Loud</a> | <a ref="#">Stubborn</a>
+        <a href="#">Trouble-maker</a> | <a href="#">Dirty</a> | <a href="#">Loud</a> | <a href="#">Stubborn</a>
     </main>
         
     <footer>

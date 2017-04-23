@@ -50,22 +50,52 @@
 
         <select class='form-control' id='breedMenu'>
             {{-- below option with several ternaries is for the Close Trip option --}}
+            <option value='none'> Select Group </option>
             @foreach($allGroups as $group)
-                <option value='Test'>{{ $group }}</option>
+                <option value='{{ $group }}'>{{ $group }}</option>
             @endforeach
-            
         </select>
         
         <br><br>
-        <ul class="list-group">
-            @foreach($allDogs as $dog)
-                <li class="list-group-item">{{ $dog['name'] }}</li>
-            @endforeach
-        </ul>
-        
+        @foreach($dogMap as $group => $dogs)
+            <ul class="list-group {{ $group }}" style="display:none;">
+                @foreach($dogs as $dog)
+                <li class="list-group-item"><a href="#">{{ $dog }}</a></li>
+                @endforeach
+            </ul>
+        @endforeach        
     </main>
         
     <footer>
         <p>©2017</p>
     </footer>
 @stop
+
+@push('body')
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+                
+    <script>
+        // update drop-down menu on page load 
+        var menu = $('#breedMenu');
+        var selected = menu.val(); 
+        
+        menu.change(function() {
+            var selected = menu.val(); 
+            changeDisplay(selected); 
+        }); 
+
+        function changeDisplay(value) {
+            $(".list-group").hide(); 
+            var className = '.'+value;
+            $(className).show(700); 
+        }
+    </script>
+@endpush
+
+    

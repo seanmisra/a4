@@ -12,13 +12,14 @@ class DictionaryController extends Controller
         $allGroups = Dog::all()->pluck('group')->toArray(); 
         $allGroups = array_unique($allGroups);
         
-        // get all dogs
-        $allDogs = Dog::all()->toArray(); 
-
+        // create array with groups of dogs 
+        $dogMap = []; 
+        foreach ($allGroups as $group) 
+            $dogMap[$group] = Dog::where('group', 'LIKE', $group)->pluck('name');
         
         return view('dictionary')->with([
             'allGroups' => $allGroups,
-            'allDogs' => $allDogs
+            'dogMap' => $dogMap
         ]);
     }
 }
