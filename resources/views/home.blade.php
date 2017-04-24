@@ -15,7 +15,8 @@
             margin: 0 auto;
         }
         .userPreference {
-            width: 25vw; 
+            width: 10vw; 
+            text-align: center; 
         }
         button {
             width: 15vw;
@@ -88,6 +89,8 @@
             
             <br>
             <h2 class = 'matchView'>KeyWords:</h2>
+            <p class ='matchView'>Pick some traits you like in a dog</p>
+            <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600;">Refresh</p>
             <br>
             <div class = 'matchView'>
                 <span class="label label-warning">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-danger">Trick Guru</span> 
@@ -97,30 +100,16 @@
                 <span class="label label-danger">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-warning">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
                 <br><br>
                 <span class="label label-warning">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-danger">Trick Guru</span> 
+                <br><br>
+                <input type='text' id="keywords" placeholder='I want my dog to be...' required style="font-size: 16px;">
             </div>
             <br><br>
-            <h2 class = 'matchView'>Trait Scores:</h2>
-            <p class = 'matchView'>You get 100 points to distribute amongst 5 traits. Give higher scores to the traits you find more important. Need to think of a more creative way than basic input fields</p>
-            <div class = 'form-group matchView numberInput'>  
-                <label for='energyScore'>Energy</label>
-                <input type='number' class="userPreference" placeholder="20" id='energyScore'>
+            <h2 class = 'matchView'>Location:</h2>
+            <p class = 'matchView'>..Enter 5-digit zip code... OPTIONAL</p>
+            <div class = 'matchView'>
+                <input type='text' placeholder='e.g. 98765'>
             </div>
-            <div class = 'form-group matchView numberInput'> 
-                <label for='socialScore'>Social Skills</label>
-                <input type='number' class="userPreference" placeholder="20" id='socialScore'>
-            </div>
-            <div class = 'form-group matchView numberInput'>  
-                <label for='intelligenceScore'>Intelligence</label>
-                <input type='number' class="userPreference" placeholder="20" id='intelligenceScore'>
-            </div>
-            <div class = 'form-group matchView numberInput'>  
-                <label for='cleanScore'>Cleanliness</label>
-                <input type='number' class="userPreference" placeholder="20" id='cleanScore'>
-            </div>
-            <div class = 'form-group matchView numberInput'> 
-                <label for='adventureScore'>Adventurous</label>
-                <input type='number' class="userPreference" placeholder="20" id='adventureScore'>
-            </div>
+
             
             <br> 
             <button type='submit'>Submit</button>
@@ -192,5 +181,22 @@
                 $("#preference").text("I prefer lap dogs");
             }
         }); 
+        
+        // update keyword text input
+        $(".label").click(function() {
+            var currentText = $("#keywords").val();  
+            var newKey = $(this).text(); 
+            console.log(currentText);
+            console.log(newKey); 
+            
+            // ignore repeat keywords
+            if (currentText.includes(newKey));  
+            // add trait
+            else if (currentText.length > 0)
+                $("#keywords").val(currentText + ", " + newKey); 
+            // first trait
+            else 
+                $("#keywords").val(newKey); 
+        })        
     </script>
 @endpush
