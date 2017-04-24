@@ -35,11 +35,11 @@
         #searchOption, #matchOption {
             cursor: pointer; 
         }
-        .matchView {
+        #matchView {
             display:none; 
         }
         .label {
-            font-size: 22px;
+            font-size: 30px;
             font-weight: 300;
             cursor: pointer; 
         }
@@ -56,6 +56,45 @@
         .numberInput {
             margin: 0 auto;
         }
+        #matchView {
+        }
+        
+        /*http://codepen.io/the_ruther4d/pen/frbdH*/
+        input[type="range"]{
+          -webkit-appearance:none;
+          width:50vw;
+          height:50px;
+          margin:10px 50px;
+          background-size:50vw 20px;
+          background-position:center;
+          background-repeat:no-repeat;
+          overflow:hidden;
+          outline: none;
+        margin: 0 auto;
+        }
+
+        input[type="range"]::-webkit-slider-thumb{
+          -webkit-appearance:none;
+        background-color: skyblue; 
+          width:40px;
+          height:50px;
+          position:relative;
+          z-index:3;
+          box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:after{
+          content:" ";
+          width:160px;
+          height:10px;
+          position:absolute;
+          z-index:1;
+          right:20px;
+          top:5px;
+          background: #ff5b32;
+          background: linear-gradient(to right, #f088fc 1%, #AC6CFF 70%);
+        }
+        
     </style>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 @endpush 
@@ -77,39 +116,43 @@
                 <input type='text' name='search' id='homeSearch' placeholder='Type breed...' required>
             </div>
             
-            <h2 class = 'matchView'>Size:</h2>
-            <p class = 'matchView' id="preference">I prefer medium-size dogs</p>
-            <div class = 'form-group matchView'>
-                <input type = 'range' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;">
-                <img src='images/small_dog.png'  id='smallDog' style='display:none'> 
-                <img src='images/smaller_dog.png' id='smallerDog' style='display:none'> 
-                <img src='images/medium_dog.png' id='mediumDog'> 
-                <img src='images/large_dog.png' id='largeDog' style='display:none'> 
-            </div>
-            
-            <br>
-            <h2 class = 'matchView'>KeyWords:</h2>
-            <p class ='matchView'>Pick some traits you like in a dog</p>
-            <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600;">Refresh</p>
-            <br>
-            <div class = 'matchView'>
-                <span class="label label-warning">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-danger">Trick Guru</span> 
-                <br><br>
-                <span class="label label-success">Smelly</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Very Hungry</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Loyal</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Big</span>
-                <br><br>
-                <span class="label label-danger">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-warning">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
-                <br><br>
-                <span class="label label-warning">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-danger">Trick Guru</span> 
-                <br><br>
-                <input type='text' id="keywords" placeholder='I want my dog to be...' required style="font-size: 16px;">
-            </div>
-            <br><br>
-            <h2 class = 'matchView'>Location:</h2>
-            <p class = 'matchView'>..Enter 5-digit zip code... OPTIONAL</p>
-            <div class = 'matchView'>
-                <input type='text' placeholder='e.g. 98765'>
-            </div>
+            <div id = "matchView">
+                <h2 class = 'matchView'>Size:</h2>
+                <p class = 'matchView' id="preference">I prefer medium-size dogs</p>
+                <div class = 'form-group matchView'>
+                    <input type = 'range' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;">
+                    <br>
+                    <img src='images/small_dog.png'  id='smallDog' style='display:none; height: 200px;'> 
+                    <img src='images/smaller_dog.png' id='smallerDog' style='display:none; height: 200px;'> 
+                    <img src='images/medium_dog.png' id='mediumDog' style='height:200px;'> 
+                    <img src='images/large_dog.png' id='largeDog' style='display:none; height: 200px;'> 
+                </div>
 
+                <br>
+                <h2 class = 'matchView'>KeyWords:</h2>
+                <p class ='matchView'>Pick some traits you like in a dog</p>
+                <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600;">Refresh</p>
+                <br>
+                <div class = 'matchView'>
+                    <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Trick Guru</span> 
+                    <br><br><br>
+                    <span class="label label-default">Smelly</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Very Hungry</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Loyal</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Big</span>
+                    <br><br><br>
+                    <span class="label label-default">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
+                    <br><br><br>
+                    <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Trick Guru</span> 
+                    <br><br><br>
+                    <input type='text' id="keywords" placeholder='I want my dog to be...' required style="font-size: 22px; font-weight: 500;">
+                </div>
+                <br><br><br>
+                <h2 class = 'matchView'>Location:</h2>
+                <p class = 'matchView'>..Enter 5-digit zip code... OPTIONAL</p>
+                <div class = 'form-group has-feedback matchView' style="width:30vw; height: 100px; margin: 0 auto;">
+                    <input type='text' id="zipCode" class="form-control" placeholder='Your zipcode...' style="font-size: 22px; font-weight: 500; height: 100px; margin: 0 auto;">
+                    <i class="form-control-feedback glyphicon glyphicon-map-marker" style="font-size: 40px; top: 25%; left:80%;"></i>
+                </div>
+                <br><br>
+            </div>
             
             <br> 
             <button type='submit'>Submit</button>
@@ -151,11 +194,11 @@
         
         $("#searchOption").click(function() {
             $(".searchView").show(700); 
-            $(".matchView").hide(700); 
+            $("#matchView").hide(700); 
         });
         $("#matchOption").click(function() {
             $(".searchView").hide(700);  
-            $(".matchView").show(700); 
+            $("#matchView").show(700); 
         });
         
         $("#sizeSlider").change(function() {
@@ -198,5 +241,17 @@
             else 
                 $("#keywords").val(newKey); 
         })        
+        
+        
+        // update location icon
+        $("#zipCode").on("propertychange change click keyup input paste",function() {
+            var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test($(this).val());
+            if ($(this).val().length == 0)
+                $(".glyphicon-map-marker").css('color', 'black');  
+            else if (isValidZip)
+                $(".glyphicon-map-marker").css('color', '#468847');  
+            else 
+                $(".glyphicon-map-marker").css('color', '#b94a48');  
+        });
     </script>
 @endpush
