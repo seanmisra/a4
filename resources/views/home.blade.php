@@ -35,6 +35,9 @@
         #searchOption, #matchOption {
             cursor: pointer; 
         }
+        #searchOption:hover, #matchOption:hover {
+            color: #3a87ad; 
+        }
         #matchView {
             display:none; 
         }
@@ -95,6 +98,21 @@
           background: linear-gradient(to right, #f088fc 1%, #AC6CFF 70%);
         }
         
+        .footerMatch {
+            position:absolute;
+            bottom:0;
+            width:100%;
+            height:60px;   
+            background: rgba(0,0,0,.05);
+        }
+        
+        .footerSearch {
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:60px;   
+            background: rgba(0,0,0,.05);
+        }
     </style>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 @endpush 
@@ -109,11 +127,16 @@
     </header>
 
     <main>
-        <h2><span id="searchOption">Search</span> | <span id="matchOption">Match</span></h2> 
-        <br>
+        <h2><span id="searchOption"><strong>Search</strong></span> | <span id="matchOption">Match</span></h2> 
+        <br><br>
         <form method='GET' action='{{ action("HomeController@search") }}'>
             <div class = 'form-group searchView'>
                 <input type='text' name='search' id='homeSearch' placeholder='Type breed...' required>
+                <br> 
+                <footer class="footerSearch">
+                    <br>
+                    <p>Created at Harvard Extension. Spring 2017.</p>
+                </footer>
             </div>
             
             <div id = "matchView">
@@ -142,7 +165,7 @@
                     <br><br><br>
                     <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Trick Guru</span> 
                     <br><br><br>
-                    <input type='text' id="keywords" placeholder='I want my dog to be...' required style="font-size: 22px; font-weight: 500;">
+                    <input type='text' id="keywords" placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
                 </div>
                 <br><br><br>
                 <h2 class = 'matchView'>Location:</h2>
@@ -152,16 +175,14 @@
                     <i class="form-control-feedback glyphicon glyphicon-map-marker" style="font-size: 40px; top: 25%; left:80%;"></i>
                 </div>
                 <br><br>
+                <button type='submit'><i class="fa fa-paw" aria-hidden="true" style="font-size:30px;"></i></button>
+                <footer class=".footerMatch">
+                    <br><br>
+                    <p>Created at Harvard Extension. Spring 2017.</p>
+                </footer>
             </div>
-            
-            <br> 
-            <button type='submit'>Submit</button>
         </form>  
     </main>
-
-    <footer>
-        <p>©2017</p>
-    </footer>
 @stop
 
 @push('body')
@@ -195,10 +216,15 @@
         $("#searchOption").click(function() {
             $(".searchView").show(700); 
             $("#matchView").hide(700); 
+            $(this).html("<strong>Search</strong>");
+            $("#matchOption").html("Match");
+
         });
         $("#matchOption").click(function() {
             $(".searchView").hide(700);  
             $("#matchView").show(700); 
+            $(this).html("<strong>Match</strong>");
+            $("#searchOption").html("Search");
         });
         
         $("#sizeSlider").change(function() {

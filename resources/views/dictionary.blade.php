@@ -26,6 +26,13 @@
             text-align: left; 
             font-size: 22px; 
         }
+        footer {
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:60px;   
+            background: rgba(0,0,0,.05);
+        }
     </style>
 @endpush
 
@@ -62,7 +69,8 @@
     </main>
         
     <footer>
-        <p>©2017</p>
+        <br>
+        <p>Created at Harvard Extension. Spring 2017.</p>
     </footer>
 @stop
 

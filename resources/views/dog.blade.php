@@ -20,6 +20,11 @@
         .similarBreed:hover {
             opacity: .7; 
         }
+        footer {
+            width:100%;
+            height:60px;   
+            background: rgba(0,0,0,.05);
+        }
     </style>
 @endpush
 
@@ -92,20 +97,19 @@
         <h2>Keywords</h2>
         <a href="#">Cute</a> | <a href="#">Active</a> | <a href="#">Hairy</a> | <a href="#">Trick guru</a>
         <br>
-        <a href="#">Smelly</a> | <a href="#">Very hungry</a> | <a href="#">Loyal</a> | <a ref="#">Big</a>
+        <a href="#">Smelly</a> | <a href="#">Very hungry</a> | <a href="#">Loyal</a> | <a href="#">Big</a>
         <br>
         <a href="#">Trouble-maker</a> | <a href="#">Dirty</a> | <a href="#">Loud</a> | <a href="#">Stubborn</a>
-    </main>
-        
-    <footer>
         <br>
         <h3>Similar Breeds</h3>
         <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
         <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
         <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
         <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>
-        
+    </main>
+    <br><br>
+    <footer>        
         <br>
-        <p>©2017</p>
+        <p>Created at Harvard Extension. Spring 2017.</p>
     </footer>
 @stop
