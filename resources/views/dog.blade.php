@@ -56,7 +56,7 @@
         <h1>{{ $dog }}</h1>
         <p>{{ $group }} Group<p>
         <br>
-        <img class='mainImg' height=250 src='images/sample_dog.jpg'>
+        <img class='mainImg' height=300 src='images/sample_dog.jpg'>
     </header>
         
     <main>
@@ -134,4 +134,26 @@
         <br>
         <p>Created at Harvard Extension. Spring 2017.</p>
     </footer>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script>
+        var imagePath = '{{ $imagePath }}'; 
+        $.ajax({
+            url: imagePath,
+            type:'HEAD',
+            error:
+                function(){
+                    console.log("Image not found"); 
+                },
+            success:
+                function(){
+                    console.log("Image found"); 
+                    $('.mainImg').attr('src', imagePath); 
+                }
+        });
+    </script>
 @stop

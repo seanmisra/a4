@@ -24,6 +24,9 @@ class HomeController extends Controller
             return redirect('/breeds')->withErrors($validator)->withInput(Input::all());   
         }
         else {
+            // create image path
+            $imagePath = "images/".str_replace(" ", "_", $dog).".jpg"; 
+            
             // get group
             $group = Dog::where('name', 'LIKE', $dog)->pluck('group');
             $group = $group[0]; 
@@ -55,7 +58,8 @@ class HomeController extends Controller
                 'social' => $social,
                 'intelligence' => $intelligence,
                 'cleanliness' => $cleanliness,
-                'adventure' => $adventure
+                'adventure' => $adventure,
+                'imagePath' => $imagePath 
             ]);
         }
     }
