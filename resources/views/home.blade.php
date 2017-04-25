@@ -84,6 +84,7 @@
           position:relative;
           z-index:3;
           box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
+            cursor: pointer; 
         }
 
         input[type="range"]::-webkit-slider-thumb:after{
