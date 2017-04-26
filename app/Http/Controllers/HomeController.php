@@ -23,7 +23,7 @@ class HomeController extends Controller
             
             return redirect('/breeds')->withErrors($validator)->withInput(Input::all());   
         }
-        else {
+        else {        
             // create image path
             $imagePath = "images/".str_replace(" ", "_", $dog).".jpg"; 
             

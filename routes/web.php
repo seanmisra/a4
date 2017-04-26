@@ -17,7 +17,7 @@ Route::get('/search', 'HomeController@search');
 
 Route::get('/breeds', 'DictionaryController'); 
 
-Route::get('/breeds/{dog?}', 'DogController'); 
+Route::get('/breeds/{dog}', 'DogController'); 
 
 if (Config::get('app.env') == 'local') 
     Route::get('/admin', 'AdminController');

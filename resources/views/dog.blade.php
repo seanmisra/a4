@@ -56,7 +56,7 @@
         <h1>{{ $dog }}</h1>
         <p>{{ $group }} Group<p>
         <br>
-        <img class='mainImg' height=300 src='images/sample_dog.jpg'>
+        <img class='mainImg' height=300 src='/images/sample_dog.jpg'>
     </header>
         
     <main>
@@ -124,10 +124,10 @@
             <span class="label label-default">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
             <br><br>
         <h2>Similar Breeds</h2>
-        <img class = "similarBreed" id="similarBreedOne" height=100 src='images/sample_dog.jpg'>&nbsp;
-        <img class = "similarBreed" id="similarBreedTwo" height=100 src='images/sample_dog.jpg'>&nbsp;
-        <img class = "similarBreed" id="similarBreedThree" height=100 src='images/sample_dog.jpg'>&nbsp;
-        <img class = "similarBreed" id="similarBreedFour" height=100 src='images/sample_dog.jpg'>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}"><img class = "similarBreed" id="similarBreedThree" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}"><img class = "similarBreed" id="similarBreedFour" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
     </main>
     <br><br>
     <footer>        
@@ -142,6 +142,7 @@
       crossorigin="anonymous"></script>
     <script>
         var imagePath = '{{ $imagePath }}'; 
+        console.log("The image path is " + imagePath);
         $.ajax({
             url: imagePath,
             type:'HEAD',
