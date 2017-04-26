@@ -30,7 +30,14 @@ class HomeController extends Controller
             // get group
             $group = Dog::where('name', 'LIKE', $dog)->pluck('group');
             $group = $group[0]; 
-
+            
+            //get 4 similar breeds (based for now only on Group)
+            $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->limit(4)->pluck('name')->toArray();
+            $similarBreedImgs = []; 
+            foreach ($similarBreeds as $breed) {
+                $similarBreedImgs [] = "images/".str_replace(" ", "_", $breed).".jpg";
+            }
+            
             // get energy
             $energy = Dog::where('name', 'LIKE', $dog)->pluck('energy');
             $energy = (int) $energy[0]; 
@@ -59,7 +66,9 @@ class HomeController extends Controller
                 'intelligence' => $intelligence,
                 'cleanliness' => $cleanliness,
                 'adventure' => $adventure,
-                'imagePath' => $imagePath 
+                'imagePath' => $imagePath, 
+                'similarBreeds' => $similarBreeds,
+                'similarBreedImgs' => $similarBreedImgs
             ]);
         }
     }

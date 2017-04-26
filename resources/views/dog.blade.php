@@ -124,10 +124,10 @@
             <span class="label label-default">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
             <br><br>
         <h2>Similar Breeds</h2>
-        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>&nbsp;
-        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>&nbsp;
-        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>&nbsp;
-        <img class = "similarBreed" height=100 src='images/sample_dog.jpg'>&nbsp;
+        <img class = "similarBreed" id="similarBreedOne" height=100 src='images/sample_dog.jpg'>&nbsp;
+        <img class = "similarBreed" id="similarBreedTwo" height=100 src='images/sample_dog.jpg'>&nbsp;
+        <img class = "similarBreed" id="similarBreedThree" height=100 src='images/sample_dog.jpg'>&nbsp;
+        <img class = "similarBreed" id="similarBreedFour" height=100 src='images/sample_dog.jpg'>&nbsp;
     </main>
     <br><br>
     <footer>        
@@ -155,5 +155,78 @@
                     $('.mainImg').attr('src', imagePath); 
                 }
         });
+        
+        var imagePathOne = '{{ (isset($similarBreedImgs[0])) ? $similarBreedImgs[0] : "" }}'; 
+        var imagePathTwo = '{{ (isset($similarBreedImgs[1])) ? $similarBreedImgs[1] : "" }}'; 
+        var imagePathThree = '{{ (isset($similarBreedImgs[2])) ? $similarBreedImgs[2] : "" }}'; 
+        var imagePathFour = '{{ (isset($similarBreedImgs[3])) ? $similarBreedImgs[3] : "" }}'; 
+        
+        var similarOne = '{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}'; 
+        var similarTwo = '{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}'; 
+        var similarThree = '{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}'; 
+        var similarFour = '{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}'; 
+
+        $('#similarBreedOne').attr('title', similarOne); 
+        $('#similarBreedTwo').attr('title', similarTwo); 
+        $('#similarBreedThree').attr('title', similarThree); 
+        $('#similarBreedFour').attr('title', similarFour); 
+
+        
+        $.ajax({
+            url: imagePathOne,
+            type:'HEAD',
+            error:
+                function(){
+                    console.log("Image not found"); 
+                },
+            success:
+                function(){
+                    console.log("Image found"); 
+                    $('#similarBreedOne').attr('src', imagePathOne); 
+                }
+        });  
+        
+        $.ajax({
+            url: imagePathTwo,
+            type:'HEAD',
+            error:
+                function(){
+                    console.log("Image not found"); 
+                },
+            success:
+                function(){
+                    console.log("Image found"); 
+                    $('#similarBreedTwo').attr('src', imagePathTwo); 
+                }
+        }); 
+        
+        $.ajax({
+            url: imagePathThree,
+            type:'HEAD',
+            error:
+                function(){
+                    console.log("Image not found"); 
+                },
+            success:
+                function(){
+                    console.log("Image found"); 
+                    $('#similarBreedThree').attr('src', imagePathThree); 
+                }
+        }); 
+        
+        $.ajax({
+            url: imagePathFour,
+            type:'HEAD',
+            error:
+                function(){
+                    console.log("Image not found"); 
+                },
+            success:
+                function(){
+                    console.log("Image found"); 
+                    $('#similarBreedFour').attr('src', imagePathFour); 
+                }
+        }); 
+        
     </script>
 @stop
