@@ -25,7 +25,7 @@ class CreateDogsTable extends Migration
             $table->string('aliasTwo')->nullable(); 
             $table->string('aliasThree')->nullable(); 
             $table->string('group')->nullable(); 
-            $table->integer('size')->nullable(); 
+            $table->enum('size', array("tiny", "small", "medium", "large"))->nullable(); 
             $table->enum('energy', array(1, 2, 3, 4, 5))->default(3); 
             $table->enum('social', array(1, 2, 3, 4, 5))->default(3); 
             $table->enum('intelligence', array(1, 2, 3, 4, 5))->default(3); 

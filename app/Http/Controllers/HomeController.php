@@ -11,8 +11,27 @@ use Session;
 class HomeController extends Controller
 {
     public function search(Request $request) {
-        $dog = $request->input('search'); 
+        $dog = ucwords($request->input('search')); 
         $allDogs = Dog::all()->pluck('name')->toArray(); 
+        $aliasOne = Dog::all()->pluck('aliasOne')->toArray(); 
+        $aliasTwo = Dog::all()->pluck('aliasTwo')->toArray(); 
+        $aliasThree = Dog::all()->pluck('aliasThree')->toArray(); 
+        
+        // check if alias was entered
+        for ($i = 0; $i<count($allDogs); $i++) {
+            if ($dog == $aliasOne[$i]) {
+                $dog = $allDogs[$i];
+                break; 
+            }
+            else if ($dog == $aliasTwo[$i]) {
+                $dog = $allDogs[$i];
+                break; 
+            }
+            else if ($dog == $aliasThree[$i]) {
+                $dog = $allDogs[$i];
+                break; 
+            }
+        }
         
         $rules = ['search' => 'required'];
         $validator = Validator::make($request->all(), $rules); 
