@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@start');
 
 Route::get('/search', 'HomeController@search'); 
 
+Route::get('/match', 'HomeController@match'); 
+
 Route::get('/breeds', 'DictionaryController'); 
 
 Route::get('/breeds/{dog}', 'DogController'); 

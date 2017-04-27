@@ -17,7 +17,9 @@ class DogController extends Controller
         $group = $group[0]; 
 
         //get 4 similar breeds (based for now only on Group)
-        $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->limit(4)->pluck('name')->toArray();
+        $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->pluck('name')->toArray();
+        shuffle($similarBreeds); 
+        
         $similarBreedImgs = []; 
         foreach ($similarBreeds as $breed) {
             $similarBreedImgs [] = "/images/".str_replace(" ", "_", $breed).".jpg";

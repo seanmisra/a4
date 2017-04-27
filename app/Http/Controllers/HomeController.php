@@ -57,4 +57,42 @@ class HomeController extends Controller
         ]);
     }
     
+    public function match(Request $request) {
+        $rules = ['size' => 'required|between:0,100', 'keywords' => 'required', 'zipcode' => 'digits:5'];
+        $validator = Validator::make($request->all(), $rules); 
+        
+        //validate user input
+        if ($validator->fails()) {
+            dump("validation failed!");   
+        }
+    
+    
+        $size = $request->input('size'); 
+        $keywords = $request->input('keywords'); 
+        $zipcode = $request->input('zipcode'); 
+
+        // parse keywords
+        $keywords = str_replace(" ", "", $keywords); 
+        $keywordList = explode(",", $keywords); 
+        
+        $preferredSize; 
+        if ($size >= 75) {
+            $preferredSize = "large";
+        }
+        else if ($size >= 50) {
+            $preferredSize = "medium"; 
+        }
+        else if ($size >= 25) {
+            $preferredSize = "small";
+        }
+        else {
+            $preferredSize = "tiny"; 
+        }
+        
+        
+        dump($preferredSize); 
+        dump($keywordList);
+        dump($zipcode);   
+    }
+    
 }

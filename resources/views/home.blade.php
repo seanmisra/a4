@@ -139,12 +139,14 @@
                     <p>Created at Harvard Extension. Spring 2017.</p>
                 </footer>
             </div>
-            
+        </form>
+        
+        <form method='GET' action='{{ action("HomeController@match") }}'>
             <div id = "matchView">
                 <h2 class = 'matchView'>Size:</h2>
                 <p class = 'matchView' id="preference">I prefer medium-size dogs</p>
                 <div class = 'form-group matchView'>
-                    <input type = 'range' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;">
+                    <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;">
                     <br>
                     <img src='images/small_dog.png'  id='smallDog' style='display:none; height: 200px;'> 
                     <img src='images/smaller_dog.png' id='smallerDog' style='display:none; height: 200px;'> 
@@ -166,13 +168,13 @@
                     <br><br><br>
                     <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Trick Guru</span> 
                     <br><br><br>
-                    <input type='text' id="keywords" placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
+                    <input type='text' name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
                 </div>
                 <br><br><br>
                 <h2 class = 'matchView'>Location:</h2>
                 <p class = 'matchView'>..Enter 5-digit zip code... OPTIONAL</p>
                 <div class = 'form-group has-feedback matchView' style="width:30vw; height: 100px; margin: 0 auto;">
-                    <input type='text' id="zipCode" class="form-control" placeholder='Your zipcode...' style="font-size: 22px; font-weight: 500; height: 100px; margin: 0 auto;">
+                    <input type='text' id="zipCode" name='zipcode' class="form-control" placeholder='Your zipcode...' style="font-size: 22px; font-weight: 500; height: 100px; margin: 0 auto;">
                     <i class="form-control-feedback glyphicon glyphicon-map-marker" style="font-size: 40px; top: 25%; left:80%;"></i>
                 </div>
                 <br><br>
