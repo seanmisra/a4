@@ -210,12 +210,27 @@
         
         
         //create jQuery autocomplete validation 
-        $(function () {
-            $("#homeSearch").autocomplete({
-                source:allDogs
-            }); 
+        $("#homeSearch").autocomplete({
+            source: function(request, response) {
+                // remove whitespaces and escape regex chars
+                var re = ($.ui.autocomplete.escapeRegex((request.term).replace(" ", "")));
+
+                // if the trimmed result is nothing ignore it
+                if (re == "") {
+                    return false; 
+                }
+
+                // case insensitive match, ignoring whitespaces in list
+                // only matches beginning of word
+                var matcher = new RegExp("^" + re, "i" );
+                var result = $.grep(allDogs, function(item,index){
+                    item = item.replace(" ", ""); 
+                    return matcher.test(item);
+                });
+                response(result);
+            }
         }); 
-        
+
         $("#searchOption").click(function() {
             $(".searchView").show(700); 
             $("#matchView").hide(700); 
