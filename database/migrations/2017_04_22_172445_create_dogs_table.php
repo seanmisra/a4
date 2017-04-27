@@ -10,6 +10,8 @@ class CreateDogsTable extends Migration
      * Run the migrations.
      *
      * @return void
+     *
+     * COMMAND-LINE: php artisan migrate:refresh --seed
      */
     public function up()
     {
@@ -19,12 +21,16 @@ class CreateDogsTable extends Migration
             $table->timestamps(); 
             
             $table->string('name'); 
-            $table->string('group'); 
-            $table->enum('energy', array(1, 2, 3, 4, 5)); 
-            $table->enum('social', array(1, 2, 3, 4, 5)); 
-            $table->enum('intelligence', array(1, 2, 3, 4, 5)); 
-            $table->enum('cleanliness', array(1, 2, 3, 4, 5)); 
-            $table->enum('adventure', array(1, 2, 3, 4, 5)); 
+            $table->string('aliasOne')->nullable(); 
+            $table->string('aliasTwo')->nullable(); 
+            $table->string('aliasThree')->nullable(); 
+            $table->string('group')->nullable(); 
+            $table->integer('size')->nullable(); 
+            $table->enum('energy', array(1, 2, 3, 4, 5))->default(3); 
+            $table->enum('social', array(1, 2, 3, 4, 5))->default(3); 
+            $table->enum('intelligence', array(1, 2, 3, 4, 5))->default(3); 
+            $table->enum('cleanliness', array(1, 2, 3, 4, 5))->default(3); 
+            $table->enum('adventure', array(1, 2, 3, 4, 5))->default(3); 
         });
     }
 
