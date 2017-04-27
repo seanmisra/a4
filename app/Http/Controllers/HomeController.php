@@ -58,14 +58,15 @@ class HomeController extends Controller
     }
     
     public function match(Request $request) {
-        $rules = ['size' => 'required|between:0,100', 'keywords' => 'required', 'zipcode' => 'digits:5'];
-        $validator = Validator::make($request->all(), $rules); 
+        $rules = ['size' => 'required|between:0,100', 'keywords' => 'required'];        
+        if ($request->has('zipcode'))
+            $rules['zipcode'] = 'digits:5';     
         
         //validate user input
+        $validator = Validator::make($request->all(), $rules); 
         if ($validator->fails()) {
-            dump("validation failed!");   
+            dd("validation failed!");  
         }
-    
     
         $size = $request->input('size'); 
         $keywords = $request->input('keywords'); 
@@ -90,9 +91,11 @@ class HomeController extends Controller
         }
         
         
-        dump($preferredSize); 
-        dump($keywordList);
-        dump($zipcode);   
+        $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->pluck('name')->toArray(); 
+        shuffle($potentialDogs); 
+        $selectedDog = array_pop($potentialDogs); 
+        
+        return redirect('/breeds/'.$selectedDog);        
     }
     
 }
