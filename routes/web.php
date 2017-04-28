@@ -25,6 +25,8 @@ if (Config::get('app.env') == 'local')
     Route::get('/admin', 'AdminController');
 
 
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
 Route::get('/debug', function() {
 
 	echo '<pre>';
