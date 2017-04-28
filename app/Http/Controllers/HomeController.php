@@ -59,8 +59,6 @@ class HomeController extends Controller
     
     public function match(Request $request) {
         $rules = ['size' => 'required|between:0,100', 'keywords' => 'required'];        
-        if ($request->has('zipcode'))
-            $rules['zipcode'] = 'digits:5';     
         
         //validate user input
         $validator = Validator::make($request->all(), $rules); 
@@ -70,8 +68,9 @@ class HomeController extends Controller
     
         $size = $request->input('size'); 
         $keywords = $request->input('keywords'); 
-        $zipcode = $request->input('zipcode'); 
-
+        $lifestyle = ($request->input('lifestyle')) ? true : false; 
+        
+        
         // parse keywords
         $keywords = str_replace(" ", "", $keywords); 
         $keywordList = explode(",", $keywords); 
@@ -91,7 +90,12 @@ class HomeController extends Controller
         }
         
         
-        $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->pluck('name')->toArray(); 
+        // if lifestyle is apartment, need to make sure dogs are apartment-compatible
+        if ($lifestyle)
+            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->where('apartment', 'LIKE', true)->pluck('name')->toArray(); 
+        else 
+            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->pluck('name')->toArray();      
+        
         shuffle($potentialDogs); 
         $selectedDog = array_pop($potentialDogs); 
         

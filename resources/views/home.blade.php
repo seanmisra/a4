@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+
+<!--UI REFERENCES: http://bootsnipp.com/snippets/nPE28, http://callmenick.com/post/css-toggle-switch-examples -->
+
 @push('head')
     <style> 
         body {
@@ -7,6 +10,9 @@
         }
         h1 {
             font-size: 70px; 
+        }
+        p {
+            font-size: 16px; 
         }
         input {
             height: 100px;
@@ -18,11 +24,6 @@
             width: 10vw; 
             text-align: center; 
         }
-        button {
-            width: 15vw;
-            height: 65px; 
-            font-size: 25px; 
-        } 
         .ui-autocomplete { 
             text-align: left; 
             max-height: 250px; 
@@ -78,7 +79,7 @@
 
         input[type="range"]::-webkit-slider-thumb{
           -webkit-appearance:none;
-        background-color: skyblue; 
+        background-color: #428bca;
           width:40px;
           height:50px;
           position:relative;
@@ -114,6 +115,161 @@
             height:60px;   
             background: rgba(0,0,0,.05);
         }
+        
+        input.cmn-toggle-yes-no + label {
+            padding: 2px;
+            width: 500px;
+            margin: 0 auto;
+            cursor:pointer; 
+        }
+        input.cmn-toggle-yes-no + label:hover {
+            opacity: .8; 
+        }
+        input.cmn-toggle-yes-no + label:before, input.cmn-toggle-yes-no + label:after {
+            padding: 2px;
+            width: 500px;
+            position: absolute; 
+            display: block;
+            color: #fff;
+            text-align: center;
+            line-height: 150px;
+        }
+        input.cmn-toggle-yes-no + label:before {
+            background-color: #428bca;
+            content: attr(data-off);
+            transition: transform 1s;
+            backface-visibility: hidden;
+            font-size: 35px; 
+
+        }
+        input.cmn-toggle-yes-no + label:after {
+            background-color: #5cb85c;
+            content: attr(data-on);
+            transition: transform 1s;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            font-size: 30px; 
+        }
+        input.cmn-toggle-yes-no:checked + label:before {
+            transform: rotateY(180deg);
+        }
+        input.cmn-toggle-yes-no:checked + label:after {
+            transform: rotateY(0);
+        }
+        
+        .round-button {
+            margin: 0 auto;
+            display:block;
+            width:25vw; 
+            height:100px;
+            line-height:50px;
+            border: none;
+            background-color: white;
+            text-align:center;
+            text-decoration:none;
+            color: rgb(100, 100, 100); 
+            font-size:20px;
+            font-weight:bold;
+            transition: all .75s; 
+        }
+        
+        .round-button:hover {
+            width: 50vw; 
+            color: white;
+            background: rgb(180, 180, 180); 
+        }
+        
+        .round-button:active, .round-button:focus {
+            outline:none; 
+        }
+        
+        /* Container box to set the sides relative to */
+        .cube {
+            width: 250px;
+            height: 100px;
+            -webkit-transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+            transition: all 500ms ease;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        /* The two faces of the cube */
+        .default-state,
+        .active-state {
+            height: 100px;
+        }
+        /* Position the faces */
+        .default-state {
+            -webkit-transform: translateZ(50px);
+            -moz-transform: translateZ(50px);
+            -o-transform: translateZ(50px);
+            -ms-transform: translateZ(50px);
+            transform: translateZ(50px);
+        }
+        .flip-to-top .active-state {
+            -webkit-transform: rotateX(90deg) translateZ(150px);
+            -moz-transform: rotateX(90deg) translateZ(150px);
+            -o-transform: rotateX(90deg) translateZ(150px);
+            -ms-transform: rotateX(90deg) translateZ(150px);
+            transform: rotateX(90deg) translateZ(150px);
+        }
+        .flip-to-bottom .active-state {
+            -webkit-transform: rotateX(-90deg) translateZ(-50px);
+            -moz-transform: rotateX(-90deg) translateZ(-50px);
+            -o-transform: rotateX(-90deg) translateZ(-50px);
+            -ms-transform: rotateX(-90deg) translateZ(-50px);
+            transform: rotateX(-90deg) translateZ(-50px);
+        }
+        /* Rotate the cube */
+        .cube.flip-to-top:hover {
+            -webkit-transform: rotateX(-89deg);
+            -moz-transform: rotateX(-89deg);
+            -o-transform: rotateX(-89deg);
+            -ms-transform: rotateX(-89deg);
+            transform: rotateX(-89deg);
+        }
+        .cube.flip-to-bottom:hover {
+            -webkit-transform: rotateX(89deg);
+            -moz-transform: rotateX(89deg);
+            -o-transform: rotateX(89deg);
+            -ms-transform: rotateX(89deg);
+            transform: rotateX(89deg);
+        }
+        /* END CORE CSS */
+        /* Demo styling */
+        .cube {
+            text-align: center;
+            margin: 0 auto;
+        }
+        .default-state,
+        .active-state {
+            background: #ffcc00;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 100px;
+            -webkit-transition: background 250ms ease;
+            -moz-transition: background 250ms ease;
+            -o-transition: background 250ms ease;
+            transition: background 250ms ease;
+        }
+        .cube:hover .default-state {
+            background: #ffcc00;
+        }
+        .active-state {
+            background: #e20074;
+        }
+        #flipto {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            color: #ccc;
+        }
     </style>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 @endpush 
@@ -148,13 +304,13 @@
                 <div class = 'form-group matchView'>
                     <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;">
                     <br>
-                    <img src='images/small_dog.png'  id='smallDog' style='display:none; height: 200px;'> 
-                    <img src='images/smaller_dog.png' id='smallerDog' style='display:none; height: 200px;'> 
-                    <img src='images/medium_dog.png' id='mediumDog' style='height:200px;'> 
+                    <img src='images/small_dog.png'  id='smallDog' style='display:none; height: 250px;'> 
+                    <img src='images/smaller_dog.png' id='smallerDog' style='display:none; height: 250px;'> 
+                    <img src='images/medium_dog.png' id='mediumDog' style='height:250px;'> 
                     <img src='images/large_dog.png' id='largeDog' style='display:none; height: 200px;'> 
                 </div>
 
-                <br>
+                <br><br>
                 <h2 class = 'matchView'>KeyWords:</h2>
                 <p class ='matchView'>Pick some traits you like in a dog</p>
                 <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600;">Refresh</p>
@@ -170,15 +326,30 @@
                     <br><br><br>
                     <input type='text' name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
                 </div>
-                <br><br><br>
+                <br><br><br><br>
                 <h2 class = 'matchView'>Location:</h2>
-                <p class = 'matchView'>..Enter 5-digit zip code... OPTIONAL</p>
-                <div class = 'form-group has-feedback matchView' style="width:30vw; height: 100px; margin: 0 auto;">
-                    <input type='text' id="zipCode" name='zipcode' class="form-control" placeholder='Your zipcode...' style="font-size: 22px; font-weight: 500; height: 100px; margin: 0 auto;">
-                    <i class="form-control-feedback glyphicon glyphicon-map-marker" style="font-size: 40px; top: 25%; left:80%;"></i>
+                <p class = 'matchView'>...Where do you live...</p>
+                
+                <div class = 'form-group'>
+                    <div class="switch">
+                        <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" name= 'lifestyle' type="checkbox" style="display:none;">
+                        <label for="cmn-toggle-7" data-on="Apartment&nbsp;&nbsp;&nbsp;&#x1f3e2;" data-off="House&nbsp;&nbsp;&nbsp;&#127968;"></label>                        
+                    </div>
                 </div>
+                
+                <br><br><br><br><br><br><br><br><br><br><br><br>
                 <br><br>
-                <button type='submit'><i class="fa fa-paw" aria-hidden="true" style="font-size:30px;"></i></button>
+                                
+                <!-- flip-to-top or flip-to-bottom -->
+                <button type='submit' class="cube flip-to-top" style="border:none; outline: none; padding: 0 0 0 0; width: 40vw; height: 100px;">
+                    <div class="default-state" style="font-size: 20px; color: rgb(100, 100, 100); background-color: white; font-weight: bold;">
+                        <span>FIND YOUR DOG</span>
+                    </div>
+                    <div class="active-state" style="font-size: 50px; color: white; background-color: #5cb85c; font-weight: bold;">
+                        <span><i class="fa fa-paw" aria-hidden="true"></i></span>
+                    </div>
+                </button>
+                
                 <footer class=".footerMatch">
                     <br><br>
                     <p>Created at Harvard Extension. Spring 2017.</p>
@@ -232,15 +403,15 @@
         }); 
 
         $("#searchOption").click(function() {
-            $(".searchView").show(700); 
-            $("#matchView").hide(700); 
+            $(".searchView").show(500); 
+            $("#matchView").hide(500); 
             $(this).html("<strong>Search</strong>");
             $("#matchOption").html("Match");
 
         });
         $("#matchOption").click(function() {
-            $(".searchView").hide(700);  
-            $("#matchView").show(700); 
+            $(".searchView").hide(500);  
+            $("#matchView").show(500); 
             $(this).html("<strong>Match</strong>");
             $("#searchOption").html("Search");
         });
@@ -297,5 +468,28 @@
             else 
                 $(".glyphicon-map-marker").css('color', '#b94a48');  
         });
+        
+        $(".cube").mouseenter(function() {
+            var keywords = $("#keywords").val(); 
+            if (keywords == "") {
+                $(".active-state").css({'color':'#d9534f', 'font-size':'25px', 'background-color':'white'}); 
+                $(".active-state").text('No Keywords');
+            }
+            else {
+                var words = keywords.split(", ")
+
+                if (words.length > 2) {
+                    $(".active-state").css({'color':'#5cb85c', 'font-size':'70px', 'background-color':'white'}); 
+                    $(".active-state").html('<i class="fa fa-paw" aria-hidden="true"></i>');
+                }
+                else {
+                    $(".active-state").css({'color':'#f0ad4e', 'font-size':'25px', 'background-color':'white'}); 
+                    $(".active-state").text("Try adding more keywords")
+                }
+            }
+            
+            
+        })
+            
     </script>
 @endpush
