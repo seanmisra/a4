@@ -9,13 +9,54 @@
         h1 {
             font-size: 50px;
         }
-        td:nth-child(n) {  
+        h2 {
             font-weight: bold; 
         }
+        td:nth-child(n) {  
+            font-weight: bold;
+            height: 70px; 
+        }
+        td:nth-child(1) {
+            font-size: 25px; 
+            width: 300px; 
+            padding-left: 20px !important; 
+            background-color: rgb(180, 180, 180);
+            color: rgb(120, 120, 120);
+            border-collapse:collapse !important; 
+            font-size: 
+        }
+        td:nth-child(2) {
+            font-size: 1px; 
+            width: 10px;
+            background-color: white !important; 
+            opacity: 0; 
+            border: 0 !imporant; 
+        }
+        td:nth-child(3) {
+            padding-left: 50px !important;
+            word-spacing: 10px; 
+            font-size: 27px; 
+            color: white;  
+
+        }
+        td:nth-child(4) {
+            background-color: rgb(180, 180, 180) !important; 
+            text-align: center; 
+            font-size: 30px; 
+        }
+        
+        td{
+            background-color: rgb(200, 200, 200) !important; 
+            color: white;     
+        }
+        
         .table {
             text-align: left; 
-            width: 800px;
-            font-size: 22px;
+            width: 60vw;
+        }
+        
+        table td {
+            vertical-align: middle !important;
         }
         
         .similarBreed:hover {
@@ -27,9 +68,6 @@
             height:60px;   
             background: rgba(0,0,0,.05);
         }
-        .mainImg {
-            border-radius: 10px; 
-        }
         p {
             font-size: 18px;
         }
@@ -38,8 +76,9 @@
             margin: 0 auto; 
         }
         .label {
-            font-size: 20px;
+            font-size: 25px;
             font-weight: 300;
+            border-radius: 0px !important; 
         }
         .label:hover {
             opacity: .8; 
@@ -61,73 +100,84 @@
         
     <main>
         <br>
-        <h2>Summary</h2>
+        <h2>Summary</h2><br>
         <table class="table" align="center">
             <tbody>
                 <tr class="active">
                     <td>Energy</td>
+                    <td>Test</td>
                     <td>
                         @for($x = 0; $x<$energy; $x++)
                             <span class="glyphicon glyphicon-star"></span>
                         @endfor
                     </td>
+                    <td><i class="fa fa-cog" aria-hidden="true"></i></td>
                 </tr>
                 <tr class="active">
                     <td>Social Skills</td>
+                    <td>Test</td>
                     <td>
                         @for($x = 0; $x<$social; $x++)
                             <span class="glyphicon glyphicon-star"></span>
                         @endfor
                     </td>
+                    <td><i class="fa fa-commenting" aria-hidden="true"></i></td>
                 </tr>
                 <tr class="active">
                     <td>Intelligence</td>
+                    <td>Test</td>
                     <td>
                         @for($x = 0; $x<$intelligence; $x++)
                             <span class="glyphicon glyphicon-star"></span>
                         @endfor
                     </td>
+                    <td><i class="fa fa-calculator" aria-hidden="true"></i></td>
                 </tr>
                 <tr class="active">
                     <td>Cleanliness</td>
+                    <td>Test</td>
                     <td>
                         @for($x = 0; $x<$cleanliness; $x++)
                             <span class="glyphicon glyphicon-star"></span>
                         @endfor
                     </td>
+                    <td><i class="fa fa-leaf" aria-hidden="true"></i></td>
                 </tr>
                 <tr class="active">
-                    <td>Adventure-Seeking</td>
+                    <td>Adventure</td>
+                    <td>Test</td>
                     <td>
                      @for($x = 0; $x<$adventure; $x++)
                             <span class="glyphicon glyphicon-star"></span>
                         @endfor
                     </td>
+                    <td><i class="fa fa-paw" aria-hidden="true"></i></td>
                 </tr>
             </tbody>
         </table>
         
         <br>
         <div id = "funFact">
+            <br>
             <h2>Did you Know?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor.</p>
-            <p><a href="#">Refresh</a></p>
+            <p style="font-size: 22px; line-height: 40px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor.</p>
+            <p><a style="font-size: 50px;"href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
         </div>
             
         <br>
         <h2>Keywords</h2>
             <br>
             <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Trick Guru</span> 
-            <br><br>
+            <br><br><br style="height: 1px;">
             <span class="label label-default">Smelly</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Very Hungry</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Loyal</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Big</span>
-            <br><br>
+            <br><br><br>
             <span class="label label-default">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
-            <br><br>
+            <br><br><br><br>
         <h2>Similar Breeds</h2>
-        <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
-        <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
-        <a href="/breeds/{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}"><img class = "similarBreed" id="similarBreedThree" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
-        <a href="/breeds/{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}"><img class = "similarBreed" id="similarBreedFour" height=100 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}"><img class = "similarBreed" id="similarBreedThree" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}"><img class = "similarBreed" id="similarBreedFour" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
     </main>
     <br><br>
     <footer>        

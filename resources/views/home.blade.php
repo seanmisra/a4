@@ -52,6 +52,7 @@
             font-size: 30px;
             font-weight: 300;
             cursor: pointer; 
+            border-radius: 0px !important; 
         }
         .label:hover {
             opacity: .8; 
@@ -185,8 +186,12 @@
             background: rgb(180, 180, 180); 
         }
         
-        .round-button:active, .round-button:focus {
+        #homeSearch, .round-button:active, .round-button:focus {
             outline:none; 
+        }
+        
+        #homeSearch:focus {
+            box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.3);
         }
         
         /* Container box to set the sides relative to */
