@@ -25,14 +25,11 @@
                 background-color: rgba(0,0,0,0);
                 transition: all .5s;
             }
-            .navbar:hover {
-                background-color: rgba(0,0,0,.05);
-            }
             .navbar-nav {
-                font-size: 17px; 
+                font-size: 23px; 
             }
             .navbar-brand {
-                font-size: 20px; 
+                font-size: 23px; 
             }
         </style>
     </head>
@@ -54,8 +51,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/breeds">Breeds</a></li>
+                    <li><a href="/about">About</a>&nbsp;&nbsp;</li>
+                    <li><a href="/breeds">Breeds</a>&nbsp;&nbsp;</li>
                     <li><a target='_blank' href="https://github.com/seanmisra/a4">GitHub</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->

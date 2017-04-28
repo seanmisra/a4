@@ -11,8 +11,14 @@
         h1 {
             font-size: 70px; 
         }
+        h2 {
+            font-weight: bold; 
+        }
+        #matchOption, #searchOption {
+            font-weight: normal; 
+        }
         p {
-            font-size: 16px; 
+            font-size: 18px; 
         }
         input {
             height: 100px;
@@ -288,7 +294,7 @@
         <br><br>
         <form method='GET' action='{{ action("HomeController@search") }}'>
             <div class = 'form-group searchView'>
-                <input type='text' name='search' id='homeSearch' placeholder='Type breed...' required>
+                <input type='text' name='search' id='homeSearch' placeholder='Type breed...' required style="height: 125px; width: 60vw;">
                 <br> 
                 <footer class="footerSearch">
                     <br>
@@ -300,7 +306,7 @@
         <form method='GET' action='{{ action("HomeController@match") }}'>
             <div id = "matchView">
                 <h2 class = 'matchView'>Size:</h2>
-                <p class = 'matchView' id="preference">I prefer medium-size dogs</p>
+                <p class = 'matchView' id="preference">I prefer <strong>medium-sized</strong> dogs</p>
                 <div class = 'form-group matchView'>
                     <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;">
                     <br>
@@ -313,7 +319,7 @@
                 <br><br>
                 <h2 class = 'matchView'>KeyWords:</h2>
                 <p class ='matchView'>Pick some traits you like in a dog</p>
-                <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600;">Refresh</p>
+                <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600; font-size: 40px;"><i class="fa fa-refresh" aria-hidden="true"></i></p>
                 <br>
                 <div class = 'matchView'>
                     <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Trick Guru</span> 
@@ -324,11 +330,11 @@
                     <br><br><br>
                     <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Trick Guru</span> 
                     <br><br><br>
-                    <input type='text' name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
+                    <input type='text' readonly name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
                 </div>
                 <br><br><br><br>
                 <h2 class = 'matchView'>Location:</h2>
-                <p class = 'matchView'>...Where do you live...</p>
+                <p class = 'matchView'>Where do you live</p>
                 
                 <div class = 'form-group'>
                     <div class="switch">
@@ -403,6 +409,7 @@
         }); 
 
         $("#searchOption").click(function() {
+            console.log("HERE!"); 
             $(".searchView").show(500); 
             $("#matchView").hide(500); 
             $(this).html("<strong>Search</strong>");
@@ -421,22 +428,22 @@
             if (value >= 75) {
                 $("#smallDog, #smallerDog, #mediumDog").hide();
                 $("#largeDog").show(500); 
-                $("#preference").text("I prefer large dogs");
+                $("#preference").html("I prefer <strong>large</strong> dogs");
             }
             else if (value >= 50) {
                 $("#smallDog, #smallerDog, #largeDog").hide();
                 $("#mediumDog").show(500); 
-                $("#preference").text("I prefer medium-sized dogs");
+                $("#preference").html("I prefer <strong>medium-sized</strong> dogs");
             }
             else if (value >= 25) {
                 $("#smallDog, #mediumDog, #largeDog").hide();
                 $("#smallerDog").show(500); 
-                $("#preference").text("I prefer small dogs");
+                $("#preference").html("I prefer <strong>small</strong> dogs");
             }
             else {
                 $("#smallerDog, #mediumDog, #largeDog").hide();
                 $("#smallDog").show(500); 
-                $("#preference").text("I prefer lap dogs");
+                $("#preference").html("I prefer <strong>tiny</strong> dogs");
             }
         }); 
         
