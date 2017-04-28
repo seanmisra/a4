@@ -101,6 +101,7 @@
     <main>
         <br>
         <h2>Summary</h2><br>
+<!--        SMART STAR COLORS SHOULD BE REPLACED WITH CSS CLASSES LATER-->
         <table class="table" align="center">
             <tbody>
                 <tr class="active">
@@ -108,7 +109,13 @@
                     <td>Test</td>
                     <td>
                         @for($x = 0; $x<$energy; $x++)
-                            <span class="glyphicon glyphicon-star"></span>
+                            @if($energy == 5)
+                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                            @elseif($energy == 1)
+                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                            @else
+                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                            @endif
                         @endfor
                     </td>
                     <td><i class="fa fa-cog" aria-hidden="true"></i></td>
@@ -118,7 +125,13 @@
                     <td>Test</td>
                     <td>
                         @for($x = 0; $x<$social; $x++)
-                            <span class="glyphicon glyphicon-star"></span>
+                            @if($social == 5)
+                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                            @elseif($social == 1)
+                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                            @else
+                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                            @endif
                         @endfor
                     </td>
                     <td><i class="fa fa-commenting" aria-hidden="true"></i></td>
@@ -128,7 +141,13 @@
                     <td>Test</td>
                     <td>
                         @for($x = 0; $x<$intelligence; $x++)
-                            <span class="glyphicon glyphicon-star"></span>
+                            @if($intelligence == 5)
+                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                            @elseif($intelligence == 1)
+                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                            @else
+                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                            @endif                      
                         @endfor
                     </td>
                     <td><i class="fa fa-calculator" aria-hidden="true"></i></td>
@@ -138,7 +157,13 @@
                     <td>Test</td>
                     <td>
                         @for($x = 0; $x<$cleanliness; $x++)
-                            <span class="glyphicon glyphicon-star"></span>
+                            @if($cleanliness == 5)
+                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                            @elseif($cleanliness == 1)
+                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                            @else
+                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                            @endif   
                         @endfor
                     </td>
                     <td><i class="fa fa-leaf" aria-hidden="true"></i></td>
@@ -148,7 +173,13 @@
                     <td>Test</td>
                     <td>
                      @for($x = 0; $x<$adventure; $x++)
-                            <span class="glyphicon glyphicon-star"></span>
+                            @if($adventure == 5)
+                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                            @elseif($adventure == 1)
+                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                            @else
+                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                            @endif 
                         @endfor
                     </td>
                     <td><i class="fa fa-paw" aria-hidden="true"></i></td>
@@ -278,6 +309,8 @@
                     $('#similarBreedFour').attr('src', imagePathFour); 
                 }
         }); 
+        
+        
         
     </script>
 @stop
