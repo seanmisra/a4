@@ -30,7 +30,7 @@ class DogsTableSeeder extends Seeder
         // cleanliness >> corresponds to Amount of Shedding (inverse), Drooling Potential (inverse), and Easy to Groom (3 rankings) 
         // adventure >> exercise and potential for playfulness
         
-        //added
+        //added 
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
