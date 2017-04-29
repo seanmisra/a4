@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use App\Dog; 
 use App\Tag; 
 
+//GOAL: 12 traits per dog
+
 class DogTagTableSeeder extends Seeder
 {
     /**

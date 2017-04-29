@@ -111,7 +111,7 @@
                         @for($x = 0; $x<$energy; $x++)
                             @if($energy == 5)
                                 <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
-                            @elseif($energy == 1)
+                            @elseif($energy == 1 || $energy == 2)
                                 <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
                             @else
                                 <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
@@ -127,7 +127,7 @@
                         @for($x = 0; $x<$social; $x++)
                             @if($social == 5)
                                 <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
-                            @elseif($social == 1)
+                            @elseif($social == 1 || $social == 2)
                                 <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
                             @else
                                 <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
@@ -143,7 +143,7 @@
                         @for($x = 0; $x<$intelligence; $x++)
                             @if($intelligence == 5)
                                 <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
-                            @elseif($intelligence == 1)
+                            @elseif($intelligence == 1 || $intelligence == 2)
                                 <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
                             @else
                                 <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
@@ -159,7 +159,7 @@
                         @for($x = 0; $x<$cleanliness; $x++)
                             @if($cleanliness == 5)
                                 <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
-                            @elseif($cleanliness == 1)
+                            @elseif($cleanliness == 1 || $cleanliness == 2)
                                 <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
                             @else
                                 <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
@@ -169,13 +169,13 @@
                     <td><i class="fa fa-leaf" aria-hidden="true"></i></td>
                 </tr>
                 <tr class="active">
-                    <td>Adventure</td>
+                    <td>Fun</td>
                     <td>Test</td>
                     <td>
                      @for($x = 0; $x<$adventure; $x++)
                             @if($adventure == 5)
                                 <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
-                            @elseif($adventure == 1)
+                            @elseif($adventure == 1 || $adventure == 2)
                                 <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
                             @else
                                 <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>

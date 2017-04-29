@@ -22,6 +22,14 @@ class DogsTableSeeder extends Seeder
         
         // source for apartments: http://www.petguide.com/blog/dog/top-10-best-dog-breeds-for-apartments/11
         
+        
+        //SOURCE for stars: http://dogtime.com/dog-breeds
+        // energy >> corresponds to energy level ranking
+        // social >> corresponds to All Around Friendliness (4 rankings)
+        // intelligence >> corresponds to intelligence ranking
+        // cleanliness >> corresponds to Amount of Shedding (inverse), Drooling Potential (inverse), and Easy to Groom (3 rankings) 
+        // adventure >> exercise and potential for playfulness
+        
         //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -29,11 +37,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Collie',
             'group' => 'Herding',
             'size' => 'medium', 
-            'energy' => 2, 
+            'energy' => 3, 
             'social' => 5,
             'intelligence' => 4, 
             'cleanliness' => 2, 
-            'adventure' => 4
+            'adventure' => 3
         ]);
         
         //added
@@ -43,11 +51,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'German Shepherd',
             'group' => 'Herding',
             'size' => 'medium', 
-            'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 3, 
-            'adventure' => 4
+            'energy' => 5, 
+            'social' => 4,
+            'intelligence' => 5, 
+            'cleanliness' => 4, 
+            'adventure' => 5
         ]);
         
         //added
@@ -58,10 +66,10 @@ class DogsTableSeeder extends Seeder
             'group' => 'Hound',
             'size' => 'small', 
             'apartment' => true, 
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
+            'cleanliness' => 4, 
             'adventure' => 4
         ]);
         
@@ -73,11 +81,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Hound',
             'size' => 'medium', 
             'apartment' => true, 
-            'energy' => 4, 
+            'energy' => 2, 
             'social' => 5,
-            'intelligence' => 5, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'intelligence' => 4, 
+            'cleanliness' => 3, 
+            'adventure' => 2
         ]);
         
         //added
@@ -90,8 +98,8 @@ class DogsTableSeeder extends Seeder
             'energy' => 4, 
             'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'cleanliness' => 4, 
+            'adventure' => 5
         ]);
         
         //added
@@ -101,10 +109,10 @@ class DogsTableSeeder extends Seeder
             'name' => 'Bloodhound',
             'group' => 'Hound',
             'size' => 'large', 
-            'energy' => 2, 
+            'energy' => 5, 
             'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
+            'cleanliness' => 1, 
             'adventure' => 4
         ]);
         
@@ -116,10 +124,10 @@ class DogsTableSeeder extends Seeder
             'group' => 'Hound',
             'size' => 'small',
             'apartment' => true, 
-            'energy' => 4, 
-            'social' => 5,
+            'energy' => 3, 
+            'social' => 3,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
+            'cleanliness' => 3, 
             'adventure' => 4
         ]);
         
@@ -131,11 +139,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Hound',
             'size' => 'medium', 
             'apartment' => true,
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 1
+            'intelligence' => 5, 
+            'cleanliness' => 3, 
+            'adventure' => 5
         ]);
         
         //added
@@ -146,11 +154,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Hound',
             'size' => 'small', 
             'apartment' => true,
-            'energy' => 4, 
-            'social' => 1,
+            'energy' => 5, 
+            'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'cleanliness' => 5, 
+            'adventure' => 5
         ]);
         
         //added 
@@ -161,11 +169,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Non-Sporting',
             'size' => 'small', 
             'apartment' => true,
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'cleanliness' => 3, 
+            'adventure' => 5
         ]);
         
         //added
@@ -177,10 +185,10 @@ class DogsTableSeeder extends Seeder
             'apartment' => true, 
             'size' => 'tiny',
             'energy' => 4, 
-            'social' => 3,
+            'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'cleanliness' => 5, 
+            'adventure' => 5
         ]);
         
         //added
@@ -191,10 +199,10 @@ class DogsTableSeeder extends Seeder
             'group' => 'Non-Sporting',
             'size' => 'small', 
             'apartment' => true, 
-            'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 1, 
+            'energy' => 2, 
+            'social' => 4,
+            'intelligence' => 2, 
+            'cleanliness' => 3, 
             'adventure' => 4
         ]);
         
@@ -205,11 +213,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Chinese Shar-Pei',
             'group' => 'Non-Sporting',
             'size' => 'medium',
-            'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'energy' => 2, 
+            'social' => 2,
+            'intelligence' => 2, 
+            'cleanliness' => 3, 
+            'adventure' => 2
         ]);
         
         //added
@@ -219,11 +227,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Chow Chow',
             'group' => 'Non-Sporting',
             'size' => 'medium', 
-            'energy' => 5, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 5, 
-            'adventure' => 4
+            'energy' => 2, 
+            'social' => 1,
+            'intelligence' => 1, 
+            'cleanliness' => 3, 
+            'adventure' => 2
         ]);
         
         //added
@@ -233,11 +241,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Dalmatian',
             'group' => 'Non-Sporting',
             'size' => 'medium', 
-            'energy' => 4, 
-            'social' => 5,
+            'energy' => 5, 
+            'social' => 4,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'cleanliness' => 4, 
+            'adventure' => 5
         ]);
         
         //added
@@ -248,10 +256,10 @@ class DogsTableSeeder extends Seeder
             'group' => 'Non-Sporting',
             'size' => 'small', 
             'apartment' => true, 
-            'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 5, 
+            'energy' => 3, 
+            'social' => 4,
+            'intelligence' => 3, 
+            'cleanliness' => 3, 
             'adventure' => 4
         ]);
         
@@ -265,9 +273,9 @@ class DogsTableSeeder extends Seeder
             'apartment' => true,
             'energy' => 4, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'intelligence' => 5, 
+            'cleanliness' => 4, 
+            'adventure' => 5
         ]);
         
         //added
@@ -277,11 +285,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Brittany',
             'group' => 'Sporting',
             'size' => 'small', 
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 5, 
-            'adventure' => 4
+            'intelligence' => 5, 
+            'cleanliness' => 2, 
+            'adventure' => 5
         ]);
         
         //added
@@ -291,11 +299,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Chesapeake Bay Retriever',
             'group' => 'Sporting',
             'size' => 'medium', 
-            'energy' => 4, 
-            'social' => 5,
+            'energy' => 5, 
+            'social' => 3,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'cleanliness' => 3, 
+            'adventure' => 5
         ]);
         
         //added
@@ -307,9 +315,9 @@ class DogsTableSeeder extends Seeder
             'size' => 'small',
             'apartment' => true, 
             'energy' => 4, 
-            'social' => 5,
+            'social' => 4,
             'intelligence' => 4, 
-            'cleanliness' => 1, 
+            'cleanliness' => 3, 
             'adventure' => 4
         ]);
         
@@ -322,9 +330,9 @@ class DogsTableSeeder extends Seeder
             'size' => 'medium', 
             'energy' => 4, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'intelligence' => 5, 
+            'cleanliness' => 3, 
+            'adventure' => 5
         ]);
         
         //added
@@ -335,11 +343,11 @@ class DogsTableSeeder extends Seeder
             'aliasOne' => 'Golden',
             'group' => 'Sporting',
             'size' => 'medium', 
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
-            'intelligence' => 1, 
+            'intelligence' => 5, 
             'cleanliness' => 2, 
-            'adventure' => 4
+            'adventure' => 5
         ]);
         
         //added
@@ -349,11 +357,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Irish Setter',
             'group' => 'Sporting',
             'size' => 'medium', 
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
-            'intelligence' => 4, 
+            'intelligence' => 5, 
             'cleanliness' => 3, 
-            'adventure' => 4
+            'adventure' => 5
         ]);
         
         //added
@@ -366,11 +374,11 @@ class DogsTableSeeder extends Seeder
             'aliasThree' => 'Nala', //Easter egg, as my late dog (a chocolate lab), is named Nala
             'group' => 'Sporting',
             'size' => 'medium', 
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'intelligence' => 5, 
+            'cleanliness' => 3, 
+            'adventure' => 5
         ]);
         
         //added
@@ -382,9 +390,9 @@ class DogsTableSeeder extends Seeder
             'size' => 'medium', 
             'energy' => 5, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'intelligence' => 5, 
+            'cleanliness' => 4, 
+            'adventure' => 5
         ]);
         
         //added
@@ -395,10 +403,10 @@ class DogsTableSeeder extends Seeder
             'group' => 'Working',
             'size' => 'large', 
             'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'social' => 2,
+            'intelligence' => 3, 
+            'cleanliness' => 1, 
+            'adventure' => 5
         ]);
         
         //added
@@ -409,11 +417,11 @@ class DogsTableSeeder extends Seeder
             'aliasOne' => 'Malamute',
             'group' => 'Working',
             'size' => 'medium', 
-            'energy' => 4, 
-            'social' => 5,
+            'energy' => 5, 
+            'social' => 4,
             'intelligence' => 4, 
-            'cleanliness' => 5, 
-            'adventure' => 4
+            'cleanliness' => 2, 
+            'adventure' => 5
         ]);
         
         //added
@@ -427,7 +435,7 @@ class DogsTableSeeder extends Seeder
             'energy' => 4, 
             'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 3, 
+            'cleanliness' => 2, 
             'adventure' => 4
         ]);
         
@@ -440,10 +448,10 @@ class DogsTableSeeder extends Seeder
             'size' => 'medium', 
             'apartment' => true, 
             'energy' => 5, 
-            'social' => 5,
+            'social' => 4,
             'intelligence' => 4, 
             'cleanliness' => 3, 
-            'adventure' => 4
+            'adventure' => 5
         ]);
         
         //added
@@ -453,10 +461,10 @@ class DogsTableSeeder extends Seeder
             'name' => 'Bullmastiff',
             'group' => 'Working',
             'size' => 'large', 
-            'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
+            'energy' => 2, 
+            'social' => 4,
+            'intelligence' => 3, 
+            'cleanliness' => 4, 
             'adventure' => 4
         ]);
         
@@ -467,11 +475,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Chinook',
             'group' => 'Working',
             'size' => 'medium', 
-            'energy' => 4, 
+            'energy' => 3, 
             'social' => 5,
             'intelligence' => 5, 
-            'cleanliness' => 2, 
-            'adventure' => 5
+            'cleanliness' => 3, 
+            'adventure' => 4
         ]);
         
         //added
@@ -481,10 +489,10 @@ class DogsTableSeeder extends Seeder
             'name' => 'Doberman Pinscher',
             'size' => 'medium', 
             'group' => 'Working',
-            'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
+            'energy' => 3, 
+            'social' => 3,
+            'intelligence' => 5, 
+            'cleanliness' => 3, 
             'adventure' => 4
         ]);
         
@@ -496,10 +504,10 @@ class DogsTableSeeder extends Seeder
             'group' => 'Working',
             'size' => 'large', 
             'apartment' => true, # apparently they are very lazy
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
+            'intelligence' => 3, 
+            'cleanliness' => 3, 
             'adventure' => 5
         ]);
         
@@ -510,11 +518,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'Mastiff',
             'group' => 'Working',
             'size' => 'large', 
-            'energy' => 5, 
-            'social' => 5,
-            'intelligence' => 4, 
+            'energy' => 3, 
+            'social' => 4,
+            'intelligence' => 2, 
             'cleanliness' => 2, 
-            'adventure' => 2
+            'adventure' => 4
         ]);
         
         //added
@@ -525,9 +533,9 @@ class DogsTableSeeder extends Seeder
             'group' => 'Working',
             'size' => 'large', 
             'energy' => 4, 
-            'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 5, 
+            'social' => 4,
+            'intelligence' => 5, 
+            'cleanliness' => 3, 
             'adventure' => 5
         ]);
         
@@ -539,11 +547,11 @@ class DogsTableSeeder extends Seeder
             'aliasOne' => 'Husky',
             'group' => 'Working',
             'size' => 'medium', 
-            'energy' => 4, 
+            'energy' => 5, 
             'social' => 5,
-            'intelligence' => 4, 
-            'cleanliness' => 5, 
-            'adventure' => 4
+            'intelligence' => 3, 
+            'cleanliness' => 2, 
+            'adventure' => 5
         ]);
         
         //added
@@ -554,10 +562,10 @@ class DogsTableSeeder extends Seeder
             'aliasOne' => 'Bernard',
             'group' => 'Working',
             'size' => 'large', 
-            'energy' => 4, 
+            'energy' => 3, 
             'social' => 5,
             'intelligence' => 4, 
-            'cleanliness' => 4, 
+            'cleanliness' => 2, 
             'adventure' => 3
         ]);
         
@@ -569,11 +577,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Toy',
             'size' => 'tiny', 
             'apartment' => true,
-            'energy' => 4, 
-            'social' => 1,
+            'energy' => 3, 
+            'social' => 4,
             'intelligence' => 4, 
             'cleanliness' => 5, 
-            'adventure' => 5
+            'adventure' => 3
         ]);
         
         //added
@@ -583,11 +591,11 @@ class DogsTableSeeder extends Seeder
             'name' => 'English Toy Spaniel',
             'group' => 'Toy',
             'size' => 'tiny', 
-            'energy' => 4, 
-            'social' => 3,
-            'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 4
+            'energy' => 3, 
+            'social' => 4,
+            'intelligence' => 3, 
+            'cleanliness' => 3, 
+            'adventure' => 3
         ]);
         
         //added
@@ -598,11 +606,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Toy',
             'size' => 'tiny', 
             'apartment' => true,
-            'energy' => 4, 
-            'social' => 5,
+            'energy' => 3, 
+            'social' => 4,
             'intelligence' => 4, 
-            'cleanliness' => 5, 
-            'adventure' => 5
+            'cleanliness' => 2, 
+            'adventure' => 3
         ]);
         
         //added
@@ -613,11 +621,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Toy',
             'size' => 'tiny', 
             'apartment' => true, 
-            'energy' => 5, 
-            'social' => 5,
+            'energy' => 3, 
+            'social' => 3,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 2
+            'cleanliness' => 3, 
+            'adventure' => 3
         ]);
         
         //added
@@ -628,11 +636,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Toy',
             'apartment' => true, 
             'size' => 'tiny', 
-            'energy' => 4, 
-            'social' => 5,
+            'energy' => 3, 
+            'social' => 3,
             'intelligence' => 4, 
-            'cleanliness' => 5, 
-            'adventure' => 1
+            'cleanliness' => 3, 
+            'adventure' => 3
         ]);
         
         //added
@@ -643,11 +651,11 @@ class DogsTableSeeder extends Seeder
             'group' => 'Toy',
             'size' => 'tiny', 
             'apartment' => true, 
-            'energy' => 5, 
-            'social' => 5,
+            'energy' => 3, 
+            'social' => 3,
             'intelligence' => 4, 
-            'cleanliness' => 2, 
-            'adventure' => 1
+            'cleanliness' => 3, 
+            'adventure' => 3
         ]);
     }
 }

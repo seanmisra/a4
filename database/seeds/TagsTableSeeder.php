@@ -12,7 +12,7 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        $tags = ['athletic', 'family-friendly', 'guide dog', 'lazy', 'loud', 'protective', 'high-energy'];
+        $tags = ['sensitive', 'family-friendly', 'guide dog', 'lazy', 'loud', 'protective', 'high-energy'];
         
         // for each item in array, create a new row in the database 
         foreach($tags as $tagName) {
