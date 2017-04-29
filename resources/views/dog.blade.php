@@ -191,7 +191,7 @@
         <div id = "funFact">
             <br>
             <h2>Did you Know?</h2>
-            <p style="font-size: 22px; line-height: 40px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor.</p>
+            <p style="font-size: 22px; line-height: 40px;">{{isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." }}</p>
             <p><a style="font-size: 50px;"href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
         </div>
             

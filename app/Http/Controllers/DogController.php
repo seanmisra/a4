@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dog; 
+use App\Fact;
 use Session; 
 
 class DogController extends Controller
@@ -15,7 +16,12 @@ class DogController extends Controller
         // get group
         $group = Dog::where('name', 'LIKE', $dog)->pluck('group');
         $group = $group[0]; 
-
+        
+        
+        // get facts
+        $dogID = Dog::where('name', 'LIKE', $dog)->pluck('id');
+        $facts = Dog::find($dogID)->facts->toArray();
+        
         //get 4 similar breeds (based for now only on Group)
         $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->pluck('name')->toArray();
         shuffle($similarBreeds); 
@@ -55,7 +61,8 @@ class DogController extends Controller
             'adventure' => $adventure,
             'imagePath' => $imagePath, 
             'similarBreeds' => $similarBreeds,
-            'similarBreedImgs' => $similarBreedImgs
+            'similarBreedImgs' => $similarBreedImgs,
+            'facts' => $facts
         ]);  
         
     }
