@@ -51,14 +51,14 @@ class DogTagTableSeeder extends Seeder
             'Great Dane' => ['Noble', 'Sensitive', 'Family-friendly', 'Kid-friendly', 'Likes other pets', 'Shedder', 'Gentle', 'Sleek', 'Elegant', 'Beautiful', 'Even-tempered', 'Protective'],
             'Mastiff' => ['Drooler', 'Family-friendly', 'Kid-friendly', 'Massive', 'Even-tempered', 'Brave', 'Homebody', 'Smelly', 'Snorer', 'Lazy', 'Shedder', 'Funny'],
             'Rottweiler' => ['Police dog', 'Family-friendly', 'Intelligent', 'Playful', 'Aloof', 'Protective', 'Loyal', 'Snorer', 'Shedder', 'Guard dog', 'Calm', 'Brave'],
-            'Siberian Husky' => [],
-            'St.Bernard' => [],
-            'Chihuahua' => [],
-            'English Toy Spaniel' => [],
-            'Maltese' => [],
-            'Pomeranian' => [],
-            'Shih Tzu' => [],
-            'Yorkshire Terrier' => []
+            'Siberian Husky' => ['Wolf-like', 'Athletic', 'Intelligent', 'Independent', 'Cold weather dog', 'Family-friendly', 'Kid-friendly', 'Energetic', 'Playful', 'Beautiful', 'Stubborn', 'Long life'],
+            'St.Bernard' => ['Show dog', 'Cold weather dog', 'Family-friendly', 'Kid-friendly', 'Drooler', 'Gentle', 'Massive', 'Sweet', 'Even-tempered', 'Shedder', 'Snuggler', 'Intelligent'],
+            'Chihuahua' => ['Sensitive', 'Family-friendly', 'Kid-friendly', 'Long life', 'Intelligent', 'Partial to one person', 'Watchdog', 'Apartment dog', 'Spunky', 'Tiny', 'Big personality', 'Easy to groom'],
+            'English Toy Spaniel' => ['Family-friendly', 'Shedder', 'Gentle', 'Sweet', 'Partial to one person', 'Dignified', 'Mischievous', 'Apartment dog', 'Lazy', 'Independent', 'Loyal', 'Tiny'],
+            'Maltese' => ['Gentle', 'Brave', 'Regal', 'Therapy dog', 'Lively', 'Apartment dog', 'Family-friendly', 'Long life', 'Elegant', 'Sweet', 'Regal', 'Playful'],
+            'Pomeranian' => ['Tiny', 'Foxy', 'Apartment dog', 'Family-friendly', 'Shedder', 'Long life', 'Big personality', 'Feisty', 'Loyal', 'Energetic', 'Lively', 'Watchdog'],
+            'Shih Tzu' => ['Homebody', 'Apartment dog', 'Family-friendly', 'Long life', 'Lionlike', 'Regal', 'Kid-friendly', 'Beautiful', 'Tiny', 'Big personality', 'Playful', 'Affectionate'],
+            'Yorkshire Terrier' => ['Apartment dog', 'Elegant', 'Feisty', 'Sensitive', 'Family-friendly', 'Energetic', 'Playful', 'Long life', 'Tiny', 'Mischievous', 'Spunky', 'Loyal']
         ]; 
         
         
