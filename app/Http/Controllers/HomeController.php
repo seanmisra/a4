@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Input;
 use App\Dog; 
+use App\Tag; 
 use Session; 
 
 class HomeController extends Controller
@@ -52,8 +53,14 @@ class HomeController extends Controller
         sort($allDogs); 
         $allDogs = json_encode($allDogs); 
         
+        $allTags = Tag::all()->pluck('name')->toArray(); 
+        shuffle($allTags); 
+        $allTagsJSON = json_encode($allTags); 
+        
         return view('home')->with([
-            'allDogs' => $allDogs  
+            'allDogs' => $allDogs,
+            'allTags' => $allTags,
+            'allTagsJSON' => $allTagsJSON
         ]);
     }
     

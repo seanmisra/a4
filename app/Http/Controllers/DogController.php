@@ -21,6 +21,7 @@ class DogController extends Controller
         // get facts
         $dogID = Dog::where('name', 'LIKE', $dog)->pluck('id');
         $facts = Dog::find($dogID)->facts->toArray();
+        $tags = Dog::find($dogID)->tags->pluck('name')->toArray(); 
         
         //get 4 similar breeds (based for now only on Group)
         $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->pluck('name')->toArray();
@@ -50,7 +51,7 @@ class DogController extends Controller
         // get adventure
         $adventure = Dog::where('name', 'LIKE', $dog)->pluck('adventure');
         $adventure = (int) $adventure[0]; 
-
+        
         return view('dog')->with([
             'dog' => $dog,  
             'group' => $group,
@@ -62,7 +63,8 @@ class DogController extends Controller
             'imagePath' => $imagePath, 
             'similarBreeds' => $similarBreeds,
             'similarBreedImgs' => $similarBreedImgs,
-            'facts' => $facts
+            'facts' => $facts,
+            'tags' => $tags
         ]);  
         
     }

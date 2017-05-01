@@ -38,7 +38,7 @@ class DogTagTableSeeder extends Seeder
             'Cocker Spaniel' => ['Apartment dog', 'Family-friendly', 'Long life', 'Gentle', 'Show dog', 'Sweet', 'Sensitive', 'Playful', 'Merry', 'Therapy dog', 'Homebody', 'Snuggler'],
             'English Setter' => ['Hunting dog', 'Family-friendly', 'Kid-friendly', 'Intelligent', 'Playful', 'Even-tempered', 'Gentle', 'Watchdog', 'Athletic', 'Therapy dog', 'Show dog', 'Lively'],
             'Golden Retriever' => ['Sensitive', 'Family-friendly', 'Kid-friendly', 'Shedder', 'Intelligent', 'Energetic', 'Playful', 'Loyal', 'Jogging dog', 'Hearty eater', 'Sweet', 'Likes fetch'],
-            'Irish Setter' => ['Mischievous', 'Energetic', 'Family-friendly', 'Kid-friendly', 'Likes other pets', 'Playful', 'Therapy dog', 'Intelligent', 'Watchdog', 'Show dog'],
+            'Irish Setter' => ['Mischievous', 'Energetic', 'Family-friendly', 'Kid-friendly', 'Likes other pets', 'Playful', 'Therapy dog', 'Intelligent', 'Watchdog', 'Show dog', 'Hunting dog', 'Long life'],
             'Labrador Retriever' => ['Family-friendly', 'Kid-friendly', 'Shedder', 'Energetic', 'Playful', 'Loyal', 'Intelligent', 'Angelic', 'Assistance dog', 'Therapy dog', 'Sensitive', 'Sweet'],
             'Pointer' => ['Show dog', 'Energetic', 'Family-friendly', 'Kid-friendly', 'Intelligent', 'Playful', 'Long life', 'Watchdog', 'Mischievous', 'Jogging dog', 'Even-tempered', 'Hunting dog'],
             'Akita' => ['Brave', 'Protective', 'Loyal', 'Sensitive', 'Family-friendly', 'Shedder', 'Drooler', 'Playful', 'Stubborn', 'Aloof', 'Intelligent', 'Catlike'],

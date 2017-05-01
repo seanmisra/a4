@@ -268,12 +268,6 @@
             -o-transition: background 250ms ease;
             transition: background 250ms ease;
         }
-        .cube:hover .default-state {
-            background: #ffcc00;
-        }
-        .active-state {
-            background: #e20074;
-        }
         #flipto {
             display: block;
             text-align: center;
@@ -281,6 +275,16 @@
             margin-top: 20px;
             color: #ccc;
         }
+        #refresh {
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+        #refresh:hover {
+            color: #428bca; 
+        }
+        
     </style>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 @endpush 
@@ -327,13 +331,13 @@
                 <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600; font-size: 40px;"><i class="fa fa-refresh" aria-hidden="true"></i></p>
                 <br>
                 <div class = 'matchView'>
-                    <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Trick Guru</span> 
+                    <span class="label label-default" id="tagOne">{{ $allTags[0] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagTwo">{{ $allTags[1] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info" id="tagThree">{{ $allTags[2] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success" id="tagFour">{{ $allTags[3] }}</span> 
                     <br><br><br>
-                    <span class="label label-default">Smelly</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Very Hungry</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Loyal</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Big</span>
+                    <span class="label label-default" id="tagFive">{{ $allTags[4] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info" id="tagSix">{{ $allTags[5] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagSeven">{{ $allTags[6] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default" id="tagEight">{{ $allTags[7] }}</span>
                     <br><br><br>
-                    <span class="label label-default">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
+                    <span class="label label-default" id="tagNine">{{ $allTags[8] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagTen">{{ $allTags[9] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success" id="tagEleven">{{ $allTags[10] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagTwelve">{{ $allTags[11] }}</span>
                     <br><br><br>
-                    <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Trick Guru</span> 
+                    <span class="label label-default" id="tagThirteen">{{ $allTags[12] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagFourteen">{{ $allTags[13] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default" id="tagFifteen">{{ $allTags[14] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info" id="tagSixteen">{{ $allTags[15] }}</span> 
                     <br><br><br>
                     <input type='text' readonly name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
                 </div>
@@ -382,6 +386,7 @@
 
     <script type='text/javascript'> 
         var allDogs = {!! $allDogs !!}; 
+        var allTags = {!! $allTagsJSON !!}; 
         
         var randArray = ["one", "two", "three", "four", "five", "six", "seven"]; 
         var randNumb = Math.round(Math.random()*6); 
@@ -502,6 +507,73 @@
             
             
         })
+        
+        // refresh keywords
+        $("#refresh").click(function() {
+            var shuffledTags = shuffle(allTags); 
+            $("#tagOne").fadeOut(function() {
+                $(this).text(shuffledTags[0]).fadeIn('slow');
+            }); 
+            $("#tagTwo").fadeOut(function() {
+                $(this).text(shuffledTags[1]).fadeIn('normal');
+            }); 
+            $("#tagThree").fadeOut(function() {
+                $(this).text(shuffledTags[2]).fadeIn('fast');
+            }); 
+            $("#tagFour").fadeOut(function() {
+                $(this).text(shuffledTags[3]).fadeIn('slow');
+            }); 
+            $("#tagFive").fadeOut(function() {
+                $(this).text(shuffledTags[4]).fadeIn('normal');
+            }); 
+            $("#tagSix").fadeOut(function() {
+                $(this).text(shuffledTags[5]).fadeIn('fast');
+            }); 
+            $("#tagSeven").fadeOut(function() {
+                $(this).text(shuffledTags[6]).fadeIn('slow');
+            }); 
+            $("#tagEight").fadeOut(function() {
+                $(this).text(shuffledTags[7]).fadeIn('normal');
+            }); 
+            $("#tagNine").fadeOut(function() {
+                $(this).text(shuffledTags[8]).fadeIn('fast');
+            }); 
+            $("#tagTen").fadeOut(function() {
+                $(this).text(shuffledTags[9]).fadeIn('slow');
+            }); 
+            $("#tagEleven").fadeOut(function() {
+                $(this).text(shuffledTags[10]).fadeIn('normal');
+            }); 
+            $("#tagTwelve").fadeOut(function() {
+                $(this).text(shuffledTags[11]).fadeIn('fast');
+            }); 
+            $("#tagThirteen").fadeOut(function() {
+                $(this).text(shuffledTags[12]).fadeIn('slow');
+            }); 
+            $("#tagFourteen").fadeOut(function() {
+                $(this).text(shuffledTags[13]).fadeIn('normal');
+            });
+            $("#tagFifteen").fadeOut(function() {
+                $(this).text(shuffledTags[14]).fadeIn('fast');
+            }); 
+            $("#tagSixteen").fadeOut(function() {
+                $(this).text(shuffledTags[15]).fadeIn('slow');
+            });  
+        });
+                
+        //shuffle array
+        // source: https://www.frankmitchell.org/2015/01/fisher-yates/ 
+        function shuffle (array) {
+            var i = 0, j = 0, temp = null; 
+
+            for (i = array.length - 1; i > 0; i -= 1) {
+                j = Math.floor(Math.random() * (i + 1)); 
+                temp = array[i]; 
+                array[i] = array[j]; 
+                array[j] = temp;
+            }     
+            return array
+        }
             
     </script>
 @endpush

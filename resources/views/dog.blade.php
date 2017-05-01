@@ -198,11 +198,11 @@
         <br>
         <h2>Keywords</h2>
             <br>
-            <span class="label label-default">Cute</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Active</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Hairy</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Trick Guru</span> 
+            <span class="label label-default">{{ $tags[0] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[1] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">{{ $tags[2] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">{{ $tags[3] }}</span> 
             <br><br><br style="height: 1px;">
-            <span class="label label-default">Smelly</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">Very Hungry</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Loyal</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">Big</span>
+            <span class="label label-default">{{ $tags[4] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">{{ $tags[5] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[6] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">{{ $tags[7] }}</span>
             <br><br><br>
-            <span class="label label-default">Trouble-maker</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Dirty</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">Loud</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">Stubborn</span>
+            <span class="label label-default">{{ $tags[8] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[9] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">{{ $tags[10] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[11] }}</span>
             <br><br><br><br>
         <h2>Similar Breeds</h2>
         <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
