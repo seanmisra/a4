@@ -82,6 +82,7 @@ class HomeController extends Controller
         $keywords = str_replace(" ", "", $keywords); 
         $keywordList = explode(",", $keywords); 
         
+        
         $preferredSize; 
         if ($size >= 75) {
             $preferredSize = "large";
@@ -99,12 +100,27 @@ class HomeController extends Controller
         
         // if lifestyle is apartment, need to make sure dogs are apartment-compatible
         if ($lifestyle)
-            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->where('apartment', 'LIKE', true)->pluck('name')->toArray(); 
+            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->where('apartment', 'LIKE', true); 
         else 
-            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->pluck('name')->toArray();      
+            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize);      
+
+           
+        $dogScores = [];  
         
-        shuffle($potentialDogs); 
-        $selectedDog = array_pop($potentialDogs); 
+        // go through each potential dog
+        foreach ($potentialDogs as $dog) {
+            foreach ($dog->tags->pluck('name')->toArray() as $tag) {
+                if (in_array($tag, $keywordList))
+                    if (isset($dogScores[$dog->name]))
+                        $dogScores[$dog->name]++; 
+                    else 
+                        $dogScores[$dog->name] = 1; 
+                
+            }
+                
+        }
+                
+        $selectedDog = array_search(max($dogScores), $dogScores); 
         
         return redirect('/breeds/'.$selectedDog);        
     }
