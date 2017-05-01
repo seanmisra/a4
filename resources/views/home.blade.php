@@ -275,13 +275,13 @@
             margin-top: 20px;
             color: #ccc;
         }
-        #refresh {
+        #refresh, .keywordButton:hover {
             -webkit-transition: all .3s ease;
             -moz-transition: all .3s ease;
             -o-transition: all .3s ease;
             transition: all .3s ease;
         }
-        #refresh:hover {
+        #refresh:hover, .keywordButton:hover {
             color: #428bca; 
         }
         
@@ -340,6 +340,8 @@
                     <span class="label label-default" id="tagThirteen">{{ $allTags[12] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagFourteen">{{ $allTags[13] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default" id="tagFifteen">{{ $allTags[14] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info" id="tagSixteen">{{ $allTags[15] }}</span> 
                     <br><br><br>
                     <input type='text' readonly name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
+                    <br><br>
+                    <div class="keywordButtons" style="font-size:24px;"><i class="fa fa-eraser keywordButton" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left keywordButton" aria-hidden="true"></i></div>
                 </div>
                 <br><br><br><br>
                 <h2 class = 'matchView'>Location:</h2>
@@ -474,18 +476,7 @@
                 $("#keywords").val(newKey); 
         })        
         
-        
-        // update location icon
-        $("#zipCode").on("propertychange change click keyup input paste",function() {
-            var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test($(this).val());
-            if ($(this).val().length == 0)
-                $(".glyphicon-map-marker").css('color', 'black');  
-            else if (isValidZip)
-                $(".glyphicon-map-marker").css('color', '#468847');  
-            else 
-                $(".glyphicon-map-marker").css('color', '#b94a48');  
-        });
-        
+
         $(".cube").mouseenter(function() {
             var keywords = $("#keywords").val(); 
             if (keywords == "") {
@@ -560,6 +551,7 @@
                 $(this).text(shuffledTags[15]).fadeIn('slow');
             });  
         });
+    
                 
         //shuffle array
         // source: https://www.frankmitchell.org/2015/01/fisher-yates/ 
@@ -574,6 +566,27 @@
             }     
             return array
         }
+        
+        //keyword eraser
+        $(".fa-eraser").click(function() {
+            $("#keywords").val("");
+        }); 
+        
+        //keyword back-spacer
+        $(".fa-arrow-left").click(function() {
+            var keywords = $("#keywords").val(); 
+            var keyArray = keywords.split(", "); 
+            
+            //remove last value
+            keyArray.pop(); 
+            var newVal= "";
+            for (var i = 0; i<keyArray.length; i++)
+                newVal += keyArray[i] += ", "; 
+            
+            var newVal = newVal.substring(0, newVal.length - 2); 
+            
+            $("#keywords").val(newVal); 
+        }) 
             
     </script>
 @endpush
