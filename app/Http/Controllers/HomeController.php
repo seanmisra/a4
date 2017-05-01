@@ -120,7 +120,13 @@ class HomeController extends Controller
                 
         }
                 
-        $selectedDog = array_search(max($dogScores), $dogScores); 
+        if (sizeof($dogScores) > 0)
+            $selectedDog = array_search(max($dogScores), $dogScores); 
+        else {
+            $potentialDogs = $potentialDogs->pluck('name')->toArray(); 
+            shuffle($potentialDogs); 
+            $selectedDog = array_pop($potentialDogs); 
+        }
         
         return redirect('/breeds/'.$selectedDog);        
     }
