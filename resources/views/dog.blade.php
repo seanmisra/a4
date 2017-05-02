@@ -96,6 +96,11 @@
         <p>{{ $group }} Group<p>
         <br>
         <img class='mainImg' height=300 src='/images/sample_dog.jpg'>
+        @if(Session::get('explanation')!=null)
+            <div class='alert alert-success' style="width: 60vw; margin: 0 auto; background-color: #5cb85c; color: white; font-size: 18px;">
+                <div class='message'>{!! Session::get('explanation') !!}</div>
+            </div>
+        @endif
     </header>
         
     <main>

@@ -106,27 +106,50 @@ class HomeController extends Controller
 
            
         $dogScores = [];  
+        $matchedTraits = []; 
         
         // go through each potential dog
         foreach ($potentialDogs as $dog) {
+            $dogScores[$dog->name] = 0;
+            $matchedTraits[$dog->name] = [];
             foreach ($dog->tags->pluck('name')->toArray() as $tag) {
-                if (in_array($tag, $keywordList))
-                    if (isset($dogScores[$dog->name]))
+                if (in_array($tag, $keywordList)) {
                         $dogScores[$dog->name]++; 
-                    else 
-                        $dogScores[$dog->name] = 1; 
-                
+                        array_push($matchedTraits[$dog->name], $tag);  
+                }
             }
                 
-        }
-                
-        if (sizeof($dogScores) > 0)
+        }        
+        
+        if (sizeof($dogScores) > 0){
             $selectedDog = array_search(max($dogScores), $dogScores); 
+            $selectedTraits = $matchedTraits[$selectedDog]; 
+        }
         else {
             $potentialDogs = $potentialDogs->pluck('name')->toArray(); 
             shuffle($potentialDogs); 
             $selectedDog = array_pop($potentialDogs); 
         }
+            
+        $explanation = "The <strong>".$selectedDog."</strong> was selected! The ".$selectedDog." is a ".$preferredSize." dog";
+        if ($lifestyle)
+            $explanation .= ", who will fit well in your apartment. ";
+        else 
+            $explanation .= '. ';
+        
+        $traitExplanation= ""; 
+        foreach($selectedTraits as $trait) 
+            $traitExplanation .= $trait.", ";
+            
+        if (sizeof($selectedTraits >0)) {
+            $explanation .= "Matched traits for this breed include: ";
+            $explanation .=$traitExplanation; 
+        }
+        
+        $explanation = substr($explanation, 0, -2); 
+        $explanation .= ".";
+        
+        Session::flash('explanation', $explanation); 
         
         return redirect('/breeds/'.$selectedDog);        
     }
