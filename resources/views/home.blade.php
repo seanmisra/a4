@@ -300,6 +300,15 @@
 
     <main>
         <h2><span id="searchOption"><strong>Search</strong></span> | <span id="matchOption">Match</span></h2> 
+        @if(count($errors) > 0)
+            <br>
+            <div class='alert alert-danger' style='font-size:20px;'> 
+                @foreach($errors->all() as $error)
+                    <strong>{{ $error }}</strong>
+                @endforeach
+            </div>
+        @endif
+        
         <br><br>
         <form method='GET' action='{{ action("HomeController@search") }}'>
             <div class = 'form-group searchView'>
@@ -317,7 +326,7 @@
                 <h2 class = 'matchView'>Size:</h2>
                 <p class = 'matchView' id="preference">I prefer <strong>medium-sized</strong> dogs</p>
                 <div class = 'form-group matchView'>
-                    <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;">
+                    <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' style="width:50vw;" value={{ old('size') }}>
                     <br>
                     <img src='images/small_dog.png'  id='smallDog' style='display:none; height: 250px;'> 
                     <img src='images/smaller_dog.png' id='smallerDog' style='display:none; height: 250px;'> 
@@ -349,7 +358,7 @@
                 
                 <div class = 'form-group'>
                     <div class="switch">
-                        <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" name= 'lifestyle' type="checkbox" style="display:none;">
+                        <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" name= 'lifestyle' type="checkbox" style="display:none;" }}>
                         <label for="cmn-toggle-7" data-on="Apartment&nbsp;&nbsp;&nbsp;&#x1f3e2;" data-off="House&nbsp;&nbsp;&nbsp;&#127968;"></label>                        
                     </div>
                 </div>
@@ -387,13 +396,19 @@
     </script>
 
     <script type='text/javascript'> 
+        var errors = false; 
+        @if(count($errors) > 0)
+            var errors = true;  
+        @endif 
+        
         var allDogs = {!! $allDogs !!}; 
         var allTags = {!! $allTagsJSON !!}; 
         
-        var randArray = ["one", "two", "three", "four", "five", "six", "seven"]; 
-        var randNumb = Math.round(Math.random()*6); 
-        var imageNumb = randArray[randNumb];
-        path = "images/cover_"+imageNumb+".png";
+//        var randArray = ["one", "two", "three", "four", "five", "six", "seven"]; 
+//        var randNumb = Math.round(Math.random()*6); 
+//        var imageNumb = randArray[randNumb];
+//        uncomment to randomize images, but want to keep one for now
+        path = "images/cover_"+"five"+".png";
         
         $('body').css({'background': 'url(' + path + ')' + 'no-repeat 50% 50% fixed', 'background-size': 'cover'}); 
         
@@ -420,6 +435,14 @@
             }
         }); 
 
+        // validation errors on homepage are always related to match option
+        if (errors == true) {
+            $(".searchView").hide(500);  
+            $("#matchView").show(500); 
+             $("#matchOption").html("<strong>Match</strong>");
+            $("#searchOption").html("Search");
+        }
+        
         $("#searchOption").click(function() {
             console.log("HERE!"); 
             $(".searchView").show(500); 
@@ -434,6 +457,31 @@
             $(this).html("<strong>Match</strong>");
             $("#searchOption").html("Search");
         });
+        
+        
+        $(document).ready(function() {
+            var value = $("#sizeSlider").val(); 
+            if (value >= 75) {
+                $("#smallDog, #smallerDog, #mediumDog").hide();
+                $("#largeDog").show(500); 
+                $("#preference").html("I prefer <strong>large</strong> dogs");
+            }
+            else if (value >= 50) {
+                $("#smallDog, #smallerDog, #largeDog").hide();
+                $("#mediumDog").show(500); 
+                $("#preference").html("I prefer <strong>medium-sized</strong> dogs");
+            }
+            else if (value >= 25) {
+                $("#smallDog, #mediumDog, #largeDog").hide();
+                $("#smallerDog").show(500); 
+                $("#preference").html("I prefer <strong>small</strong> dogs");
+            }
+            else {
+                $("#smallerDog, #mediumDog, #largeDog").hide();
+                $("#smallDog").show(500); 
+                $("#preference").html("I prefer <strong>tiny</strong> dogs");
+            }
+        })
         
         $("#sizeSlider").change(function() {
             var value = $(this).val(); 

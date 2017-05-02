@@ -44,9 +44,9 @@
         
     <main>
         
-        @if(Session::get('message')!=null)
+        @if(Session::get('invalidSearchMessage')!=null)
             <div class='alert alert-danger'>
-                <div class='message'>{!! Session::get('message') !!}</div>
+                <div class='message'>{!! Session::get('invalidSearchMessage') !!}</div>
             </div>
         @endif
 

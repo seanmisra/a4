@@ -37,7 +37,7 @@
             #cboxContent {
                 background-color: white; 
                 color: black; 
-                border: 2px solid black;  
+                border: 3px solid black;  
             }
             #cboxLoadedContent {
                 width: 55vw;

@@ -11,6 +11,22 @@ use Session;
 
 class HomeController extends Controller
 {
+    public function start() {
+        $allDogs = Dog::all()->pluck('name')->toArray(); 
+        sort($allDogs); 
+        $allDogs = json_encode($allDogs); 
+        
+        $allTags = Tag::all()->pluck('name')->toArray(); 
+        shuffle($allTags); 
+        $allTagsJSON = json_encode($allTags); 
+        
+        return view('home')->with([
+            'allDogs' => $allDogs,
+            'allTags' => $allTags,
+            'allTagsJSON' => $allTagsJSON
+        ]);
+    }
+    
     public function search(Request $request) {
         $dog = ucwords($request->input('search')); 
         $allDogs = Dog::all()->pluck('name')->toArray(); 
@@ -39,7 +55,7 @@ class HomeController extends Controller
         
         //checking dogs with in_array (change to validation regex later)
         if ($validator->fails() || !(in_array($dog, $allDogs))) {
-            Session::flash('message', 'The breed <strong>'.$dog. '</strong> was not found. Search for breeds here.'); 
+            Session::flash('invalidSearchMessage', 'The breed <strong>'.$dog. '</strong> was not found. Search for breeds here.'); 
             
             return redirect('/breeds')->withErrors($validator)->withInput(Input::all());   
         }
@@ -48,31 +64,14 @@ class HomeController extends Controller
         }
     }
     
-    public function start() {
-        $allDogs = Dog::all()->pluck('name')->toArray(); 
-        sort($allDogs); 
-        $allDogs = json_encode($allDogs); 
-        
-        $allTags = Tag::all()->pluck('name')->toArray(); 
-        shuffle($allTags); 
-        $allTagsJSON = json_encode($allTags); 
-        
-        return view('home')->with([
-            'allDogs' => $allDogs,
-            'allTags' => $allTags,
-            'allTagsJSON' => $allTagsJSON
-        ]);
-    }
-    
     public function match(Request $request) {
-        $rules = ['size' => 'required|between:0,100', 'keywords' => 'required'];        
         
         //validate user input
-        $validator = Validator::make($request->all(), $rules); 
-        if ($validator->fails()) {
-            dd("validation failed!");  
-        }
-    
+        $this->validate($request, [
+            'size' => 'required|between:0,100', 
+            'keywords' => 'required'
+        ]); 
+        
         $size = $request->input('size'); 
         $keywords = $request->input('keywords'); 
         $lifestyle = ($request->input('lifestyle')) ? true : false; 
