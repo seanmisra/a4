@@ -135,13 +135,13 @@ class HomeController extends Controller
         if ($lifestyle)
             $explanation .= ", who will fit well in your apartment. ";
         else 
-            $explanation .= '. ';
+            $explanation .= ' as you\'re looking for. ';
         
         $traitExplanation= ""; 
         foreach($selectedTraits as $trait) 
             $traitExplanation .= $trait.", ";
             
-        if (sizeof($selectedTraits >0)) {
+        if ($selectedTraits) {   
             $explanation .= "Matched traits for this breed include: ";
             $explanation .=$traitExplanation; 
         }
