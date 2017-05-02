@@ -53,6 +53,15 @@ class FactsTableSeeder extends Seeder
             'source' => 'http://healthypets.mercola.com/sites/healthypets/archive/2015/04/24/10-beagle-facts.aspx.'
         ]); 
         
+        
+        Fact::insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'dog_id' => Dog::where('name', 'LIKE', 'Beagle')->pluck('id')->first(), 
+            'content' => 'A Beagle can learn up to 50 different scents.',
+            'source' => 'https://blog.pawedin.com/dogs/95-fun-facts-about-beagles/'
+        ]); 
+        
         Fact::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -136,6 +145,14 @@ class FactsTableSeeder extends Seeder
         Fact::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'dog_id' => Dog::where('name', 'LIKE', 'Dalmatian')->pluck('id')->first(), 
+            'content' => 'The Dalmatian is also called the Carriage Dog, the Fire House Dog, and the Plum Pudding Dog.',
+            'source' => 'http://mentalfloss.com/article/66339/11-spotted-facts-about-dalmatians'
+        ]); 
+        
+        Fact::insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'dog_id' => Dog::where('name', 'LIKE', 'French Bulldog')->pluck('id')->first(), 
             'content' => 'A French bulldog was on board the Titanic. While his owner lived, the dog died in the freezing water.',
             'source' => 'https://mom.me/pets/19347-cool-facts-about-french-bulldogs/item/french-bulldog-rubber-duck/'
@@ -145,8 +162,24 @@ class FactsTableSeeder extends Seeder
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'dog_id' => Dog::where('name', 'LIKE', 'Poodle')->pluck('id')->first(), 
+            'content' => 'Elvis gave away poodles to the women he loved, and he owned one himself called Champagne.',
+            'source' => 'http://mentalfloss.com/article/64749/10-fancy-facts-about-poodles'
+        ]); 
+        
+        Fact::insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'dog_id' => Dog::where('name', 'LIKE', 'Poodle')->pluck('id')->first(), 
             'content' => 'Poodles were originally bred to retrieve ducks and other birds from the water. In fact, their name comes from "pudel", German for "puddle".',
             'source' => 'http://mentalfloss.com/article/64749/10-fancy-facts-about-poodles'
+        ]); 
+        
+        Fact::insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'dog_id' => Dog::where('name', 'LIKE', 'Poodle')->pluck('id')->first(), 
+            'content' => 'The Poodle is the national dog of France.',
+            'source' => 'http://www.petmd.com/dog/pet_lover/WW_5funfacts_poodle'
         ]); 
         
         Fact::insert([
@@ -192,6 +225,14 @@ class FactsTableSeeder extends Seeder
         Fact::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'dog_id' => Dog::where('name', 'LIKE', 'Golden Retriever')->pluck('id')->first(), 
+            'content' => 'Golden retrievers have an incredible sense of smell, and as a result, are used as bomb sniffers and rescue dogs.',
+            'source' => 'https://mom.me/pets/19093-cool-facts-about-golden-retrievers/item/head-shot-golden-retriever/'
+        ]); 
+        
+        Fact::insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'dog_id' => Dog::where('name', 'LIKE', 'Irish Setter')->pluck('id')->first(), 
             'content' => 'Three US Presidents - Harry Truman , Ronald Reagan, and Richard Nixon - all owned Irish Setters.',
             'source' => 'https://mom.me/pets/19389-cool-facts-about-irish-setters/item/richard-nixon-irish-setter/'
@@ -203,6 +244,14 @@ class FactsTableSeeder extends Seeder
             'dog_id' => Dog::where('name', 'LIKE', 'Labrador Retriever')->pluck('id')->first(), 
             'content' => 'Labradors retrievers have water-resistant coats and webbed toes, making them ideal water dogs.',
             'source' => 'http://mentalfloss.com/article/63891/12-friendly-facts-about-labrador-retrievers'
+        ]);
+        
+        Fact::insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'dog_id' => Dog::where('name', 'LIKE', 'Labrador Retriever')->pluck('id')->first(), 
+            'content' => 'In the 1880s, Labradors nearly went extinct, because the Newfoundland government taxed families for owning dogs (females were taxed more heavily).',
+            'source' => 'http://www.mnn.com/family/pets/stories/5-surprising-facts-about-labrador-retrievers'
         ]);
 
         Fact::insert([
@@ -275,6 +324,14 @@ class FactsTableSeeder extends Seeder
             'dog_id' => Dog::where('name', 'LIKE', 'Great Dane')->pluck('id')->first(), 
             'content' => 'Due to his size, the Great Dane is called the "Apollo of the dog world."',
             'source' => 'http://www.akc.org/content/entertainment/articles/7-facts-about-the-great-dane/'
+        ]);
+        
+        Fact::insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'dog_id' => Dog::where('name', 'LIKE', 'Great Dane')->pluck('id')->first(), 
+            'content' => 'Great danes were originally bred to hunt boar, bear, and deer.',
+            'source' => 'http://3milliondogs.com/dogbook/10-larger-than-life-facts-about-great-danes-everyone-should-know/'
         ]);
         
         Fact::insert([

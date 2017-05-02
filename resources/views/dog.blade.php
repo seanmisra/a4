@@ -83,6 +83,9 @@
         .label:hover {
             opacity: .8; 
         }
+        .fa-refresh:hover {
+            opacity: .8; 
+        }
     </style>
 @endpush
 
@@ -191,15 +194,18 @@
                 </tr>
             </tbody>
         </table>
-        
         <br>
         <div id = "funFact">
             <br>
             <h2>Did you Know?</h2>
-            <p style="font-size: 22px; line-height: 40px;">{!! isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." !!}<br><p style="font-size:12px;">{!! isset($facts[0]) ? "Source: ".$facts[0]['source'] : "No Source" !!}</p></p>
-            <p><a style="font-size: 50px;"href="#"><i class="fa fa-refresh" aria-hidden="true"></i></a></p>
-        </div>
-            
+            <p id="factContent" style="font-size: 22px; line-height: 40px;">{!! isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." !!}<br><p id="factSource" style="font-size:12px;">{!! isset($facts[0]) ? "Source: ".$facts[0]['source'] : "No Source" !!}</p>
+
+            @if(sizeof($facts) > 1)
+                <p><span style="font-size: 50px;"><i class="fa fa-refresh" aria-hidden="true" style='color: #428bca;'></i></p>
+            @else
+                <br><br>
+            @endif
+        </div>    
         <br>
         <h2>Keywords</h2>
             <br>
@@ -208,7 +214,7 @@
             <span class="label label-default">{{ $tags[4] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">{{ $tags[5] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[6] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">{{ $tags[7] }}</span>
             <br><br><br>
             <span class="label label-default">{{ $tags[8] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[9] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">{{ $tags[10] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[11] }}</span>
-            <br><br><br><br>
+            <br><br><br><br><br>
         <h2>Similar Breeds</h2>
         <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
         <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
@@ -313,6 +319,20 @@
                 }
         }); 
         
+        //refresh facts
+        var facts = {!! $factsJSON !!}; 
+        $(".fa-refresh").click(function() {
+            var randomElem = Math.floor(Math.random()*facts.length);
+            
+            
+            $("#factContent").fadeOut(function() {
+                $(this).text(facts[randomElem]['content']).fadeIn('slow');
+            }); 
+            $("#factSource").fadeOut(function() {
+                $(this).text(facts[randomElem]['source']).fadeIn('slow');
+            }); 
+            
+        })
         
         
     </script>

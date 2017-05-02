@@ -21,6 +21,7 @@ class DogController extends Controller
         // get facts
         $dogID = Dog::where('name', 'LIKE', $dog)->pluck('id');
         $facts = Dog::find($dogID)->facts->toArray();
+        $factsJSON = json_encode($facts);
         $tags = Dog::find($dogID)->tags->pluck('name')->toArray(); 
         
         //get 4 similar breeds (based for now only on Group)
@@ -64,6 +65,7 @@ class DogController extends Controller
             'similarBreeds' => $similarBreeds,
             'similarBreedImgs' => $similarBreedImgs,
             'facts' => $facts,
+            'factsJSON' => $factsJSON,
             'tags' => $tags
         ]);  
         
