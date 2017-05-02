@@ -560,6 +560,8 @@ class DogsTableSeeder extends Seeder
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'name' => 'St.Bernard',
             'aliasOne' => 'Bernard',
+            'aliasTwo' => 'Saint',
+            'aliasThree' => 'Saint Bernard',
             'group' => 'Working',
             'size' => 'large', 
             'energy' => 3, 
