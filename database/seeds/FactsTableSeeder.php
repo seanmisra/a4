@@ -82,7 +82,7 @@ class FactsTableSeeder extends Seeder
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'dog_id' => Dog::where('name', 'LIKE', 'Greyhound')->pluck('id')->first(), 
-            'content' => 'Greyhounds have a long history. The breed is mentioned in both the Bible and The Odyssey. It beleived they mingled with the Ancient Egyptians.',
+            'content' => 'Greyhounds have a long history. The breed is mentioned in both the Bible and The Odyssey. It is believed they mingled with the Ancient Egyptians.',
             'source' => 'http://mentalfloss.com/article/69004/13-fast-facts-about-greyhounds'
         ]); 
         

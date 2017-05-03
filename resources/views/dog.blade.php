@@ -18,8 +18,16 @@
         }
 
         .loader > p {
-            margin-top: 30vh; 
-        }  
+            font-size: 4vh; 
+            font-weight: 500; 
+            text-align: center;
+            top: 30%; 
+            right: 0;
+            left: 0;
+            margin-right: auto;
+            margin-left: auto;
+            position: fixed; 
+        } 
         
         body {
             text-align: center; 
@@ -118,7 +126,7 @@
 
 @push('loader')
     <div class='loader'>
-        <p style="font-size:34px;">...{{ $dog }} is loading...</p>
+        <p>...{{ $dog }} is loading...</p>
     </div>
     <div class='visiblePage'>
 @endpush
