@@ -49,7 +49,7 @@
             display:none; 
         }
         .label {
-            font-size: 30px;
+            font-size: 26px;
             font-weight: 300;
             cursor: pointer; 
             border-radius: 0px !important; 
@@ -90,7 +90,7 @@
           width:40px;
           height:50px;
           position:relative;
-          z-index:3;
+          z-index:0;
           box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
             cursor: pointer; 
         }
@@ -100,16 +100,14 @@
           width:160px;
           height:10px;
           position:absolute;
-          z-index:1;
+          z-index:0;
           right:20px;
           top:5px;
           background: #ff5b32;
           background: linear-gradient(to right, #f088fc 1%, #AC6CFF 70%);
         }
         
-        .footerMatch {
-            position:absolute;
-            bottom:0;
+        .footerAlt{
             width:100%;
             height:60px;   
             background: rgba(0,0,0,.05);
@@ -197,7 +195,7 @@
         /* Container box to set the sides relative to */
         .cube {
             width: 250px;
-            height: 100px;
+            height: 150px;
             -webkit-transition: all 500ms ease;
             -moz-transition: all 500ms ease;
             -o-transition: all 500ms ease;
@@ -211,9 +209,10 @@
         /* The two faces of the cube */
         .default-state,
         .active-state {
-            height: 100px;
+            height: 150px;
         }
         /* Position the faces */
+        /* cube height */
         .default-state {
             -webkit-transform: translateZ(50px);
             -moz-transform: translateZ(50px);
@@ -221,19 +220,23 @@
             -ms-transform: translateZ(50px);
             transform: translateZ(50px);
         }
+        
+        /* cube height*1.5 */
         .flip-to-top .active-state {
-            -webkit-transform: rotateX(90deg) translateZ(150px);
-            -moz-transform: rotateX(90deg) translateZ(150px);
-            -o-transform: rotateX(90deg) translateZ(150px);
+            -webkit-transform: rotateX(90deg) translateZ(225px);
+            -moz-transform: rotateX(90deg) translateZ(225px);
+            -o-transform: rotateX(90deg) translateZ(225px);
             -ms-transform: rotateX(90deg) translateZ(150px);
-            transform: rotateX(90deg) translateZ(150px);
+            transform: rotateX(90deg) translateZ(225px);
         }
+        
+        /* cube height/2 */
         .flip-to-bottom .active-state {
-            -webkit-transform: rotateX(-90deg) translateZ(-50px);
-            -moz-transform: rotateX(-90deg) translateZ(-50px);
-            -o-transform: rotateX(-90deg) translateZ(-50px);
-            -ms-transform: rotateX(-90deg) translateZ(-50px);
-            transform: rotateX(-90deg) translateZ(-50px);
+            -webkit-transform: rotateX(-90deg) translateZ(-100px);
+            -moz-transform: rotateX(-90deg) translateZ(-100px);
+            -o-transform: rotateX(-90deg) translateZ(-100px);
+            -ms-transform: rotateX(-90deg) translateZ(-100px);
+            transform: rotateX(-90deg) translateZ(-100px);
         }
         /* Rotate the cube */
         .cube.flip-to-top:hover {
@@ -262,7 +265,7 @@
             font-size: 16px;
             text-transform: uppercase;
             color: #fff;
-            line-height: 100px;
+            line-height: 150px;
             -webkit-transition: background 250ms ease;
             -moz-transition: background 250ms ease;
             -o-transition: background 250ms ease;
@@ -303,6 +306,10 @@
         .loader > p {
             margin-top: 30vh; 
         }  
+        
+        #keywords:focus, #keywords:active {
+            outline: none; 
+        }
     </style>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 @endpush 
@@ -362,7 +369,7 @@
                     <br><br>
                     <h2 class = 'matchView'>KeyWords:</h2>
                     <p class ='matchView'>Pick some traits you like in a dog</p>
-                    <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600; font-size: 40px;"><i class="fa fa-refresh" aria-hidden="true"></i></p>
+                    <p class ='matchView' id="refresh" style="cursor:pointer; font-weight: 600; font-size: 55px;"><i class="fa fa-refresh" aria-hidden="true"></i></p>
                     <br>
                     <div class = 'matchView'>
                         <span class="label label-default" id="tagOne">{{ $allTags[0] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagTwo">{{ $allTags[1] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info" id="tagThree">{{ $allTags[2] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success" id="tagFour">{{ $allTags[3] }}</span> 
@@ -373,13 +380,13 @@
                         <br><br><br>
                         <span class="label label-default" id="tagThirteen">{{ $allTags[12] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary" id="tagFourteen">{{ $allTags[13] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default" id="tagFifteen">{{ $allTags[14] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info" id="tagSixteen">{{ $allTags[15] }}</span> 
                         <br><br><br>
-                        <input type='text' readonly name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
+                        <input type='text' required name='keywords' id='keywords' placeholder='I want my dog to be...' style="font-size: 22px; font-weight: 500;">
                         <br><br>
-                        <div class="keywordButtons" style="font-size:24px;"><i class="fa fa-eraser keywordButton" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left keywordButton" aria-hidden="true"></i></div>
+                        <div class="keywordButtons" style="font-size:35px;"><i class="fa fa-eraser keywordButton" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left keywordButton" aria-hidden="true"></i></div>
                     </div>
                     <br><br><br><br>
                     <h2 class = 'matchView'>Location:</h2>
-                    <p class = 'matchView'>Where do you live</p>
+                    <p class = 'matchView'>Where do you live?</p>
 
                     <div class = 'form-group'>
                         <div class="switch">
@@ -392,17 +399,18 @@
                     <br><br>
 
                     <!-- flip-to-top or flip-to-bottom -->
-                    <button type='submit' class="cube flip-to-top" style="border:none; outline: none; padding: 0 0 0 0; width: 40vw; height: 100px;">
-                        <div class="default-state" style="font-size: 20px; color: rgb(100, 100, 100); background-color: white; font-weight: bold;">
+                    <button type='submit' class="cube flip-to-top" style="border:none; outline: none; padding: 0 0 0 0; width: 50vw; height: 150px;">
+                        <div class="default-state" style="font-size: 30px; color: rgb(100, 100, 100); background-color: white; font-weight: bold;">
                             <span>FIND YOUR DOG</span>
                         </div>
-                        <div class="active-state" style="font-size: 50px; color: white; background-color: #5cb85c; font-weight: bold;">
+                        <div class="active-state" style="font-size: 60px; color: white; background-color: #5cb85c; font-weight: bold;">
                             <span><i class="fa fa-paw" aria-hidden="true"></i></span>
                         </div>
                     </button>
 
-                    <footer class=".footerMatch">
-                        <br><br>
+                    <br><br><br><br><br><br>
+                    <footer class="footerAlt">
+                        <br>
                         <p>Created at Harvard Extension. Spring 2017.</p>
                     </footer>
                 </div>
@@ -561,7 +569,7 @@
         $(".cube").mouseenter(function() {
             var keywords = $("#keywords").val(); 
             if (keywords == "") {
-                $(".active-state").css({'color':'#d9534f', 'font-size':'25px', 'background-color':'white'}); 
+                $(".active-state").css({'color':'#d9534f', 'font-size':'30px', 'background-color':'white'}); 
                 $(".active-state").text('No Keywords');
             }
             else {
@@ -668,6 +676,10 @@
             
             $("#keywords").val(newVal); 
         }) 
+        
+        $("#keywords").keydown(function(e){
+            e.preventDefault();
+        });
     
 
     </script>

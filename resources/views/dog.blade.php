@@ -106,6 +106,9 @@
             opacity: .8; 
             cursor: pointer; 
         }
+        #explanation {
+            cursor: pointer; 
+        }
     </style>
 @endpush
 
@@ -127,8 +130,8 @@
         <br>
         <img class='mainImg' height=300 src='//:0'>
         @if(Session::get('explanation')!=null)
-            <div class='alert alert-success' style="width: 60vw; margin: 0 auto; background-color: #5cb85c; color: white; font-size: 18px;">
-                <div class='message'>{!! Session::get('explanation') !!}</div>
+            <br><br><div class='alert alert-success' id="explanation" style="width: 60vw; margin: 0 auto; font-size: 20px; text-align: center; ">
+                <div class='message'><br>{!! Session::get('explanation') !!}<br><br></div>
             </div>
         @endif
     </header>
@@ -372,6 +375,16 @@
             
         })
         
+        //click exaplantion to make it dissapear
+        $("#explanation").click(function() {
+            $(this).hide(1000);   
+        })
+        
+        var hideExplanation = function() {
+            $("#explanation").hide(1000);  
+        }; 
+        
+        setTimeout(hideExplanation, 10000);
         
     </script>
 @stop

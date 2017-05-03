@@ -141,11 +141,15 @@ class HomeController extends Controller
             $traitExplanation .= $trait.", ";
             
         if ($selectedTraits) {   
-            $explanation .= "Matched traits for this breed include: ";
+            $explanation .= "Matched traits for this breed include: <strong>";
             $explanation .=$traitExplanation; 
+            $explanation = substr($explanation, 0, -2); 
+            $explanation .= "</strong>";
+        }
+        else {
+            $explanation .= "Try entering more keywords next time for better results";
         }
         
-        $explanation = substr($explanation, 0, -2); 
         $explanation .= ".";
         
         Session::flash('explanation', $explanation); 
