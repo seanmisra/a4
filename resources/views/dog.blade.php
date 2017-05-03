@@ -2,6 +2,25 @@
 
 @push('head')
     <style>
+        .visiblePage {
+            opacity: 0; 
+        }
+        
+        .loader {
+            opacity: 1 !important;     
+            width: 100vw;
+            height: 100vh;
+            background: url('/images/rainbow_load.gif') 50% 50% no-repeat white;
+            position: fixed; 
+            z-index: 9999;
+            font-size: 30px; 
+            text-align: center;
+        }
+
+        .loader > p {
+            margin-top: 30vh; 
+        }  
+        
         body {
             text-align: center; 
             background-color: rgba(0, 0, 0, .1); 
@@ -85,6 +104,7 @@
         }
         .fa-refresh:hover {
             opacity: .8; 
+            cursor: pointer; 
         }
     </style>
 @endpush
@@ -93,12 +113,19 @@
     Dog Data -- {{ $dog }}
 @stop
 
+@push('loader')
+    <div class='loader'>
+        <p style="font-size:34px;">...{{ $dog }} is loading...</p>
+    </div>
+    <div class='visiblePage'>
+@endpush
+
 @section('content')
     <header>
         <h1>{{ $dog }}</h1>
         <p>{{ $group }} Group<p>
         <br>
-        <img class='mainImg' height=300 src='/images/sample_dog.jpg'>
+        <img class='mainImg' height=300 src='//:0'>
         @if(Session::get('explanation')!=null)
             <div class='alert alert-success' style="width: 60vw; margin: 0 auto; background-color: #5cb85c; color: white; font-size: 18px;">
                 <div class='message'>{!! Session::get('explanation') !!}</div>
@@ -216,16 +243,17 @@
             <span class="label label-default">{{ $tags[8] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[9] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">{{ $tags[10] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[11] }}</span>
             <br><br><br><br><br>
         <h2>Similar Breeds</h2>
-        <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
-        <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
-        <a href="/breeds/{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}"><img class = "similarBreed" id="similarBreedThree" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
-        <a href="/breeds/{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}"><img class = "similarBreed" id="similarBreedFour" height=130 src='/images/sample_dog.jpg'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='//:0'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='//:0'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}"><img class = "similarBreed" id="similarBreedThree" height=130 src='//:0'></a>&nbsp;
+        <a href="/breeds/{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}"><img class = "similarBreed" id="similarBreedFour" height=130 src='//:0'></a>&nbsp;
     </main>
     <br><br>
     <footer>        
         <br>
         <p>Created at Harvard Extension. Spring 2017.</p>
     </footer>
+</div>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -238,10 +266,15 @@
             type:'HEAD',
             error:
                 function(){
-                    console.log("Image not found"); 
+                    $('.loader').fadeOut(400); 
+                    $('.visiblePage').fadeTo(1000, 1);
+                    $('.mainImg').attr('src', '/images/sample_dog.jpg'); 
+
                 },
             success:
                 function(){
+                    $('.loader').fadeOut(400); 
+                    $('.visiblePage').fadeTo(1000, 1);
                     console.log("Image found"); 
                     $('.mainImg').attr('src', imagePath); 
                 }
@@ -269,6 +302,7 @@
             error:
                 function(){
                     console.log("Image not found"); 
+                    $('#similarBreedOne').attr('src', '/images/sample_dog.jpg'); 
                 },
             success:
                 function(){
@@ -283,6 +317,8 @@
             error:
                 function(){
                     console.log("Image not found"); 
+                    $('#similarBreedTwo').attr('src', '/images/sample_dog.jpg'); 
+
                 },
             success:
                 function(){
@@ -297,6 +333,7 @@
             error:
                 function(){
                     console.log("Image not found"); 
+                    $('#similarBreedThree').attr('src', '/images/sample_dog.jpg'); 
                 },
             success:
                 function(){
@@ -311,6 +348,7 @@
             error:
                 function(){
                     console.log("Image not found"); 
+                    $('#similarBreedFour').attr('src', '/images/sample_dog.jpg'); 
                 },
             success:
                 function(){

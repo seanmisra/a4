@@ -81,6 +81,9 @@
     </head>
 
     <body>
+    {{-- If there is a loder it should go here --}}
+    @stack('loader')
+    
     <nav class="navbar navbar-default">
         <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
