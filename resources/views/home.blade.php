@@ -94,19 +94,7 @@
           box-shadow:0 0 5px 0 rgba(0,0,0,0.3);
             cursor: pointer; 
         }
-
-        input[type="range"]::-webkit-slider-thumb:after{
-          content:" ";
-          width:160px;
-          height:10px;
-          position:absolute;
-          z-index:0;
-          right:20px;
-          top:5px;
-          background: #ff5b32;
-          background: linear-gradient(to right, #f088fc 1%, #AC6CFF 70%);
-        }
-        
+  
         .footerAlt{
             width:100%;
             height:60px;   
@@ -141,24 +129,50 @@
         }
         input.cmn-toggle-yes-no + label:before {
             background-color: #428bca;
-            content: attr(data-off);
-            transition: transform 1s;
-            backface-visibility: hidden;
             font-size: 35px; 
-
+            content: attr(data-off);
+            
+            -webkit-transition: -webkit-transform 1s;
+            -moz-transition: -moz-transform 1s;
+            -o-transition: -o-transform 1s;
+            transition: transform 1s;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
         input.cmn-toggle-yes-no + label:after {
             background-color: #5cb85c;
-            content: attr(data-on);
-            transition: transform 1s;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
             font-size: 30px; 
+            content: attr(data-on);
+            -webkit-transition: -webkit-transform 1s;
+            -moz-transition: -moz-transform 1s;
+            -o-transition: -o-transform 1s;
+            transition: transform 1s;
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -o-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
         input.cmn-toggle-yes-no:checked + label:before {
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
             transform: rotateY(180deg);
         }
         input.cmn-toggle-yes-no:checked + label:after {
+            -webkit-transform: rotateY(0);
+            -moz-transform: rotateY(0);
+            -ms-transform: rotateY(0);
+            -o-transform: rotateY(0);
             transform: rotateY(0);
         }
         
