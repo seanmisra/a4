@@ -50,7 +50,7 @@ class HomeController extends Controller
             }
         }
         
-        $rules = ['search' => 'required'];
+        $rules = ['search' => 'required|regex:/^[\pL\s\-.]+$/u'];
         $validator = Validator::make($request->all(), $rules); 
         
         //checking dogs with in_array (change to validation regex later)
