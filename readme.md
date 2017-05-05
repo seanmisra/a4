@@ -1,40 +1,36 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<h1>Dog Data 🐕</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<h2>Premise</h2> 
+<p>Dog Data was created by Sean Misra for Dynamic Web Applications (CSCI-E 15) at Harvard Extension, during the Spring 2017 semester. This project constitutes the final assignment of the course and is meant to emphasize Laravel, MVC, MySQL, form processing, and Eloquent ORM. The site is built with the LAMP stack (Linux, Apache, MySQL, and PHP).</p>
 
-## About Laravel
+<h2>Installation</h2>
+<ol>
+    <li>Clone repo: <code>git@github.com:seanmisra/a4.git</code></li>
+    <li>Within the a4 folder, add composer dependencies: <code>composer install</code></li>
+    <li>Create an .env file: <code>cp .env.example .env</code></li>
+    <li>Generate an app key: <code>php artisan key:generate</code></li>
+    <li>Set the document root to the public folder of the a4 directory</li>
+    <li>In the .env file, ensure the database settings are configured correctly:
+        <ul>
+            <li>The DB_CONNECTION should be "mysql"</li>
+            <li>Mostly likely, the DB_HOST and DB_PORT should be "localhost" and "3306" respectively</li> 
+            <li>The DB_DATABASE should be a database created to be used with this app (where all tables will go)</li>
+            <li>The DB_USERNAME should be root.</li>
+            <li>The DB_PASSWORD should be root for MAMP users and left blank for XAMPP users</li>   
+        </ul>
+    </li> 
+    <li>Run migrations and seed the database: <code>php artisan migrate:refresh --seed</code>
+</ol> 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+<h2>Credits</h2>
+<ul>
+    <li>Laravel 5</li>
+    <li>jQuery</li>
+    <li>jQuery UI</li>
+    <li>Bootstrap</li>
+    <li>Font Awesome</li>
+    <li>Laravel Debugbar</li>
+    <li>Laravel 5 log viewer</li>
+    <li>All images are used responsibly. Most are from Pixabay; some are from Wikipedia</li>
+    <li>Dog research from dogtime.com, akc.org, and mentalfloss.com</li>
+</ul> 
