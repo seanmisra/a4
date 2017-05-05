@@ -26,6 +26,7 @@ if (Config::get('app.env') == 'local') {
     Route::get('/admin/search', 'AdminController@search'); 
     Route::post('/admin/edit', 'AdminController@edit'); 
     Route::post('/admin/delete', 'AdminController@delete'); 
+    Route::post('/admin/add', 'AdminController@add'); 
 }
 
 

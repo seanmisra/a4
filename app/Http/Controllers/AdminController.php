@@ -64,4 +64,59 @@ class AdminController extends Controller
         
         dd("Successfully deleted"); 
     }
+    
+    public function add(Request $request) {
+        $dog = new Dog(); 
+                
+        $rules = [
+            'name' => 'required|regex:/^[\pL\s\-.]+$/u',
+            'group' => 'required|in:Herding,Hound,Non-Sporting,Sporting,Working,Toy',
+            'apartment' => 'required|boolean',
+            'size' => 'required|in:tiny,small,medium,large',
+            'energy' => 'required|between:1,5',
+            'social' => 'required|between:1,5',
+            'intelligence' => 'required|between:1,5',
+            'cleanliness' => 'required|between:1,5',
+            'adventure' => 'required|between:1,5'
+        ];
+        
+        if($request->has('aliasOne'))
+            $rules['aliasOne'] = 'regex:/^[\pL\s\-.]+$/u'; 
+        if($request->has('aliasTwo'))
+            $rules['aliasTwo'] = 'regex:/^[\pL\s\-.]+$/u'; 
+        if($request->has('aliasThree'))
+            $rules['aliasThree'] = 'regex:/^[\pL\s\-.]+$/u'; 
+
+        
+        $validator = Validator::make($request->all(), $rules); 
+
+        if ($validator->fails()) {
+            return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
+        }
+        
+        $dog->name = $request->name; 
+        $dog->group = $request->group; 
+        $dog->apartment = $request->apartment;
+        $dog->size = $request->size; 
+        $dog->energy = $request->energy;
+        $dog->social = $request->social; 
+        $dog->intelligence = $request->intelligence; 
+        $dog->cleanliness = $request->cleanliness; 
+        $dog->adventure = $request->adventure; 
+        
+        if($request->has('aliasOne'))
+            $dog->aliasOne = $request->aliasOne; 
+        if($request->has('aliasTwo'))
+            $dog->aliasTwo = $request->aliasTwo; 
+        if($request->has('aliasThree'))
+            $dog->aliasThree = $request->aliasThree; 
+        
+        
+        $dog->save();   
+        
+        
+        
+                
+        dd("Added dog!"); 
+    }
 }

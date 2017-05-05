@@ -247,12 +247,22 @@
         <br>
         <h2>Keywords</h2>
             <br>
-            <span class="label label-default">{{ $tags[0] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[1] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">{{ $tags[2] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">{{ $tags[3] }}</span> 
-            <br><br><br style="height: 1px;">
-            <span class="label label-default">{{ $tags[4] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info">{{ $tags[5] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[6] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default">{{ $tags[7] }}</span>
+            <span class="label label-default">{{ isset($tags[0])?$tags[0]:"Tag1" }}</span>&nbsp;&nbsp;
+            <span class="label label-primary">{{ isset($tags[1])?$tags[1]:"Tag2" }}</span>&nbsp;&nbsp;
+            <span class="label label-info">{{ isset($tags[2])?$tags[2]:"Tag3" }}</span>&nbsp;&nbsp;
+            <span class="label label-success">{{ isset($tags[3])?$tags[3]:"Tag4" }}</span> 
             <br><br><br>
-            <span class="label label-default">{{ $tags[8] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[9] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-success">{{ $tags[10] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">{{ $tags[11] }}</span>
+            <span class="label label-default">{{ isset($tags[4])?$tags[4]:"Tag5" }}</span>&nbsp;&nbsp;
+            <span class="label label-info">{{ isset($tags[5])?$tags[5]:"Tag6" }}</span>&nbsp;&nbsp;
+            <span class="label label-primary">{{ isset($tags[6])?$tags[6]:"Tag7" }}</span>&nbsp;&nbsp;
+            <span class="label label-default">{{ isset($tags[7])?$tags[7]:"Tag8" }}</span>
+            <br><br><br>
+            <span class="label label-default">{{ isset($tags[8])?$tags[8]:"Tag9" }}</span>&nbsp;&nbsp;
+            <span class="label label-primary">{{ isset($tags[9])?$tags[9]:"Tag10" }}</span>&nbsp;&nbsp;
+            <span class="label label-success">{{ isset($tags[10])?$tags[10]:"Tag11" }}</span>&nbsp;&nbsp;
+            <span class="label label-primary">{{ isset($tags[11])?$tags[11]:"Tag12" }}</span>
             <br><br><br><br><br>
+
         <h2>Similar Breeds</h2>
         <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='//:0'></a>&nbsp;
         <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='//:0'></a>&nbsp;

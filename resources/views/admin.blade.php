@@ -21,6 +21,68 @@
     </header>
         
     <main>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
+        <button id="add">Add</button>
+            <form class= "add" method="POST" style='display:none;' action='{{ action("AdminController@add")}}'> 
+            {{ csrf_field() }}
+            <h3>Name</h3> 
+            <input type='text' name='name' placeholder='Enter dog name (required)'>
+            <h3>AliasOne</h3>
+            <input type='text' name='aliasOne' placeholder='Enter Alias (Optional)'>
+            <h3>AliasTwo</h3>
+            <input type='text' name='aliasTwo' placeholder='Enter Alias (Optional)'>
+            <h3>AliasThree</h3>
+            <input type='text' name='aliasThree' placeholder='Enter Alias (Optional)'>        
+            <h3>Group</h3>
+            <select class='form-control' name='group'>                        
+                <option value='Herding'>Herding</option>
+                <option value='Hound'>Hound</option>
+                <option value='Non-Sporting'>Non-Sporting</option>
+                <option value='Sporting'>Sporting</option>
+                <option value='Working'>Working</option>
+                <option value='Toy'>Toy</option>
+            </select>
+                    
+            <h3>Apartment</h3>
+            <select class='form-control' name='apartment'>                        
+                <option value='0'>Not Apartment-Friendly</option>
+                <option value='1'> Apartment-Friendly</option>
+            </select>                    
+                    
+            <h3>Size</h3>
+            <select class='form-control' name='size'>
+                <option value='tiny'>Tiny</option>
+                <option value='small'>Small</option>
+                <option value='medium'>Medium</option>
+                <option value='large'>Large</option>
+            </select>                                        
+                    
+            <h3>Energy</h3>
+            <input type='text' name='energy' placeholder='Enter number 1-5'>
+            <h3>Social</h3>
+            <input type='text' name='social' placeholder='Enter number 1-5'>
+            <h3>Intelligence</h3>
+            <input type='text' name='intelligence' placeholder='Enter number 1-5'>
+            <h3>Cleanliness</h3>
+            <input type='text' name='cleanliness' placeholder='Enter number 1-5'>
+            <h3>Fun</h3>
+            <input type='text' name='adventure' placeholder='Enter number 1-5'>
+            <br>
+            <br>
+            <p>**Please review changes before submitting</p>
+            <input type='submit'>
+        </form>
+        
+        <br><br><br>
         <form method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='text' placeholder='Search dog' name='adminSearch'>  
         </form>
@@ -88,7 +150,7 @@
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <button>Delete {{ $dog->name}}</button>
-                    <p>Deleting Labrador will also delete all tag associations</p>
+                    <p>Deleting Labrador will also delete all tag associations and fun facts</p>
                 </form>
             </div>
             <br><br><br>
@@ -124,6 +186,15 @@
             }
             else 
                 $(".delete").hide(500); 
+        });
+        
+        $("#add").click(function() {
+            if($(".add").css('display') == 'none') {
+                console.log("I got here!"); 
+                $(".add").show(500); 
+            }
+            else 
+                $(".add").hide(500); 
         });
     </script>
 @endpush
