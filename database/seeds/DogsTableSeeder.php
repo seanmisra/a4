@@ -15,7 +15,7 @@ class DogsTableSeeder extends Seeder
     public function run()
     {
         // SIZE: 
-        // lap: 15 pounds and below
+        // tiny: 15 pounds and below
         // small: 15 - 40 pounds
         // medium: 40 - 85 pounds
         // large: 85 pounds and above

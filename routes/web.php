@@ -24,6 +24,8 @@ Route::get('/breeds/{dog}', 'DogController');
 if (Config::get('app.env') == 'local') {
     Route::get('/admin', 'AdminController@main');
     Route::get('/admin/search', 'AdminController@search'); 
+    Route::post('/admin/edit', 'AdminController@edit'); 
+    Route::post('/admin/delete', 'AdminController@delete'); 
 }
 
 

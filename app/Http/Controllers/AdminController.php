@@ -16,28 +16,9 @@ class AdminController extends Controller
     public function search(Request $request) {
         $dog = ucwords($request->input('adminSearch')); 
         
-        $dogFull = Dog::all()->where('name', 'LIKE', $dog)->first(); 
-        
+        // no aliases for admin search
+        $dogFull = Dog::all()->where('name', 'LIKE', $dog)->first();       
         $allDogs = Dog::all()->pluck('name')->toArray(); 
-        $aliasOne = Dog::all()->pluck('aliasOne')->toArray(); 
-        $aliasTwo = Dog::all()->pluck('aliasTwo')->toArray(); 
-        $aliasThree = Dog::all()->pluck('aliasThree')->toArray(); 
-        
-        // check if alias was entered
-        for ($i = 0; $i<count($allDogs); $i++) {
-            if ($dog == $aliasOne[$i]) {
-                $dog = $allDogs[$i];
-                break; 
-            }
-            else if ($dog == $aliasTwo[$i]) {
-                $dog = $allDogs[$i];
-                break; 
-            }
-            else if ($dog == $aliasThree[$i]) {
-                $dog = $allDogs[$i];
-                break; 
-            }
-        }
         
     
         //validate user input
@@ -52,5 +33,35 @@ class AdminController extends Controller
         return view('admin')->with([
             'dog' => $dogFull
         ]); 
+    }
+    
+    public function edit(Request $request) {
+        $dog = Dog::find($request->id); 
+        
+        $dog->name = $request->name; 
+        $dog->aliasOne = $request->aliasOne; 
+        $dog->aliasTwo = $request->aliasTwo; 
+        $dog->aliasThree = $request->aliasThree; 
+        $dog->group = $request->group; 
+        $dog->apartment = $request->apartment;
+        $dog->size = $request->size; 
+        $dog->energy = $request->energy;
+        $dog->social = $request->social; 
+        $dog->intelligence = $request->intelligence; 
+        $dog->cleanliness = $request->cleanliness; 
+        $dog->adventure = $request->adventure; 
+        
+        $dog->save();   
+        
+        dd("Successfully edited"); 
+    }
+    
+    public function delete(Request $request) {
+        $dog = Dog::find($request->id);
+        
+        $dog->tags()->detach(); 
+        $dog->delete(); 
+        
+        dd("Successfully deleted"); 
     }
 }

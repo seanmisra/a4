@@ -15,7 +15,7 @@ class ConnectFactsAndDogs extends Migration
     {
         Schema::table('facts', function(Blueprint $table) {
             $table->integer('dog_id')->unsigned();
-            $table->foreign('dog_id')->references('id')->on('dogs'); 
+            $table->foreign('dog_id')->references('id')->on('dogs')->onDelete('cascade'); 
         
         });
     }
