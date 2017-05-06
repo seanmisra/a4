@@ -5,35 +5,7 @@
 @stop
 
 @push('head')
-    <style>
-        body {
-            text-align: center; 
-            background: url('images/cover_five.png') no-repeat 50% 50% fixed; 
-            background-size: cover; 
-        }
-        h1 {
-            font-size: 80px; 
-        }
-        #breedMenu {
-            height: 100px;
-            font-size: 30px;
-            width: 50vw; 
-            margin: 0 auto;
-        }
-        .list-group {
-            width: 50vw; 
-            margin: 0 auto;
-            text-align: left; 
-            font-size: 22px; 
-        }
-        footer {
-            position:fixed;
-            bottom:0;
-            width:100%;
-            height:60px;   
-            background: rgba(0,0,0,.05);
-        }
-    </style>
+    <link rel='stylesheet' href='/css/dictionary.css'> 
 @endpush
 
 @section('content')
@@ -82,23 +54,8 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
     </script>
-                
-    <script>
-        // update drop-down menu on page load 
-        var menu = $('#breedMenu');
-        var selected = menu.val(); 
-        
-        menu.change(function() {
-            var selected = menu.val(); 
-            changeDisplay(selected); 
-        }); 
 
-        function changeDisplay(value) {
-            $(".list-group").hide(); 
-            var className = '.'+value;
-            $(className).show(700); 
-        }
-    </script>
+    <script src='/js/dictionary.js'></script>
 @endpush
 
     

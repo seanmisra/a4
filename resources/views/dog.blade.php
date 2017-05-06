@@ -1,123 +1,7 @@
 @extends('layouts.master')
 
 @push('head')
-    <style>
-        .visiblePage {
-            opacity: 0; 
-        }
-        
-        .loader {
-            opacity: 1 !important;     
-            width: 100vw;
-            height: 100vh;
-            background: url('/images/rainbow_load.gif') 50% 50% no-repeat white;
-            position: fixed; 
-            z-index: 9999;
-            font-size: 30px; 
-            text-align: center;
-        }
-
-        .loader > p {
-            font-size: 4vh; 
-            font-weight: 500; 
-            text-align: center;
-            top: 30%; 
-            right: 0;
-            left: 0;
-            margin-right: auto;
-            margin-left: auto;
-            position: fixed; 
-        } 
-        
-        body {
-            text-align: center; 
-            background-color: rgba(0, 0, 0, .1); 
-        }
-        h1 {
-            font-size: 50px;
-        }
-        h2 {
-            font-weight: bold; 
-        }
-        td:nth-child(n) {  
-            font-weight: bold;
-            height: 70px; 
-        }
-        td:nth-child(1) {
-            font-size: 25px; 
-            width: 300px; 
-            padding-left: 20px !important; 
-            background-color: rgb(180, 180, 180);
-            color: rgb(120, 120, 120);
-            border-collapse:collapse !important; 
-            font-size: 
-        }
-        td:nth-child(2) {
-            font-size: 1px; 
-            width: 10px;
-            background-color: white !important; 
-            opacity: 0; 
-            border: 0 !imporant; 
-        }
-        td:nth-child(3) {
-            padding-left: 50px !important;
-            word-spacing: 10px; 
-            font-size: 27px; 
-            color: white;  
-
-        }
-        td:nth-child(4) {
-            background-color: rgb(180, 180, 180) !important; 
-            text-align: center; 
-            font-size: 30px; 
-        }
-        
-        td{
-            background-color: rgb(200, 200, 200) !important; 
-            color: white;     
-        }
-        
-        .table {
-            text-align: left; 
-            width: 60vw;
-        }
-        
-        table td {
-            vertical-align: middle !important;
-        }
-        
-        .similarBreed:hover {
-            opacity: .7; 
-            cursor: pointer; 
-        }
-        footer {
-            width:100%;
-            height:60px;   
-            background: rgba(0,0,0,.05);
-        }
-        p {
-            font-size: 18px;
-        }
-        #funFact {
-            width: 800px;
-            margin: 0 auto; 
-        }
-        .label {
-            font-size: 25px;
-            font-weight: 300;
-            border-radius: 0px !important; 
-        }
-        .label:hover {
-            opacity: .8; 
-        }
-        .fa-refresh:hover {
-            opacity: .8; 
-            cursor: pointer; 
-        }
-        #explanation {
-            cursor: pointer; 
-        }
-    </style>
+    <link rel='stylesheet' href='/css/dog.css'>
 @endpush
 
 @section('title')
@@ -279,130 +163,21 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
-    <script>
-        var imagePath = '{{ $imagePath }}'; 
-        console.log("The image path is " + imagePath);
-        $.ajax({
-            url: imagePath,
-            type:'HEAD',
-            error:
-                function(){
-                    $('.loader').fadeOut(400); 
-                    $('.visiblePage').fadeTo(1000, 1);
-                    $('.mainImg').attr('src', '/images/sample_dog.jpg'); 
 
-                },
-            success:
-                function(){
-                    $('.loader').fadeOut(400); 
-                    $('.visiblePage').fadeTo(1000, 1);
-                    console.log("Image found"); 
-                    $('.mainImg').attr('src', imagePath); 
-                }
-        });
-        
-        var imagePathOne = '{{ (isset($similarBreedImgs[0])) ? $similarBreedImgs[0] : "" }}'; 
-        var imagePathTwo = '{{ (isset($similarBreedImgs[1])) ? $similarBreedImgs[1] : "" }}'; 
-        var imagePathThree = '{{ (isset($similarBreedImgs[2])) ? $similarBreedImgs[2] : "" }}'; 
-        var imagePathFour = '{{ (isset($similarBreedImgs[3])) ? $similarBreedImgs[3] : "" }}'; 
-        
-        var similarOne = '{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}'; 
-        var similarTwo = '{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}'; 
-        var similarThree = '{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}'; 
-        var similarFour = '{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}'; 
+        <script>
+            var imagePath = '{{ $imagePath }}'; 
+            var imagePathOne = '{{ (isset($similarBreedImgs[0])) ? $similarBreedImgs[0] : "" }}'; 
+            var imagePathTwo = '{{ (isset($similarBreedImgs[1])) ? $similarBreedImgs[1] : "" }}'; 
+            var imagePathThree = '{{ (isset($similarBreedImgs[2])) ? $similarBreedImgs[2] : "" }}'; 
+            var imagePathFour = '{{ (isset($similarBreedImgs[3])) ? $similarBreedImgs[3] : "" }}'; 
 
-        $('#similarBreedOne').attr('title', similarOne); 
-        $('#similarBreedTwo').attr('title', similarTwo); 
-        $('#similarBreedThree').attr('title', similarThree); 
-        $('#similarBreedFour').attr('title', similarFour); 
-
-        
-        $.ajax({
-            url: imagePathOne,
-            type:'HEAD',
-            error:
-                function(){
-                    console.log("Image not found"); 
-                    $('#similarBreedOne').attr('src', '/images/sample_dog.jpg'); 
-                },
-            success:
-                function(){
-                    console.log("Image found"); 
-                    $('#similarBreedOne').attr('src', imagePathOne); 
-                }
-        });  
-        
-        $.ajax({
-            url: imagePathTwo,
-            type:'HEAD',
-            error:
-                function(){
-                    console.log("Image not found"); 
-                    $('#similarBreedTwo').attr('src', '/images/sample_dog.jpg'); 
-
-                },
-            success:
-                function(){
-                    console.log("Image found"); 
-                    $('#similarBreedTwo').attr('src', imagePathTwo); 
-                }
-        }); 
-        
-        $.ajax({
-            url: imagePathThree,
-            type:'HEAD',
-            error:
-                function(){
-                    console.log("Image not found"); 
-                    $('#similarBreedThree').attr('src', '/images/sample_dog.jpg'); 
-                },
-            success:
-                function(){
-                    console.log("Image found"); 
-                    $('#similarBreedThree').attr('src', imagePathThree); 
-                }
-        }); 
-        
-        $.ajax({
-            url: imagePathFour,
-            type:'HEAD',
-            error:
-                function(){
-                    console.log("Image not found"); 
-                    $('#similarBreedFour').attr('src', '/images/sample_dog.jpg'); 
-                },
-            success:
-                function(){
-                    console.log("Image found"); 
-                    $('#similarBreedFour').attr('src', imagePathFour); 
-                }
-        }); 
-        
-        //refresh facts
-        var facts = {!! $factsJSON !!}; 
-        $(".fa-refresh").click(function() {
-            var randomElem = Math.floor(Math.random()*facts.length);
+            var similarOne = '{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}'; 
+            var similarTwo = '{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}'; 
+            var similarThree = '{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}'; 
+            var similarFour = '{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}'; 
             
-            
-            $("#factContent").fadeOut(function() {
-                $(this).text(facts[randomElem]['content']).fadeIn('slow');
-            }); 
-            $("#factSource").fadeOut(function() {
-                $(this).text(facts[randomElem]['source']).fadeIn('slow');
-            }); 
-            
-        })
-        
-        //click exaplantion to make it dissapear
-        $("#explanation").click(function() {
-            $(this).hide(1000);   
-        })
-        
-        var hideExplanation = function() {
-            $("#explanation").hide(1000);  
-        }; 
-        
-        setTimeout(hideExplanation, 10000);
-        
-    </script>
+            var facts = {!! $factsJSON !!}; 
+        </script>
+
+    <script src='/js/dog.js'></script>
 @stop
