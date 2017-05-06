@@ -22,7 +22,7 @@
         <br>
         <img class='mainImg' height=300 src='//:0'>
         @if(Session::get('explanation')!=null)
-            <br><br><div class='alert alert-success' id="explanation" style="width: 60vw; margin: 0 auto; font-size: 20px; text-align: center; ">
+            <br><br><div class='alert alert-success' id="explanation">
                 <div class='message'><br>{!! Session::get('explanation') !!}<br><br></div>
             </div>
         @endif
@@ -31,7 +31,6 @@
     <main>
         <br>
         <h2>Summary</h2><br>
-<!--        SMART STAR COLORS SHOULD BE REPLACED WITH CSS CLASSES LATER-->
         <table class="table" align="center">
             <tbody>
                 <tr class="active">
@@ -40,11 +39,11 @@
                     <td>
                         @for($x = 0; $x<$energy; $x++)
                             @if($energy == 5)
-                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                                <span class="glyphicon glyphicon-star five-star"></span>
                             @elseif($energy == 1 || $energy == 2)
-                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                                <span class="glyphicon glyphicon-star bad-star"></span>
                             @else
-                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                                <span class="glyphicon glyphicon-star regular-star"></span>
                             @endif
                         @endfor
                     </td>
@@ -56,11 +55,11 @@
                     <td>
                         @for($x = 0; $x<$social; $x++)
                             @if($social == 5)
-                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                                <span class="glyphicon glyphicon-star five-star"></span>
                             @elseif($social == 1 || $social == 2)
-                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                                <span class="glyphicon glyphicon-star bad-star"></span>
                             @else
-                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                                <span class="glyphicon glyphicon-star regular-star"></span>
                             @endif
                         @endfor
                     </td>
@@ -72,11 +71,11 @@
                     <td>
                         @for($x = 0; $x<$intelligence; $x++)
                             @if($intelligence == 5)
-                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                                <span class="glyphicon glyphicon-star five-star"></span>
                             @elseif($intelligence == 1 || $intelligence == 2)
-                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                                <span class="glyphicon glyphicon-star bad-star"></span>
                             @else
-                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                                <span class="glyphicon glyphicon-star regular-star"></span>
                             @endif                      
                         @endfor
                     </td>
@@ -88,11 +87,11 @@
                     <td>
                         @for($x = 0; $x<$cleanliness; $x++)
                             @if($cleanliness == 5)
-                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                                <span class="glyphicon glyphicon-star five-star"></span>
                             @elseif($cleanliness == 1 || $cleanliness == 2)
-                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                                <span class="glyphicon glyphicon-star bad-star"></span>
                             @else
-                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                                <span class="glyphicon glyphicon-star regular-star"></span>
                             @endif   
                         @endfor
                     </td>
@@ -104,11 +103,11 @@
                     <td>
                      @for($x = 0; $x<$adventure; $x++)
                             @if($adventure == 5)
-                                <span class="glyphicon glyphicon-star" style="color:#428bca;"></span>
+                                <span class="glyphicon glyphicon-star five-star"></span>
                             @elseif($adventure == 1 || $adventure == 2)
-                                <span class="glyphicon glyphicon-star" style="color:#d9534f;"></span>
+                                <span class="glyphicon glyphicon-star bad-star"></span>
                             @else
-                                <span class="glyphicon glyphicon-star" style="color:rgb(120, 120, 120);"></span>
+                                <span class="glyphicon glyphicon-star regular-star"></span>
                             @endif 
                         @endfor
                     </td>
@@ -120,10 +119,10 @@
         <div id = "funFact">
             <br>
             <h2>Did you Know?</h2>
-            <p id="factContent" style="font-size: 22px; line-height: 40px;">{!! isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." !!}<br><p id="factSource" style="font-size:12px;">{!! isset($facts[0]) ? "Source: ".$facts[0]['source'] : "No Source" !!}</p>
+            <p id="factContent">{!! isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." !!}<br><p id="factSource">{!! isset($facts[0]) ? "Source: ".$facts[0]['source'] : "No Source" !!}</p>
 
             @if(sizeof($facts) > 1)
-                <p><span style="font-size: 50px;"><i class="fa fa-refresh" aria-hidden="true" style='color: #428bca;'></i></p>
+                <p><i class="fa fa-refresh" aria-hidden="true"></i></p>
             @else
                 <br><br>
             @endif

@@ -98,6 +98,13 @@ p {
     width: 800px;
     margin: 0 auto; 
 }
+#factContent {
+    font-size: 22px; 
+    line-height: 40px;
+}
+#factSource {
+    font-size:12px;
+}
 .label {
     font-size: 25px;
     font-weight: 300;
@@ -106,10 +113,27 @@ p {
 .label:hover {
     opacity: .8; 
 }
+.fa-refresh {
+    font-size: 50px;
+    color: #428bca;
+}
 .fa-refresh:hover {
     opacity: .8; 
     cursor: pointer; 
 }
 #explanation {
     cursor: pointer; 
+    width: 60vw !important; 
+    margin: 0 auto !important; 
+    font-size: 20px !important; 
+    text-align: center !important;
+}
+.five-star {
+    color:#428bca;
+}
+.bad-star {
+    color:#d9534f;
+}
+.regular-star {
+    color:rgb(120, 120, 120);
 }

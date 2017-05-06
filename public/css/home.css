@@ -191,6 +191,11 @@ input.cmn-toggle-yes-no:checked + label:after {
     background: rgb(180, 180, 180); 
 }
 
+#homeSearch {
+    height: 125px; 
+    width: 60vw;
+}
+
 #homeSearch, .round-button:active, .round-button:focus {
     outline:none; 
 }
@@ -295,6 +300,12 @@ input.cmn-toggle-yes-no:checked + label:after {
     color: #428bca; 
 }
 
+#refresh {
+    cursor:pointer; 
+    font-weight: 600; 
+    font-size: 55px;
+}
+
 .visiblePage {
     opacity: 0; 
 }
@@ -324,4 +335,66 @@ input.cmn-toggle-yes-no:checked + label:after {
 
 #keywords:focus, #keywords:active {
     outline: none; 
+}
+
+.alert alert-danger {
+    font-size:20px;
+}
+
+#sizeSlider {
+    width:50vw;
+}
+
+#smallDog {
+    display:none; 
+    height: 200px;
+}
+
+#smallerDog {
+    display:none; 
+    height: 250px;
+}
+
+#mediumDog {
+    height:250px;
+}
+
+#largeDog {
+    display:none; 
+    height: 250px;
+}
+
+#keywords {
+    font-size: 22px; 
+    font-weight: 500;
+}
+
+.keywordButtons {
+    font-size:35px;
+}
+
+#cmn-toggle-7 {
+    display:none;
+}
+
+.cube, .flip-to-top {
+    border:none; 
+    outline: none; 
+    padding: 0 0 0 0; 
+    width: 50vw; 
+    height: 150px;
+}
+
+.default-state {
+    font-size: 30px; 
+    color: rgb(100, 100, 100); 
+    background-color: white; 
+    font-weight: bold;
+}
+
+.active-state {
+    font-size: 60px; 
+    color: white; 
+    background-color: #5cb85c; 
+    font-weight: bold;
 }

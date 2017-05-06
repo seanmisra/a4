@@ -25,3 +25,8 @@ footer {
     height:60px;   
     background: rgba(0,0,0,.05);
 }
+
+.list-group {
+    display:none; 
+    margin-bottom: 200px;
+}

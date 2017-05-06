@@ -32,7 +32,7 @@
         
         <br><br>
         @foreach($dogMap as $group => $dogs)
-            <ul class="list-group {{ $group }}" style="display:none; margin-bottom: 200px;">
+            <ul class="list-group {{ $group }}">
                 @foreach($dogs as $dog)
                 <li class="list-group-item"><a href="/breeds/{{ $dog }}">{{ $dog }}</a></li>
                 @endforeach
