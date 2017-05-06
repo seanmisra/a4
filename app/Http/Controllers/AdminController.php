@@ -15,6 +15,7 @@ class AdminController extends Controller
     
     public function search(Request $request) {
         $dog = ucwords($request->input('adminSearch')); 
+        $actionType = $request->input('actionType'); 
         
         // no aliases for admin search
         $dogFull = Dog::all()->where('name', 'LIKE', $dog)->first();       
@@ -30,8 +31,10 @@ class AdminController extends Controller
             return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
         }
                 
+        
         return view('admin')->with([
-            'dog' => $dogFull
+            'dog' => $dogFull,
+            'actionType' => $actionType
         ]); 
     }
     

@@ -13,14 +13,21 @@
             opacity: .8; 
             cursor: pointer; 
         }
+        input, select, button {
+            height: 100px; 
+            width: 50vw; 
+            font-size: 25px; 
+        }
+        main {
+            margin-left: 50px; 
+        }
 
     </style>
-
-    <header>
-        <h1>Dog Database Admin</h1>
-    </header>
-        
+    
     <main>
+        <header>
+            <h1>Dog Database Admin</h1>
+        </header>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -31,10 +38,17 @@
             </div>
         @endif
         
-        <button id="add">Add</button>
-            <form class= "add" method="POST" style='display:none;' action='{{ action("AdminController@add")}}'> 
+        <select class='form-control' id='option' name='option' style="height: 100px; font-size: 25px; width: 50vw;">
+            <option value='Add'>Add</option>
+            <option value='Edit' {{ isset($actionType) ? (($actionType == 'edit') ? 'SELECTED' : ''):'' }}>Edit</option>
+            <option value='Delete' {{ isset($actionType) ? (($actionType == 'delete') ? 'SELECTED' : ''):'' ? 'SELECTED' : '' }}>Delete</option>
+        </select>
+        <p>*Denotes a <strong>required</strong> field</p>
+        
+        
+        <form class= "add" method="POST" style='display:none;' action='{{ action("AdminController@add")}}'> 
             {{ csrf_field() }}
-            <h3>Name</h3> 
+            <h3>*Name</h3> 
             <input type='text' name='name' placeholder='Enter dog name (required)'>
             <h3>AliasOne</h3>
             <input type='text' name='aliasOne' placeholder='Enter Alias (Optional)'>
@@ -42,7 +56,7 @@
             <input type='text' name='aliasTwo' placeholder='Enter Alias (Optional)'>
             <h3>AliasThree</h3>
             <input type='text' name='aliasThree' placeholder='Enter Alias (Optional)'>        
-            <h3>Group</h3>
+            <h3>*Group</h3>
             <select class='form-control' name='group'>                        
                 <option value='Herding'>Herding</option>
                 <option value='Hound'>Hound</option>
@@ -51,30 +65,30 @@
                 <option value='Working'>Working</option>
                 <option value='Toy'>Toy</option>
             </select>
-                    
-            <h3>Apartment</h3>
+
+            <h3>*Apartment</h3>
             <select class='form-control' name='apartment'>                        
                 <option value='0'>Not Apartment-Friendly</option>
                 <option value='1'> Apartment-Friendly</option>
             </select>                    
-                    
-            <h3>Size</h3>
+
+            <h3>*Size</h3>
             <select class='form-control' name='size'>
                 <option value='tiny'>Tiny</option>
                 <option value='small'>Small</option>
                 <option value='medium'>Medium</option>
                 <option value='large'>Large</option>
             </select>                                        
-                    
-            <h3>Energy</h3>
+
+            <h3>*Energy</h3>
             <input type='text' name='energy' placeholder='Enter number 1-5'>
-            <h3>Social</h3>
+            <h3>*Social</h3>
             <input type='text' name='social' placeholder='Enter number 1-5'>
-            <h3>Intelligence</h3>
+            <h3>*Intelligence</h3>
             <input type='text' name='intelligence' placeholder='Enter number 1-5'>
-            <h3>Cleanliness</h3>
+            <h3>*Cleanliness</h3>
             <input type='text' name='cleanliness' placeholder='Enter number 1-5'>
-            <h3>Fun</h3>
+            <h3>*Fun</h3>
             <input type='text' name='adventure' placeholder='Enter number 1-5'>
             <br>
             <br>
@@ -83,20 +97,31 @@
         </form>
         
         <br><br><br>
-        <form method="GET" action='{{ action("AdminController@search") }}'> 
-            <input type='text' placeholder='Search dog' name='adminSearch'>  
+        
+        
+        <form class ='edit' method="GET" action='{{ action("AdminController@search") }}'> 
+            <input type='hidden' name='actionType' value='edit'>
+            <input type='text' placeholder='Search dog to edit' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px;">  
         </form>
-        <button id="reset">Reset</button>
+        
+        <form class ='delete' method="GET" action='{{ action("AdminController@search") }}'> 
+            <input type='hidden' name='actionType' value='delete'>
+            <input type='text' placeholder='Search dog to delete' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px;">  
+        </form>
         
         @if(isset($dog))
             <div class='dogSection'>
-                <h2>Current Dog: {{ $dog->name }}</h2>
-                <span id='edit'>Edit</span> <span id='delete'>Delete</span>
-                
+                <div class='edit'>       
+                    <h2>Current Dog: {{ $dog->name }}</h2>
+                </div>  
+                <div class='delete'>        
+                    <h2>Current Dog: {{ $dog->name }}</h2>
+                </div>  
+        
                 <form class='edit' method='post' style='display:none;' action='{{ action("AdminController@edit") }}'>
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
-                    <h3>Name</h3> 
+                    <h3>*Name</h3> 
                     <input type='text' name='name' value='{{ $dog->name }}'>
                     <h3>AliasOne</h3>
                     <input type='text' name='aliasOne' value='{{ $dog->aliasOne }}'>
@@ -105,7 +130,7 @@
                     <h3>AliasThree</h3>
                     <input type='text' name='aliasThree' value='{{ $dog->aliasThree }}'>
                     
-                    <h3>Group</h3>
+                    <h3>*Group</h3>
                     <select class='form-control' name='group'>                        
                         <option value='Herding' {{ ($dog->group == 'Herding') ? 'SELECTED' : '' }}> Herding</option>
                         <option value='Hound' {{ ($dog->group == 'Hound') ? 'SELECTED' : '' }}>Hound</option>
@@ -115,13 +140,13 @@
                         <option value='Toy' {{ ($dog->group == 'Toy') ? 'SELECTED' : '' }}>Toy</option>
                     </select>
                     
-                    <h3>Apartment</h3>
+                    <h3>*Apartment</h3>
                     <select class='form-control' name='apartment'>                        
                         <option value='0' {{ ($dog->apartment == 0) ? 'SELECTED' : '' }}>Not Apartment-Friendly</option>
                         <option value='1' {{ ($dog->apartment == 1) ? 'SELECTED' : '' }}> Apartment-Friendly</option>
                     </select>                    
                     
-                    <h3>Size</h3>
+                    <h3>*Size</h3>
                     <select class='form-control' name='size'>
                         <option value='tiny' {{ ($dog->size == 'tiny') ? 'SELECTED' : '' }}>Tiny</option>
                         <option value='small' {{ ($dog->size == 'small') ? 'SELECTED' : '' }}> Small</option>
@@ -130,15 +155,15 @@
                     </select>                                        
                     
                     
-                    <h3>Energy</h3>
+                    <h3>*Energy</h3>
                     <input type='text' name='energy' value='{{ $dog->energy }}'>
-                    <h3>Social</h3>
+                    <h3>*Social</h3>
                     <input type='text' name='social' value='{{ $dog->social }}'>
-                    <h3>Intelligence</h3>
+                    <h3>*Intelligence</h3>
                     <input type='text' name='intelligence' value='{{ $dog->intelligence }}'>
-                    <h3>Cleanliness</h3>
+                    <h3>*Cleanliness</h3>
                     <input type='text' name='cleanliness' value='{{ $dog->cleanliness }}'>
-                    <h3>Fun</h3>
+                    <h3>*Fun</h3>
                     <input type='text' name='adventure' value='{{ $dog->adventure }}'>
                     <br>
                     <br>
@@ -150,7 +175,7 @@
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <button>Delete {{ $dog->name}}</button>
-                    <p>Deleting Labrador will also delete all tag associations and fun facts</p>
+                    <p>Deleting {{ $dog->name }} will also delete all tag associations and fun facts</p>
                 </form>
             </div>
             <br><br><br>
@@ -162,39 +187,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
-        
-    <script> 
-        $("#edit").click(function() {
-            
-            if($(".edit").css('display') == 'none') {
-                console.log("I got here!"); 
-                $(".edit").show(500); 
-            }
-            else 
-                $(".edit").hide(500); 
-        });
-        
-        $("#reset").click(function() {
-            $('.dogSection').hide(500); 
-        }); 
-        
-        $("#delete").click(function() {
-            
-            if($(".delete").css('display') == 'none') {
-                console.log("I got here!"); 
-                $(".delete").show(500); 
-            }
-            else 
-                $(".delete").hide(500); 
-        });
-        
-        $("#add").click(function() {
-            if($(".add").css('display') == 'none') {
-                console.log("I got here!"); 
-                $(".add").show(500); 
-            }
-            else 
-                $(".add").hide(500); 
-        });
-    </script>
+
+    <script src='/js/admin.js'></script>
 @endpush
