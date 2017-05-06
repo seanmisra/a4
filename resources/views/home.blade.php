@@ -114,24 +114,8 @@
 @stop
 
 @push('body')
-    <script>
-        var errors = false; 
-        @if(count($errors) > 0)
-            var errors = true;  
-        @endif 
-
-        var allDogs = {!! $allDogs !!}; 
-        var allTags = {!! $allTagsJSON !!}; 
-        
-        
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {{-- Converts PHP variables to JS variables --}}
+    @include('php-js-conversion-home')
 
     <script src='/js/home.js'></script>
-
 @endpush
