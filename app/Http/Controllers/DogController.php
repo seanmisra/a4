@@ -10,19 +10,21 @@ use Session;
 class DogController extends Controller
 {
     public function __invoke($dog) {        
+        //get dog
+        $myDog = Dog::where('name', 'LIKE', $dog)->first();         
+        
         // create image path
         $imagePath = "/images/".str_replace(" ", "_", $dog).".jpg"; 
 
-        // get group
-        $group = Dog::where('name', 'LIKE', $dog)->pluck('group');
-        $group = $group[0]; 
-        
+        // get group        
+        $group = $myDog->group; 
         
         // get facts
-        $dogID = Dog::where('name', 'LIKE', $dog)->pluck('id');
-        $facts = Dog::find($dogID)->facts->toArray();
+        $facts = $myDog->facts->toArray();
         $factsJSON = json_encode($facts);
-        $tags = Dog::find($dogID)->tags->pluck('name')->toArray(); 
+        
+        // get tags
+        $tags = $myDog->tags->pluck('name')->toArray(); 
         
         //get 4 similar breeds (based for now only on Group)
         $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->pluck('name')->toArray();
@@ -34,24 +36,19 @@ class DogController extends Controller
         }
 
         // get energy
-        $energy = Dog::where('name', 'LIKE', $dog)->pluck('energy');
-        $energy = (int) $energy[0]; 
+        $energy = $myDog->energy; 
 
         // get social
-        $social = Dog::where('name', 'LIKE', $dog)->pluck('social');
-        $social = (int) $social[0]; 
+        $social = $myDog->social; 
 
         // get intelligence
-        $intelligence = Dog::where('name', 'LIKE', $dog)->pluck('intelligence');
-        $intelligence = (int) $intelligence[0]; 
+        $intelligence = $myDog->intelligence; 
 
         // get cleanliness
-        $cleanliness = Dog::where('name', 'LIKE', $dog)->pluck('cleanliness');
-        $cleanliness = (int) $cleanliness[0]; 
+        $cleanliness = $myDog->cleanliness;
 
         // get adventure
-        $adventure = Dog::where('name', 'LIKE', $dog)->pluck('adventure');
-        $adventure = (int) $adventure[0]; 
+        $adventure = $myDog->adventure;
         
         return view('dog')->with([
             'dog' => $dog,  
