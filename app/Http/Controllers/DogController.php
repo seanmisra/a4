@@ -44,6 +44,11 @@ class DogController extends Controller
             $similarBreedImgs [] = "/images/".str_replace(" ", "_", $breed).".jpg";
         }
 
+        # star html (passing as php for readability sake in view)
+        $fiveStar = '<span class="glyphicon glyphicon-star five-star"></span>'; 
+        $badStar = '<span class="glyphicon glyphicon-star bad-star"></span>';
+        $regularStar = '<span class="glyphicon glyphicon-star regular-star"></span>'; 
+        
         return view('dog')->with([
             'dog' => $dog,  
             'group' => $group,
@@ -57,7 +62,10 @@ class DogController extends Controller
             'similarBreedImgs' => $similarBreedImgs,
             'facts' => $facts,
             'factsJSON' => $factsJSON,
-            'tags' => $tags
+            'tags' => $tags,
+            'fiveStar' => $fiveStar, 
+            'badStar' => $badStar, 
+            'regularStar' => $regularStar
         ]);  
         
     }

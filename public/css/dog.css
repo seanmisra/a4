@@ -44,11 +44,20 @@ p {
 .fa-refresh {
     font-size: 50px;
     color: #428bca;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
 }
 
 .fa-refresh:hover {
     opacity: .8; 
     cursor: pointer; 
+}
+
+.fa-refresh:active {
+    -webkit-transform: rotate(120deg);
+    transform: rotate(120deg); 
 }
 
 .similarBreed:hover {

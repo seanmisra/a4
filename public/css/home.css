@@ -172,7 +172,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 
 
-/**********3D FLIP-BUTTON CSS**********/
+/**********TOGGLE CHECKBOX CSS**********/
 /* As a starting point, I used: http://callmenick.com/post/css-toggle-switch-examples */
 
 #cmn-toggle-7 {
@@ -252,6 +252,11 @@ input.cmn-toggle-yes-no:checked + label:after {
     transform: rotateY(0);
 }
 
+
+
+/**********3D SUBMIT BUTTON CSS**********/
+/* As a starting point, I used: https://codepen.io/robbue/pen/hJDlA */
+
 .cube {
     width: 250px;
     height: 150px; /* Height of Button */
@@ -282,6 +287,8 @@ input.cmn-toggle-yes-no:checked + label:after {
     padding: 0 0 0 0; 
     width: 50vw; 
     height: 150px;
+    margin-top: 280px; 
+    margin-bottom: 100px; 
 }
 
 /* 225 is Button Height*1.5 */

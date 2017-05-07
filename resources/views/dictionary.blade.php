@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Dog Data - All Breeds
+    Breed Dictionary
 @stop
 
 @push('head')
@@ -15,22 +15,24 @@
     </header>
         
     <main>
-        
+        {{-- User will be directed to this page upon an invalid search --}}
+        {{-- Display error message (stored with Session) if needed --}}
         @if(Session::get('invalidSearchMessage')!=null)
             <div class='alert alert-danger'>
                 <div class='message'>{!! Session::get('invalidSearchMessage') !!}</div>
             </div>
         @endif
 
+        {{-- Dog Group drop-down menu --}}
         <select class='form-control' id='breedMenu'>
-            {{-- below option with several ternaries is for the Close Trip option --}}
             <option value='none'> Select Group </option>
             @foreach($allGroups as $group)
                 <option value='{{ $group }}'>{{ $group }}</option>
             @endforeach
-        </select>
-        
+        </select>     
         <br><br>
+        
+        {{-- Display every breed from group, when group selected --}}
         @foreach($dogMap as $group => $dogs)
             <ul class="list-group {{ $group }}">
                 @foreach($dogs as $dog)
@@ -40,6 +42,7 @@
         @endforeach        
     </main>
         
+    {{-- Footer --}}
     <footer>
         <br>
         <p>Created at Harvard Extension. Spring 2017.</p>
@@ -49,5 +52,3 @@
 @push('body')
     <script src='/js/dictionary.js'></script>
 @endpush
-
-    

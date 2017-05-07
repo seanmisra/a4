@@ -58,7 +58,8 @@ $(".fa-refresh").click(function() {
     var randomElem = Math.floor(Math.random()*facts.length);
 
     $("#factContent, #factSource").fadeOut(function() {
-        $(this).text(facts[randomElem]['content']).fadeIn('slow');
+        $("#factContent").text(facts[randomElem]['content']).fadeIn('slow');
+        $("#factSource").text(facts[randomElem]['source']).fadeIn('slow');
     }); 
 }); 
 
