@@ -7,13 +7,15 @@ use App\Dog;
 
 class DictionaryController extends Controller
 {
+    // default function for Dictionary
     public function __invoke() {
-        $allDogs = Dog::all(); 
-         
-        // get all dog groups
+        # query all dogs
+        $allDogs = Dog::all();       
+        
+        # get all dog groups
         $allGroups = $allDogs->pluck('group')->unique()->toArray();            
                 
-        // create array with groups of dogs 
+        # map each dog to a group 
         $dogMap = []; 
         foreach ($allGroups as $group)
             $dogMap[$group] = $allDogs->where('group', $group)->pluck('name')->toArray(); 

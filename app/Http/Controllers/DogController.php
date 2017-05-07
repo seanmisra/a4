@@ -9,47 +9,41 @@ use Session;
 
 class DogController extends Controller
 {
+    // default function for Dog Page
     public function __invoke($dog) {        
-        //get dog
+        # query dog
         $myDog = Dog::where('name', 'LIKE', $dog)->first();         
         
-        // create image path
+        # create image path
         $imagePath = "/images/".str_replace(" ", "_", $dog).".jpg"; 
 
-        // get group        
+        # get dog's group        
         $group = $myDog->group; 
         
-        // get facts
+        # get dog's facts
         $facts = $myDog->facts->toArray();
         $factsJSON = json_encode($facts);
         
-        // get tags
+        # get dog's tags
         $tags = $myDog->tags->pluck('name')->toArray(); 
         
-        //get 4 similar breeds (based for now only on Group)
+        # get dog's "star scores"
+        $energy = $myDog->energy; 
+        $social = $myDog->social; 
+        $intelligence = $myDog->intelligence; 
+        $cleanliness = $myDog->cleanliness;
+        $adventure = $myDog->adventure;
+        
+        # get 4 similar breeds (based for now only on Group)
         $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->pluck('name')->toArray();
         shuffle($similarBreeds); 
         
+        # create similar breed image paths
         $similarBreedImgs = []; 
         foreach ($similarBreeds as $breed) {
             $similarBreedImgs [] = "/images/".str_replace(" ", "_", $breed).".jpg";
         }
 
-        // get energy
-        $energy = $myDog->energy; 
-
-        // get social
-        $social = $myDog->social; 
-
-        // get intelligence
-        $intelligence = $myDog->intelligence; 
-
-        // get cleanliness
-        $cleanliness = $myDog->cleanliness;
-
-        // get adventure
-        $adventure = $myDog->adventure;
-        
         return view('dog')->with([
             'dog' => $dog,  
             'group' => $group,
