@@ -1,32 +1,27 @@
-//        var randArray = ["one", "two", "three", "four", "five", "six", "seven"]; 
-//        var randNumb = Math.round(Math.random()*6); 
-//        var imageNumb = randArray[randNumb];
-//        uncomment to randomize images, but want to keep one for now
-path = "images/cover_"+"five"+".png";
+//*************************************HOME_SEARCH*************************************//
 
-//chek when main image loads     
+
+// on load: transition out gif, display page w/ background image
+path = "images/home.png";
 var img = new Image();
 img.src = path; 
-
 img.onload = function() {
     $('.loader').fadeOut(400); 
     $('.visiblePage').fadeTo(1000, 1);
     $('body').css({'background': 'url(' + path + ')' + 'no-repeat 50% 50% fixed', 'background-size': 'cover'});   
 }
 
-//create jQuery autocomplete validation 
+
+// create jQuery autocomplete validation 
+// only matches beginning of word
+// ignores white spaces
 $("#homeSearch").autocomplete({
     source: function(request, response) {
-        // remove whitespaces and escape regex chars
         var re = ($.ui.autocomplete.escapeRegex((request.term).replace(" ", "")));
-
-        // if the trimmed result is nothing ignore it
         if (re == "") {
             return false; 
         }
 
-        // case insensitive match, ignoring whitespaces in list
-        // only matches beginning of word
         var matcher = new RegExp("^" + re, "i" );
         var result = $.grep(allDogs, function(item,index){
             item = item.replace(" ", ""); 
@@ -36,16 +31,9 @@ $("#homeSearch").autocomplete({
     }
 }); 
 
-// validation errors on homepage are always related to match option
-if (errors == true) {
-    $(".searchView").hide(500);  
-    $("#matchView").show(500); 
-     $("#matchOption").html("<strong>Match</strong>");
-    $("#searchOption").html("Search");
-}
 
+// toggle between match and search options via click
 $("#searchOption").click(function() {
-    console.log("HERE!"); 
     $(".searchView").show(500); 
     $("#matchView").hide(500); 
     $(this).html("<strong>Search</strong>");
@@ -60,7 +48,21 @@ $("#matchOption").click(function() {
 });
 
 
-$(document).ready(function() {
+// validation errors on homepage are always related to match option
+// thus, if there is an error, automatically switch to match option
+if (errors == true) {
+    $(".searchView").hide(500);  
+    $("#matchView").show(500); 
+     $("#matchOption").html("<strong>Match</strong>");
+    $("#searchOption").html("Search");
+}
+
+
+//*************************************HOME_MATCH*************************************//
+
+
+// function to update HTML5 input dog image
+function sliderImage() {
     var value = $("#sizeSlider").val(); 
     if (value >= 75) {
         $("#smallDog, #smallerDog, #mediumDog").hide();
@@ -82,127 +84,77 @@ $(document).ready(function() {
         $("#smallDog").show(500); 
         $("#preference").html("I prefer <strong>tiny</strong> dogs");
     }
-})
+}
 
+
+// update slider image on page load
+sliderImage(); 
+
+
+// update slider image whenever it is moved
 $("#sizeSlider").change(function() {
-    var value = $(this).val(); 
-    if (value >= 75) {
-        $("#smallDog, #smallerDog, #mediumDog").hide();
-        $("#largeDog").show(500); 
-        $("#preference").html("I prefer <strong>large</strong> dogs");
-    }
-    else if (value >= 50) {
-        $("#smallDog, #smallerDog, #largeDog").hide();
-        $("#mediumDog").show(500); 
-        $("#preference").html("I prefer <strong>medium-sized</strong> dogs");
-    }
-    else if (value >= 25) {
-        $("#smallDog, #mediumDog, #largeDog").hide();
-        $("#smallerDog").show(500); 
-        $("#preference").html("I prefer <strong>small</strong> dogs");
-    }
-    else {
-        $("#smallerDog, #mediumDog, #largeDog").hide();
-        $("#smallDog").show(500); 
-        $("#preference").html("I prefer <strong>tiny</strong> dogs");
-    }
+    sliderImage(); 
 }); 
+
 
 // update keyword text input
 $(".label").click(function() {
     var currentText = $("#keywords").val();  
     var newKey = $(this).text(); 
-    console.log(currentText);
-    console.log(newKey); 
 
-    // ignore repeat keywords
-    if (currentText.includes(newKey));  
-    // add trait
-    else if (currentText.length > 0)
-        $("#keywords").val(currentText + ", " + newKey); 
-    // first trait
-    else 
-        $("#keywords").val(newKey); 
-})        
+    if (!currentText.includes(newKey));  
+        if (currentText.length > 0)
+            $("#keywords").val(currentText + ", " + newKey); 
+        else 
+            $("#keywords").val(newKey); 
+});        
 
 
+// update 3D submit button
 $(".cube").mouseenter(function() {
     var keywords = $("#keywords").val(); 
     if (keywords == "") {
-        $(".active-state").css({'color':'#d9534f', 'font-size':'30px', 'background-color':'white'}); 
-        $(".active-state").text('No Keywords');
+        $(".active-state").css({'color':'#d9534f', 'font-size':'30px', 'background-color':'white'}).text('No Keywords');
     }
     else {
         var words = keywords.split(", ")
 
         if (words.length > 2) {
-            $(".active-state").css({'color':'#5cb85c', 'font-size':'70px', 'background-color':'white'}); 
-            $(".active-state").html('<i class="fa fa-paw" aria-hidden="true"></i>');
+            $(".active-state").css({'color':'#5cb85c', 'font-size':'70px', 'background-color':'white'}).html('<i class="fa fa-paw" aria-hidden="true"></i>');
         }
         else {
-            $(".active-state").css({'color':'#f0ad4e', 'font-size':'25px', 'background-color':'white'}); 
-            $(".active-state").text("Try adding more keywords")
+            $(".active-state").css({'color':'#f0ad4e', 'font-size':'25px', 'background-color':'white'}).text("Try adding more keywords"); 
         }
     }
+}); 
 
-
-})
 
 // refresh keywords
 $("#refresh").click(function() {
     var shuffledTags = shuffle(allTags); 
-    $("#tagOne").fadeOut(function() {
-        $(this).text(shuffledTags[0]).fadeIn('slow');
+    
+    $(".keywordTag").fadeOut(function() {
+        $("#tagOne").text(shuffledTags[0]).fadeIn('slow');
+        $("#tagTwo").text(shuffledTags[1]).fadeIn('normal');
+        $("#tagThree").text(shuffledTags[2]).fadeIn('fast');
+        $("#tagFour").text(shuffledTags[3]).fadeIn('slow');
+        $("#tagFive").text(shuffledTags[4]).fadeIn('normal');
+        $("#tagSix").text(shuffledTags[5]).fadeIn('fast');
+        $("#tagSeven").text(shuffledTags[6]).fadeIn('slow');
+        $("#tagEight").text(shuffledTags[7]).fadeIn('normal');
+        $("#tagNine").text(shuffledTags[8]).fadeIn('fast');
+        $("#tagTen").text(shuffledTags[9]).fadeIn('slow');
+        $("#tagEleven").text(shuffledTags[10]).fadeIn('normal');
+        $("#tagTwelve").text(shuffledTags[11]).fadeIn('fast');
+        $("#tagThirteen").text(shuffledTags[12]).fadeIn('slow');
+        $("#tagFourteen").text(shuffledTags[13]).fadeIn('normal');
+        $("#tagFifteen").text(shuffledTags[14]).fadeIn('fast');
+        $("#tagSixteen").text(shuffledTags[15]).fadeIn('slow');
     }); 
-    $("#tagTwo").fadeOut(function() {
-        $(this).text(shuffledTags[1]).fadeIn('normal');
-    }); 
-    $("#tagThree").fadeOut(function() {
-        $(this).text(shuffledTags[2]).fadeIn('fast');
-    }); 
-    $("#tagFour").fadeOut(function() {
-        $(this).text(shuffledTags[3]).fadeIn('slow');
-    }); 
-    $("#tagFive").fadeOut(function() {
-        $(this).text(shuffledTags[4]).fadeIn('normal');
-    }); 
-    $("#tagSix").fadeOut(function() {
-        $(this).text(shuffledTags[5]).fadeIn('fast');
-    }); 
-    $("#tagSeven").fadeOut(function() {
-        $(this).text(shuffledTags[6]).fadeIn('slow');
-    }); 
-    $("#tagEight").fadeOut(function() {
-        $(this).text(shuffledTags[7]).fadeIn('normal');
-    }); 
-    $("#tagNine").fadeOut(function() {
-        $(this).text(shuffledTags[8]).fadeIn('fast');
-    }); 
-    $("#tagTen").fadeOut(function() {
-        $(this).text(shuffledTags[9]).fadeIn('slow');
-    }); 
-    $("#tagEleven").fadeOut(function() {
-        $(this).text(shuffledTags[10]).fadeIn('normal');
-    }); 
-    $("#tagTwelve").fadeOut(function() {
-        $(this).text(shuffledTags[11]).fadeIn('fast');
-    }); 
-    $("#tagThirteen").fadeOut(function() {
-        $(this).text(shuffledTags[12]).fadeIn('slow');
-    }); 
-    $("#tagFourteen").fadeOut(function() {
-        $(this).text(shuffledTags[13]).fadeIn('normal');
-    });
-    $("#tagFifteen").fadeOut(function() {
-        $(this).text(shuffledTags[14]).fadeIn('fast');
-    }); 
-    $("#tagSixteen").fadeOut(function() {
-        $(this).text(shuffledTags[15]).fadeIn('slow');
-    });  
 });
 
 
-//shuffle array
+// shuffle array
 // source: https://www.frankmitchell.org/2015/01/fisher-yates/ 
 function shuffle (array) {
     var i = 0, j = 0, temp = null; 
@@ -216,27 +168,33 @@ function shuffle (array) {
     return array
 }
 
-//keyword eraser
+
+// keyword eraser
 $(".fa-eraser").click(function() {
     $("#keywords").val("");
 }); 
 
-//keyword back-spacer
+
+// keyword back-spacer
 $(".fa-arrow-left").click(function() {
-    var keywords = $("#keywords").val(); 
-    var keyArray = keywords.split(", "); 
+    var keyArray = $("#keywords").val().split(", "); 
 
     //remove last value
     keyArray.pop(); 
+    
+    //create new string
     var newVal= "";
     for (var i = 0; i<keyArray.length; i++)
         newVal += keyArray[i] += ", "; 
 
+    //cut last extraneous comma
     var newVal = newVal.substring(0, newVal.length - 2); 
 
     $("#keywords").val(newVal); 
 }) 
 
+
+// don't let user type in keyword input
 $("#keywords").keydown(function(e){
     e.preventDefault();
 });
