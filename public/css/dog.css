@@ -1,126 +1,61 @@
-.visiblePage {
-    opacity: 0; 
-}
-
-.loader {
-    opacity: 1 !important;     
-    width: 100vw;
-    height: 100vh;
-    background: url('/images/rainbow_load.gif') 50% 50% no-repeat white;
-    position: fixed; 
-    z-index: 9999;
-    font-size: 30px; 
-    text-align: center;
-}
-
-.loader > p {
-    font-size: 4vh; 
-    font-weight: 500; 
-    text-align: center;
-    top: 30%; 
-    right: 0;
-    left: 0;
-    margin-right: auto;
-    margin-left: auto;
-    position: fixed; 
-} 
+/**********GENERAL CSS**********/
 
 body {
     text-align: center; 
     background-color: rgba(0, 0, 0, .1); 
 }
+
 h1 {
     font-size: 50px;
 }
+
 h2 {
     font-weight: bold; 
 }
-td:nth-child(n) {  
-    font-weight: bold;
-    height: 70px; 
-}
-td:nth-child(1) {
-    font-size: 25px; 
-    width: 300px; 
-    padding-left: 20px !important; 
-    background-color: rgb(180, 180, 180);
-    color: rgb(120, 120, 120);
-    border-collapse:collapse !important; 
-    font-size: 
-}
-td:nth-child(2) {
-    font-size: 1px; 
-    width: 10px;
-    background-color: white !important; 
-    opacity: 0; 
-    border: 0 !imporant; 
-}
-td:nth-child(3) {
-    padding-left: 50px !important;
-    word-spacing: 10px; 
-    font-size: 27px; 
-    color: white;  
 
-}
-td:nth-child(4) {
-    background-color: rgb(180, 180, 180) !important; 
-    text-align: center; 
-    font-size: 30px; 
+p {
+    font-size: 18px;
 }
 
-td{
-    background-color: rgb(200, 200, 200) !important; 
-    color: white;     
+#funFact {
+    width: 800px;
+    margin: 0 auto; 
 }
 
-.table {
-    text-align: left; 
-    width: 60vw;
+#factContent {
+    font-size: 22px; 
+    line-height: 40px;
 }
 
-table td {
-    vertical-align: middle !important;
+#factSource {
+    font-size:12px;
+}
+
+.label {
+    font-size: 25px;
+    font-weight: 300;
+    border-radius: 0px !important; 
+}
+
+.label:hover {
+    opacity: .8; 
+}
+
+.fa-refresh {
+    font-size: 50px;
+    color: #428bca;
+}
+
+.fa-refresh:hover {
+    opacity: .8; 
+    cursor: pointer; 
 }
 
 .similarBreed:hover {
     opacity: .7; 
     cursor: pointer; 
 }
-footer {
-    width:100%;
-    height:60px;   
-    background: rgba(0,0,0,.05);
-}
-p {
-    font-size: 18px;
-}
-#funFact {
-    width: 800px;
-    margin: 0 auto; 
-}
-#factContent {
-    font-size: 22px; 
-    line-height: 40px;
-}
-#factSource {
-    font-size:12px;
-}
-.label {
-    font-size: 25px;
-    font-weight: 300;
-    border-radius: 0px !important; 
-}
-.label:hover {
-    opacity: .8; 
-}
-.fa-refresh {
-    font-size: 50px;
-    color: #428bca;
-}
-.fa-refresh:hover {
-    opacity: .8; 
-    cursor: pointer; 
-}
+
 #explanation {
     cursor: pointer; 
     width: 60vw !important; 
@@ -128,12 +63,72 @@ p {
     font-size: 20px !important; 
     text-align: center !important;
 }
+
+
+
+/**********TABLE CSS**********/
+
+.table {
+    text-align: left; 
+    width: 60vw;
+}
+
+td {
+    background-color: rgb(200, 200, 200) !important; 
+    color: white;   
+    font-weight: bold;
+    height: 70px; 
+}
+
+td:nth-child(1) {
+    font-size: 25px; 
+    width: 300px; 
+    padding-left: 20px !important; 
+    background-color: rgb(180, 180, 180);
+    color: rgb(120, 120, 120);
+    font-size: 
+}
+
+td:nth-child(2) {
+    font-size: 1px; 
+    width: 10px;
+    opacity: 0; 
+}
+
+td:nth-child(3) {
+    padding-left: 50px !important;
+    word-spacing: 10px; 
+    font-size: 27px; 
+}
+
+td:nth-child(4) {
+    background-color: rgb(180, 180, 180) !important; 
+    text-align: center; 
+    font-size: 30px; 
+}
+
+table td {
+    vertical-align: middle !important;
+}
+
 .five-star {
     color:#428bca;
 }
+
 .bad-star {
     color:#d9534f;
 }
+
 .regular-star {
     color:rgb(120, 120, 120);
+}
+
+
+
+/**********FOOTER CSS**********/
+
+footer {
+    width:100%;
+    height:60px;   
+    background: rgba(0,0,0,.05);
 }

@@ -54,10 +54,10 @@
                     <div class = 'form-group matchView'>
                         <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' value={{ old('size') }}>
                         <br>
-                        <img src='images/tiny_dog.png'  id='smallDog'> 
-                        <img src='images/small_dog.png' id='smallerDog'> 
-                        <img src='images/medium_dog.png' id='mediumDog'> 
-                        <img src='images/large_dog.png' id='largeDog'> 
+                        <img src='images/tiny_dog.png'  class='dogImg' id='smallDog'> 
+                        <img src='images/small_dog.png' class='dogImg' id='smallerDog'> 
+                        <img src='images/medium_dog.png' class='dogImg' id='mediumDog'> 
+                        <img src='images/large_dog.png' class='dogImg' id='largeDog'> 
                     </div>
 
                     <br><br>

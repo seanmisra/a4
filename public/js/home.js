@@ -102,11 +102,28 @@ $(".label").click(function() {
     var currentText = $("#keywords").val();  
     var newKey = $(this).text(); 
 
-    if (!currentText.includes(newKey));  
+    console.log("Current key" + currentText);
+    console.log("New key" + newKey); 
+    
+    if (!currentText.includes(newKey)) {  
         if (currentText.length > 0)
             $("#keywords").val(currentText + ", " + newKey); 
         else 
             $("#keywords").val(newKey); 
+    }
+    
+    if (currentText.length > 150) {
+        $("#keywords").css('font-size', '10px'); 
+    }
+    else if (currentText.length > 100) {
+        $("#keywords").css('font-size', '12px'); 
+    }
+    else if (currentText.length > 45 ) {
+       $("#keywords").css({'font-size': '16px', 'width': '70vw'}); 
+    }
+    else {
+       $("#keywords").css({'font-size': '22px', 'width': '50vw'}); 
+    }
 });        
 
 

@@ -23,8 +23,8 @@ $.ajax({
 // update imgElement src with imgPath if found
 // if not found, use the sample_dog image
 function updateImg (imgPath, imgElement) {
-   $.ajax({
-    url: imagePathOne,
+    $.ajax({
+    url: imgPath,
     type:'HEAD',
     error:
         function(){
@@ -35,6 +35,7 @@ function updateImg (imgPath, imgElement) {
             $(imgElement).attr('src', imgPath); 
         }
    });   
+    console.log("Hello!"); 
 }
 
 
