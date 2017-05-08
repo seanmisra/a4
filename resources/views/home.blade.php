@@ -54,7 +54,7 @@
                 <h2 class = 'matchView'>Size:</h2>
                 <p class = 'matchView' id="preference">I prefer <strong>medium-sized</strong> dogs</p>
                 <div class = 'form-group matchView'>
-                    <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' value={{ old('size') or '' }}>
+                    <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider'>
                     <br>
                     <img src='images/tiny_dog.png'  alt='Tiny dog icon' class='dogImg' id='smallDog'> 
                     <img src='images/small_dog.png' alt='Small dog icon' class='dogImg' id='smallerDog'> 
@@ -94,7 +94,7 @@
                 </div>
 
                 {{-- 3D Submit Button --}}
-                <div type='submit' id="submitButton" class="cube flip-to-top">
+                <div id="submitButton" class="cube flip-to-top">
                     <div class="default-state">
                         <span>FIND YOUR DOG</span>
                     </div>
