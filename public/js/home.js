@@ -101,9 +101,6 @@ $("#sizeSlider").change(function() {
 $(".label").click(function() {
     var currentText = $("#keywords").val();  
     var newKey = $(this).text(); 
-
-    console.log("Current key" + currentText);
-    console.log("New key" + newKey); 
     
     if (!currentText.includes(newKey)) {  
         if (currentText.length > 0)
@@ -145,6 +142,11 @@ $(".cube").mouseenter(function() {
     }
 }); 
 
+
+//submit form on button click
+$('#submitButton').click(function() {
+    $("#matchView").submit();  
+}); 
 
 // refresh keywords
 $("#refresh").click(function() {

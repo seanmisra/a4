@@ -13,7 +13,6 @@ $.ajax({
         function(){
             $('.loader').fadeOut(400); 
             $('.visiblePage').fadeTo(1000, 1);
-            console.log("Image found"); 
             $('.mainImg').attr('src', imagePath); 
         }
 });
@@ -35,7 +34,6 @@ function updateImg (imgPath, imgElement) {
             $(imgElement).attr('src', imgPath); 
         }
    });   
-    console.log("Hello!"); 
 }
 
 

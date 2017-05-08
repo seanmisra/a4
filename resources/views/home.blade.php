@@ -54,12 +54,12 @@
                 <h2 class = 'matchView'>Size:</h2>
                 <p class = 'matchView' id="preference">I prefer <strong>medium-sized</strong> dogs</p>
                 <div class = 'form-group matchView'>
-                    <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' value={{ old('size') }}>
+                    <input type = 'range' name='size' min=0 max=100 step=.3 id='sizeSlider' value={{ old('size') or '' }}>
                     <br>
-                    <img src='images/tiny_dog.png'  class='dogImg' id='smallDog'> 
-                    <img src='images/small_dog.png' class='dogImg' id='smallerDog'> 
-                    <img src='images/medium_dog.png' class='dogImg' id='mediumDog'> 
-                    <img src='images/large_dog.png' class='dogImg' id='largeDog'> 
+                    <img src='images/tiny_dog.png'  alt='Tiny dog icon' class='dogImg' id='smallDog'> 
+                    <img src='images/small_dog.png' alt='Small dog icon' class='dogImg' id='smallerDog'> 
+                    <img src='images/medium_dog.png' alt='Medium dog icon' class='dogImg' id='mediumDog'> 
+                    <img src='images/large_dog.png' alt='Large dog icon' class='dogImg' id='largeDog'> 
                 </div>
                 <br><br>
                 
@@ -77,7 +77,7 @@
                     <br><br><br>
                     <span class="label label-default keywordTag" id="tagThirteen">{{ $allTags[12] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary keywordTag" id="tagFourteen">{{ $allTags[13] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default keywordTag" id="tagFifteen">{{ $allTags[14] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info keywordTag" id="tagSixteen">{{ $allTags[15] }}</span> 
                     <br><br><br>
-                    <input type='text' required name='keywords' id='keywords' placeholder='I want my dog to be...'>
+                    <input type='text' name='keywords' id='keywords' placeholder='I want my dog to be...'>
                     <br><br>
                     <div class="keywordButtons"><i class="fa fa-eraser keywordButton" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left keywordButton" aria-hidden="true"></i></div>
                 </div>
@@ -94,14 +94,14 @@
                 </div>
 
                 {{-- 3D Submit Button --}}
-                <button type='submit' id="submitButton" class="cube flip-to-top">
+                <div type='submit' id="submitButton" class="cube flip-to-top">
                     <div class="default-state">
                         <span>FIND YOUR DOG</span>
                     </div>
                     <div class="active-state">
                         <span><i class="fa fa-paw" aria-hidden="true"></i></span>
                     </div>
-                </button>
+                </div>
 
                 {{-- Footer --}}
                 <footer class="footerAlt">

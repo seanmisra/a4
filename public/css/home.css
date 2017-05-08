@@ -257,6 +257,10 @@ input.cmn-toggle-yes-no:checked + label:after {
 /**********3D SUBMIT BUTTON CSS**********/
 /* As a starting point, I used: https://codepen.io/robbue/pen/hJDlA */
 
+#submitButton {
+    cursor: pointer; 
+}
+
 .cube {
     width: 250px;
     height: 150px; /* Height of Button */

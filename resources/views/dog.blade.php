@@ -23,7 +23,7 @@
             <h1>{{ $dog }}</h1>
             <p>{{ $group }} Group<p>
             <br>
-            <img class='mainImg' height=300 src='//:0'>
+            <img class='mainImg' alt='{{ $dog }}' height=300 src='blank.jpg'>
             @if(Session::get('explanation')!=null)
                 <br><br><div class='alert alert-success' id="explanation">
                     <div class='message'><br>{!! Session::get('explanation') !!}<br><br></div>
@@ -34,7 +34,7 @@
         <main>
             {{-- Summary Table: stars dynamically generated w/ php --}}
             <br><h2>Summary</h2><br>
-            <table class="table" align="center">
+            <table class="table">
                 <tbody>
                     <tr class="active">
                         <td>Energy</td>
@@ -157,16 +157,16 @@
             
             @if(isset($similarBreeds[0]))
                 <h2>Similar Breeds</h2>
-                <a href="/breeds/{{ $similarBreeds[0] }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='//:0'></a>&nbsp;
+                <a href="/breeds/{{ str_replace(" ", "%20", $similarBreeds[0]) }}"><img class = "similarBreed" id="similarBreedOne" alt='{{ $similarBreeds[0] }}' height=130 src='blank.jpg'></a>&nbsp;
             @endif
             @if(isset($similarBreeds[1]))
-                <a href="/breeds/{{ $similarBreeds[1] }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='//:0'></a>&nbsp;
+                <a href="/breeds/{{ str_replace(" ", "%20", $similarBreeds[1]) }}"><img class = "similarBreed" id="similarBreedTwo" alt='{{ $similarBreeds[1] }}' height=130 src='blank.jpg'></a>&nbsp;
             @endif
             @if(isset($similarBreeds[2]))
-                <a href="/breeds/{{ $similarBreeds[2] }}"><img class = "similarBreed" id="similarBreedThree" height=130 src='//:0'></a>&nbsp;
+                <a href="/breeds/{{ str_replace(" ", "%20", $similarBreeds[2]) }}"><img class = "similarBreed" id="similarBreedThree" alt='{{ $similarBreeds[2] }}' height=130 src='blank.jpg'></a>&nbsp;
             @endif
             @if(isset($similarBreeds[3]))
-                <a href="/breeds/{{ $similarBreeds[3] }}"><img class = "similarBreed" id="similarBreedFour" height=130 src='//:0'></a>&nbsp;
+                <a href="/breeds/{{ str_replace(" ", "%20", $similarBreeds[3]) }}"><img class = "similarBreed" id="similarBreedFour" alt='{{ $similarBreeds[3] }}' height=130 src='blank.jpg'></a>&nbsp;
             @endif
         </main>
         <br><br>

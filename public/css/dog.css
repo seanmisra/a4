@@ -80,6 +80,7 @@ p {
 .table {
     text-align: left; 
     width: 60vw;
+    margin: 0 auto; 
 }
 
 td {

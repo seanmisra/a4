@@ -36,7 +36,7 @@
         @foreach($dogMap as $group => $dogs)
             <ul class="list-group {{ $group }}">
                 @foreach($dogs as $dog)
-                <li class="list-group-item"><a href="/breeds/{{ $dog }}">{{ $dog }}</a></li>
+                    <li class="list-group-item"><a href="/breeds/{{ str_replace(" ", "%20", $dog) }}">{{ $dog }}</a></li>
                 @endforeach
             </ul>
         @endforeach        
