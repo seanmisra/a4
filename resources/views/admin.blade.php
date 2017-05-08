@@ -20,6 +20,7 @@
             height: 100px; 
             width: 50vw; 
             font-size: 25px; 
+            padding-left: 10px; 
         }
         main {
             margin-left: 25vw; 
@@ -32,6 +33,10 @@
             font-size: 35px !important; 
             font-weight: bold; 
         } 
+        .adminSearch {
+            font-size: 20px !important; 
+        }
+        
         p {
             font-size: 20px; 
         }
@@ -52,7 +57,7 @@
         </div>
         
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" style="font-size: 30px;">
                 @foreach ($errors->all() as $error)
                     <strong>{{ $error }}</strong>
                 <br>
@@ -134,13 +139,13 @@
         <form class ='edit' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='edit'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to edit' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
+            <input type='text' placeholder='Search dog to edit...' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
         </form>
         
         <form class ='delete' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='delete'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to delete' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
+            <input type='text' placeholder='Search dog to delete...' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
             <br><br><br>
         </form>
         
@@ -157,7 +162,7 @@
                     </div>
                     
                     <div class="alert alert-danger" style='width:50vw; border: 1px solid lightgray;'>
-                        <p><strong>**Deleting {{ $dog->name }} will also delete all tag associations and fun facts**</strong></p>
+                        <p><strong>**Deleting {{ $dog->name }} will also delete all tag associations and facts**</strong></p>
                     </div>
                     
                 </div>  

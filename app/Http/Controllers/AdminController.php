@@ -36,7 +36,11 @@ class AdminController extends Controller
         
     
         //validate user input
-        $rules = ['adminSearch' => 'required|regex:/^[\pL\s\-.]+$/u'];
+        $rules = [
+            'actionType' => 'in:add,edit,delete',
+            'adminSearch' => 'required|regex:/^[\pL\s\-.]+$/u'
+        ];
+        
         $validator = Validator::make($request->all(), $rules); 
         
         //checking dogs with in_array (change to validation regex later)

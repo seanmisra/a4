@@ -154,11 +154,20 @@
                 <br><br><br><br><br>
 
             {{-- Similar Breeds Section --}}
-            <h2>Similar Breeds</h2>
-            <a href="/breeds/{{ (isset($similarBreeds[0])) ? $similarBreeds[0] : "" }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='//:0'></a>&nbsp;
-            <a href="/breeds/{{ (isset($similarBreeds[1])) ? $similarBreeds[1] : "" }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='//:0'></a>&nbsp;
-            <a href="/breeds/{{ (isset($similarBreeds[2])) ? $similarBreeds[2] : "" }}"><img class = "similarBreed" id="similarBreedThree" height=130 src='//:0'></a>&nbsp;
-            <a href="/breeds/{{ (isset($similarBreeds[3])) ? $similarBreeds[3] : "" }}"><img class = "similarBreed" id="similarBreedFour" height=130 src='//:0'></a>&nbsp;
+            
+            @if(isset($similarBreeds[0]))
+                <h2>Similar Breeds</h2>
+                <a href="/breeds/{{ $similarBreeds[0] }}"><img class = "similarBreed" id="similarBreedOne" height=130 src='//:0'></a>&nbsp;
+            @endif
+            @if(isset($similarBreeds[1]))
+                <a href="/breeds/{{ $similarBreeds[1] }}"><img class = "similarBreed" id="similarBreedTwo" height=130 src='//:0'></a>&nbsp;
+            @endif
+            @if(isset($similarBreeds[2]))
+                <a href="/breeds/{{ $similarBreeds[2] }}"><img class = "similarBreed" id="similarBreedThree" height=130 src='//:0'></a>&nbsp;
+            @endif
+            @if(isset($similarBreeds[3]))
+                <a href="/breeds/{{ $similarBreeds[3] }}"><img class = "similarBreed" id="similarBreedFour" height=130 src='//:0'></a>&nbsp;
+            @endif
         </main>
         <br><br>
         
