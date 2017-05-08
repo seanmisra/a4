@@ -1,3 +1,22 @@
+// create jQuery autocomplete validation 
+// only matches beginning of word
+// ignores white spaces
+$("input[name=adminSearch]").autocomplete({
+    source: function(request, response) {
+        var re = ($.ui.autocomplete.escapeRegex((request.term).replace(" ", "")));
+        if (re == "") {
+            return false; 
+        }
+
+        var matcher = new RegExp("^" + re, "i" );
+        var result = $.grep(allDogs, function(item,index){
+            item = item.replace(" ", ""); 
+            return matcher.test(item);
+        });
+        response(result);
+    }
+}); 
+
 // update drop-down menu on page load 
 var menu = $('select[name=option]');
 selected = menu.val(); 

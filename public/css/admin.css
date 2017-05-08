@@ -1,0 +1,103 @@
+/**********ADMIN CSS**********/
+
+main {
+    margin-left: 25vw; 
+}
+
+header {
+    text-align: center; 
+}
+
+h2 {
+    font-size:40px;
+}
+
+span {
+    font-weight: bold; 
+}
+
+span:hover {
+    opacity: .8; 
+    cursor: pointer; 
+}
+
+p {
+    font-size: 20px; 
+}
+
+a {
+    font-weight: bold; 
+    font-size: 30px; 
+} 
+
+a:hover, a:focus {
+    text-decoration: none; 
+}
+
+a:hover {
+    opacity: .8; 
+}
+
+.navbar {
+    display:none; /* Don't display navbar on Admin panel */
+}
+
+.jumbotron {
+    background-color: lightblue;
+    height: 350px; 
+}
+
+input, select, button, .form-control {
+    height: 100px; 
+    width: 50vw; 
+    font-size: 25px; 
+    padding-left: 10px; 
+}
+
+
+#option, input[name=adminSearch] {
+    height: 125px; 
+    font-size: 35px; 
+    font-weight: bold; 
+} 
+
+.add, .edit, .delete {
+    display:none;
+}
+
+input[name=adminSearch] {
+    margin-bottom: 200px; 
+    margin-top:-70px; 
+    border: solid 1px gray;
+}
+
+button, input[type=submit] {
+    text-transform: uppercase !important;
+    font-weight: bold; 
+    font-size: 30px; 
+}
+
+#successMessage {
+    color: #468847;
+}
+
+.alert {
+    font-size: 30px; 
+}
+
+.alert-warning, .alert-danger {
+    width:50vw; 
+    border: 1px solid lightgray;
+}
+
+.sessionMessage {
+    width: 100vw; 
+}
+
+.selected-dog {
+    height: 120px; 
+}
+
+.dogSection {
+    margin-top: -160px;
+}

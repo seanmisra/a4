@@ -10,6 +10,7 @@ use Session;
 
 class AdminController extends Controller
 {
+    // default admin page 
     public function main() {
         # get all dog names
         $allDogs = Dog::all()->pluck('name')->toArray(); 
@@ -21,42 +22,51 @@ class AdminController extends Controller
         ]);
     }
     
+
+    // method when user searches for dog to delete/edit 
     public function search(Request $request) {        
         # get all dog names
-        $dogNames = Dog::all()->pluck('name')->toArray(); 
-        sort($dogNames); 
-        $dogNames = json_encode($dogNames); 
+        $allDogs = Dog::all(); 
+        $dogNamesArray = $allDogs->pluck('name')->toArray(); 
+        sort($dogNamesArray); 
+        $dogNames = json_encode($dogNamesArray); 
         
-        $dog = ucwords($request->input('adminSearch')); 
+        # get search term and actionType (edit or delete)
+        $searchTerm = ucwords($request->input('adminSearch')); 
         $actionType = $request->input('actionType'); 
         
-        // no aliases for admin search
-        $dogFull = Dog::all()->where('name', 'LIKE', $dog)->first();       
-        $allDogs = Dog::all()->pluck('name')->toArray(); 
-        
-    
-        //validate user input
+        # get Dog object (based on search term)
+        $dog = $allDogs->where('name', $searchTerm)->first(); 
+                
+        #validate user input
         $rules = [
             'actionType' => 'in:add,edit,delete',
             'adminSearch' => 'required|regex:/^[\pL\s\-.]+$/u'
         ];
-        
         $validator = Validator::make($request->all(), $rules); 
         
-        //checking dogs with in_array (change to validation regex later)
-        if ($validator->fails() || !(in_array($dog, $allDogs))) {
+        # redirect back to admin page if validation fails
+        if ($validator->fails()) {
             return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
         }
-                
         
+        # also redirect to admin page if searched dog is not found
+        if (!(in_array($searchTerm, $dogNamesArray))) {
+            $errorMessage = '<strong>'.$searchTerm.'</strong> not found in database';  
+            Session::flash('errorMessage', $errorMessage);
+        }
+                   
         return view('admin')->with([
-            'dog' => $dogFull,
+            'dog' => $dog,
             'actionType' => $actionType,
             'allDogs' => $dogNames
         ]); 
     }
     
+    
+    // edit a dog already existing  
     public function edit(Request $request) {
+        # validation rules for required fields
         $rules = [
             'name' => 'required|regex:/^[\pL\s\-.]+$/u',
             'group' => 'required|in:Herding,Hound,Non-Sporting,Sporting,Working,Toy',
@@ -69,6 +79,7 @@ class AdminController extends Controller
             'adventure' => 'required|integer|between:1,5'
         ];
         
+        # validation rules for optional fields
         if($request->has('aliasOne'))
             $rules['aliasOne'] = 'regex:/^[\pL\s\-.]+$/u'; 
         if($request->has('aliasTwo'))
@@ -76,15 +87,14 @@ class AdminController extends Controller
         if($request->has('aliasThree'))
             $rules['aliasThree'] = 'regex:/^[\pL\s\-.]+$/u'; 
 
-        
+        # if validation page redirect back to admin page
         $validator = Validator::make($request->all(), $rules); 
-
         if ($validator->fails()) {
             return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
         }
         
+        # find Dog object and update necessary MySQL fields
         $dog = Dog::find($request->id); 
-        
         $dog->name = $request->name; 
         $dog->aliasOne = $request->aliasOne; 
         $dog->aliasTwo = $request->aliasTwo; 
@@ -99,7 +109,8 @@ class AdminController extends Controller
         $dog->adventure = $request->adventure; 
         
         $dog->save();   
-                
+        
+        # create success message via Session        
         $link = '/breeds/'.$dog->name; 
         $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.'</a>'.' successfully edited!'; 
                 
@@ -107,20 +118,29 @@ class AdminController extends Controller
         return redirect('/admin'); 
     }
     
+    
+    // delete a dog
     public function delete(Request $request) {                
+        # find Dog to delete
         $dog = Dog::find($request->id);
-        
+    
+        # delete Dog, as well as all associated tags
         $dog->tags()->detach(); 
         $dog->delete(); 
         
-        $adminMessage = $dog->name.' successfully deleted!'; 
+        # create success message via Sesssion
+        $adminMessage = '<strong>'.$dog->name.'</strong> successfully deleted!'; 
         Session::flash('adminMessage', $adminMessage);
         return redirect('/admin'); 
     }
     
+    
+    // add a new dog
     public function add(Request $request) {
-        $dog = new Dog(); 
-                        
+        # get all dog names
+        $allDogs = Dog::all()->pluck('name')->toArray();  
+        
+        # validation for required fields                    
         $rules = [
             'name' => 'required|regex:/^[\pL\s\-.]+$/u',
             'group' => 'required|in:Herding,Hound,Non-Sporting,Sporting,Working,Toy',
@@ -133,6 +153,7 @@ class AdminController extends Controller
             'adventure' => 'required|integer|between:1,5'
         ];
         
+        # validation for optional fields
         if($request->has('aliasOne'))
             $rules['aliasOne'] = 'regex:/^[\pL\s\-.]+$/u'; 
         if($request->has('aliasTwo'))
@@ -140,13 +161,21 @@ class AdminController extends Controller
         if($request->has('aliasThree'))
             $rules['aliasThree'] = 'regex:/^[\pL\s\-.]+$/u'; 
 
-        
+        # run validation and redirect if it failed
         $validator = Validator::make($request->all(), $rules); 
-
         if ($validator->fails()) {
             return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
         }
         
+        #ensure that dog name is not being repeated
+        if(in_array(ucwords($request->name), $allDogs)) {
+            $errorMessage = '<strong>'.$request->name.'</strong> already in database';  
+            Session::flash('errorMessage', $errorMessage); 
+            return redirect('/admin')->withErrors($validator)->withInput(Input::all()); 
+        }
+        
+        # create a new dog and update required fields
+        $dog = new Dog(); 
         $dog->name = $request->name; 
         $dog->group = $request->group; 
         $dog->apartment = $request->apartment;
@@ -157,6 +186,7 @@ class AdminController extends Controller
         $dog->cleanliness = $request->cleanliness; 
         $dog->adventure = $request->adventure; 
         
+        # update optional fields if provided
         if($request->has('aliasOne'))
             $dog->aliasOne = $request->aliasOne; 
         if($request->has('aliasTwo'))
@@ -166,6 +196,7 @@ class AdminController extends Controller
         
         $dog->save();   
         
+        # create success message via Sesssion
         $link = '/breeds/'.$dog->name; 
         $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.'</a>'.' successfully added!'; 
         

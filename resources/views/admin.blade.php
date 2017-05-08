@@ -4,91 +4,46 @@
     Dog Data Admin
 @stop
 
+@push('head')
+    <link rel='stylesheet' href='/css/admin.css'>
+@endpush 
+
 @section('content')
-    <style>
-        .navbar {
-            display:none; 
-        }
-        .jumbotron {
-            background-color: lightblue;
-            height: 350px; 
-        }
-        span {
-            font-weight: bold; 
-        }
-        span:hover {
-            opacity: .8; 
-            cursor: pointer; 
-        }
-        input, select, button, .form-control {
-            height: 100px; 
-            width: 50vw; 
-            font-size: 25px; 
-            padding-left: 10px; 
-        }
-        main {
-            margin-left: 25vw; 
-        }
-        header {
-            text-align: center; 
-        }
-        #option, .adminSearch {
-            height: 125px !important; 
-            font-size: 35px !important; 
-            font-weight: bold; 
-        } 
-        .adminSearch {
-            font-size: 20px !important; 
-        }
-        
-        p {
-            font-size: 20px; 
-        }
-        button, input[type=submit] {
-            text-transform: uppercase !important;
-            font-weight: bold; 
-            font-size: 30px; 
-        }
-        a {
-            font-weight: bold; 
-        } 
-        a:hover, a:focus {
-            text-decoration: none; 
-        }
-        a:hover {
-            opacity: .8; 
-        }
-        #successMessage {
-            color: #468847;
-        }
-    </style>
-    
-    
     <header>
         <div class='jumbotron'>
             <h1>Dog Database Admin</h1>
-            <a href='/' style='font-size:30px;'>GO HOME</a><br><br>
+            <a href='/'>GO HOME</a><br><br>
             <br>
         </div>
-        
+        {{-- Display errors if found --}}
         @if (count($errors) > 0)
-            <div class="alert alert-danger" style="font-size: 30px;">
+            <div class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <strong>{{ $error }}</strong>
                 <br>
                 @endforeach
             </div>
         @endif
+        
+        {{-- Display success message if available --}}
         @if (Session::get('adminMessage') != null)
-            <div class="alert alert-success" style="font-size: 30px;">
+            <div class="alert alert-success sessionMessage">
                 {!! Session::get('adminMessage') !!}
+            </div>
+        @endif 
+        
+        {{-- Display error message if available; these won't be in the error bag --}}
+        @if (Session::get('errorMessage') != null)
+            <div class="alert alert-danger sessionMessage">
+                {!! Session::get('errorMessage') !!}
             </div>
         @endif 
         <br><br>
     </header>
 
     <main>
-        <select class='form-control' id='option' name='option' style="height: 100px; font-size: 25px; width: 50vw;">
+        {{-- Drop-down Menu to select action --}}
+        <select class='form-control' id='option' name='option'>
             <option value='Add'>ADD Dog</option>
             <option value='Edit' {{ isset($actionType) ? (($actionType == 'edit') ? 'SELECTED' : ''):'' }}>EDIT Dog</option>
             <option value='Delete' {{ isset($actionType) ? (($actionType == 'delete') ? 'SELECTED' : ''):'' ? 'SELECTED' : '' }}>DELETE Dog</option>
@@ -96,16 +51,17 @@
         <p>*Denotes a <strong>required</strong> field</p><br><br>
         
         
-        <form class= "add" method="POST" style='display:none;' action='{{ action("AdminController@add")}}'> 
+        {{-- Form to add a Dog --}}
+        <form class= "add" method="POST" action='{{ action("AdminController@add")}}'> 
             {{ csrf_field() }}
             <h3>*Name:</h3> 
-            <input type='text' required name='name' placeholder='Enter dog name'>
+            <input type='text' required name='name' value='{{ old('name') }}' placeholder='Enter dog name'>
             <h3>AliasOne:</h3>
-            <input type='text' name='aliasOne' placeholder='Enter Alias (Optional)'>
+            <input type='text' name='aliasOne' value='{{ old('aliasOne') }}' placeholder='Enter Alias (Optional)'>
             <h3>AliasTwo:</h3>
-            <input type='text' name='aliasTwo' placeholder='Enter Alias (Optional)'>
+            <input type='text' name='aliasTwo' value='{{ old('aliasTwo') }}' placeholder='Enter Alias (Optional)'>
             <h3>AliasThree:</h3>
-            <input type='text' name='aliasThree' placeholder='Enter Alias (Optional)'>        
+            <input type='text' name='aliasThree' value='{{ old('aliasThree') }}' placeholder='Enter Alias (Optional)'>        
             <h3>*Group:</h3>
             <select class='form-control' name='group'>                        
                 <option value='Herding'>Herding</option>
@@ -131,58 +87,58 @@
             </select>                                        
 
             <h3>*Energy:</h3>
-            <input type='number' required min='1' max='5' name='energy' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='energy' value='{{ old('energy') }}' placeholder='Enter number 1-5'>
             <h3>*Social:</h3>
-            <input type='number' required min='1' max='5' name='social' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='social' value='{{ old('social') }}' placeholder='Enter number 1-5'>
             <h3>*Intelligence:</h3>
-            <input type='number' required min='1' max='5' name='intelligence' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='intelligence' value='{{ old('intelligence') }}' placeholder='Enter number 1-5'>
             <h3>*Cleanliness:</h3>
-            <input type='number' required min='1' max='5' name='cleanliness' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='cleanliness' value='{{ old('cleanliness') }}' placeholder='Enter number 1-5'>
             <h3>*Fun:</h3>
-            <input type='number' required min='1' max='5' name='adventure' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='adventure' value='{{ old('adventure') }}' placeholder='Enter number 1-5'>
             <br>
             <br>
-            <div class="alert alert-warning" style='width:50vw; border: 1px solid lightgray;'>
+            <div class="alert alert-warning">
                 <p><strong>**Please review form before submitting**</strong></p>
             </div>
             <input type='submit'>
         </form>
-        
         <br><br><br>
         
-        
+        {{-- Form to search for a Dog to Edit --}}
         <form class ='edit' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='edit'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to edit...' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
+            <input type='text' placeholder='Search dog to edit...' name='adminSearch'>  
         </form>
         
+        {{-- Form to search for a Dog to Delete --}}
         <form class ='delete' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='delete'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to delete...' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
+            <input type='text' placeholder='Search dog to delete...' name='adminSearch'>  
             <br><br><br>
         </form>
         
+        {{-- Edit/Delete HTML Forms --}}
         @if(isset($dog))
-            <div class='dogSection' style="margin-top: -160px;">
+            <div class='dogSection'>
                 <div class='edit'>       
-                    <div class="alert alert-warning" style='width:50vw; height: 120px; border: 1px solid lightgray;'>
-                        <h2 style='font-size:40px;'>&rarr; Selected Dog: <strong>{{ $dog->name }}</strong></h2>
+                    <div class="alert alert-warning selected-dog">
+                        <h2>&rarr; Selected Dog: <strong>{{ $dog->name }}</strong></h2>
                     </div>
                 </div>  
                 <div class='delete'>                      
-                    <div class="alert alert-danger" style='width:50vw; height: 120px; border: 1px solid lightgray;'>
-                        <h2 style='font-size:40px;'>&rarr; Selected Dog: <strong>{{ $dog->name }}</strong></h2>
+                    <div class="alert alert-danger selected-dog">
+                        <h2>&rarr; Selected Dog: <strong>{{ $dog->name }}</strong></h2>
                     </div>
-                    
-                    <div class="alert alert-danger" style='width:50vw; border: 1px solid lightgray;'>
+                    <div class="alert alert-danger">
                         <p><strong>**Deleting {{ $dog->name }} will also delete all tag associations and facts**</strong></p>
                     </div>
-                    
                 </div>  
         
-                <form class='edit' method='post' style='display:none;' action='{{ action("AdminController@edit") }}'>
+                {{-- Form to edit a Dog --}}
+                <form class='edit' method='post' action='{{ action("AdminController@edit") }}'>
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <h3>*Name:</h3> 
@@ -231,13 +187,14 @@
                     <input type='number' required min='1' max='5' name='adventure' value='{{ $dog->adventure }}'>
                     <br>
                     <br>
-                    <div class="alert alert-warning" style='width:50vw; border: 1px solid lightgray;'>
+                    <div class="alert alert-warning">
                         <p><strong>**Please review changes before submitting**</strong></p>
                     </div>
                     <input type='submit'>
                 </form>
                 
-                <form class='delete' method='post' style='display:none;' action='{{ action("AdminController@delete") }}'>
+                {{-- Form to delete a Dog --}}
+                <form class='delete' method='post' action='{{ action("AdminController@delete") }}'>
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <button>Delete {{ $dog->name}}</button>
@@ -249,28 +206,11 @@
 @stop
 
 @push('body')
+    {{-- PHP to JS conversion --}} 
     <script>
         var allDogs = {!! $allDogs !!}; 
-        
-        // create jQuery autocomplete validation 
-        // only matches beginning of word
-        // ignores white spaces
-        $(".adminSearch").autocomplete({
-            source: function(request, response) {
-                var re = ($.ui.autocomplete.escapeRegex((request.term).replace(" ", "")));
-                if (re == "") {
-                    return false; 
-                }
-
-                var matcher = new RegExp("^" + re, "i" );
-                var result = $.grep(allDogs, function(item,index){
-                    item = item.replace(" ", ""); 
-                    return matcher.test(item);
-                });
-                response(result);
-            }
-        }); 
     </script>
 
+    {{-- Admin JavaScript --}}
     <script src='/js/admin.js'></script>
 @endpush
