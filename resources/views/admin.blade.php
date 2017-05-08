@@ -7,7 +7,11 @@
 @section('content')
     <style>
         .navbar {
-            background-color: beige; 
+            display:none; 
+        }
+        .jumbotron {
+            background-color: lightblue;
+            height: 350px; 
         }
         span {
             font-weight: bold; 
@@ -45,14 +49,25 @@
             font-weight: bold; 
             font-size: 30px; 
         }
+        a {
+            font-weight: bold; 
+        } 
+        a:hover, a:focus {
+            text-decoration: none; 
+        }
+        a:hover {
+            opacity: .8; 
+        }
+        #successMessage {
+            color: #468847;
+        }
     </style>
     
     
     <header>
         <div class='jumbotron'>
             <h1>Dog Database Admin</h1>
-            <p>~Bare-Bones: Add/Edit/Delete~</p>
-            <i class="fa fa-paw" aria-hidden="true" style="font-size: 50px;"></i>
+            <a href='/' style='font-size:30px;'>GO HOME</a><br><br>
             <br>
         </div>
         
@@ -66,7 +81,7 @@
         @endif
         @if (Session::get('adminMessage') != null)
             <div class="alert alert-success" style="font-size: 30px;">
-                {{ Session::get('adminMessage') }}
+                {!! Session::get('adminMessage') !!}
             </div>
         @endif 
         <br><br>
@@ -74,9 +89,9 @@
 
     <main>
         <select class='form-control' id='option' name='option' style="height: 100px; font-size: 25px; width: 50vw;">
-            <option value='Add'>Add</option>
-            <option value='Edit' {{ isset($actionType) ? (($actionType == 'edit') ? 'SELECTED' : ''):'' }}>Edit</option>
-            <option value='Delete' {{ isset($actionType) ? (($actionType == 'delete') ? 'SELECTED' : ''):'' ? 'SELECTED' : '' }}>Delete</option>
+            <option value='Add'>ADD Dog</option>
+            <option value='Edit' {{ isset($actionType) ? (($actionType == 'edit') ? 'SELECTED' : ''):'' }}>EDIT Dog</option>
+            <option value='Delete' {{ isset($actionType) ? (($actionType == 'delete') ? 'SELECTED' : ''):'' ? 'SELECTED' : '' }}>DELETE Dog</option>
         </select>
         <p>*Denotes a <strong>required</strong> field</p><br><br>
         

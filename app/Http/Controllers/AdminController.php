@@ -99,8 +99,10 @@ class AdminController extends Controller
         $dog->adventure = $request->adventure; 
         
         $dog->save();   
-        
-        $adminMessage = $dog->name.' successfully edited!'; 
+                
+        $link = '/breeds/'.$dog->name; 
+        $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.'</a>'.' successfully edited!'; 
+                
         Session::flash('adminMessage', $adminMessage);
         return redirect('/admin'); 
     }
@@ -164,7 +166,9 @@ class AdminController extends Controller
         
         $dog->save();   
         
-        $adminMessage = $dog->name.' successfully added!'; 
+        $link = '/breeds/'.$dog->name; 
+        $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.'</a>'.' successfully added!'; 
+        
         Session::flash('adminMessage', $adminMessage);
         return redirect('/admin'); 
     }
