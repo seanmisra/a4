@@ -35,6 +35,11 @@
         p {
             font-size: 20px; 
         }
+        button, input[type=submit] {
+            text-transform: uppercase !important;
+            font-weight: bold; 
+            font-size: 30px; 
+        }
     </style>
     
     
@@ -47,13 +52,18 @@
         </div>
         
         @if (count($errors) > 0)
-            <div class="alert alert-danger" style="margin: 0 0 0 0;">
+            <div class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <strong>{{ $error }}</strong>
                 <br>
                 @endforeach
             </div>
         @endif
+        @if (Session::get('adminMessage') != null)
+            <div class="alert alert-success" style="font-size: 30px;">
+                {{ Session::get('adminMessage') }}
+            </div>
+        @endif 
         <br><br>
     </header>
 
@@ -69,7 +79,7 @@
         <form class= "add" method="POST" style='display:none;' action='{{ action("AdminController@add")}}'> 
             {{ csrf_field() }}
             <h3>*Name:</h3> 
-            <input type='text' name='name' placeholder='Enter dog name (required)'>
+            <input type='text' required name='name' placeholder='Enter dog name'>
             <h3>AliasOne:</h3>
             <input type='text' name='aliasOne' placeholder='Enter Alias (Optional)'>
             <h3>AliasTwo:</h3>
@@ -101,18 +111,20 @@
             </select>                                        
 
             <h3>*Energy:</h3>
-            <input type='text' name='energy' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='energy' placeholder='Enter number 1-5'>
             <h3>*Social:</h3>
-            <input type='text' name='social' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='social' placeholder='Enter number 1-5'>
             <h3>*Intelligence:</h3>
-            <input type='text' name='intelligence' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='intelligence' placeholder='Enter number 1-5'>
             <h3>*Cleanliness:</h3>
-            <input type='text' name='cleanliness' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='cleanliness' placeholder='Enter number 1-5'>
             <h3>*Fun:</h3>
-            <input type='text' name='adventure' placeholder='Enter number 1-5'>
+            <input type='number' required min='1' max='5' name='adventure' placeholder='Enter number 1-5'>
             <br>
             <br>
-            <p>**Please review changes before submitting</p>
+            <div class="alert alert-warning" style='width:50vw; border: 1px solid lightgray;'>
+                <p><strong>**Please review form before submitting**</strong></p>
+            </div>
             <input type='submit'>
         </form>
         
@@ -122,30 +134,39 @@
         <form class ='edit' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='edit'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to edit' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px; margin-bottom: 200px;">  
+            <input type='text' placeholder='Search dog to edit' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
         </form>
         
         <form class ='delete' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='delete'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to delete' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px; margin-bottom: 200px;">  
+            <input type='text' placeholder='Search dog to delete' class='adminSearch' name='adminSearch' style="width:50vw; height: 100px; font-size: 25px; margin-bottom: 200px; margin-top:-70px; border: solid 1px gray;">  
             <br><br><br>
         </form>
         
         @if(isset($dog))
             <div class='dogSection' style="margin-top: -160px;">
                 <div class='edit'>       
-                    <h2>Current Dog: {{ $dog->name }}</h2>
+                    <div class="alert alert-warning" style='width:50vw; height: 120px; border: 1px solid lightgray;'>
+                        <h2 style='font-size:40px;'>&rarr; Selected Dog: <strong>{{ $dog->name }}</strong></h2>
+                    </div>
                 </div>  
-                <div class='delete'>        
-                    <h2>Current Dog: {{ $dog->name }}</h2>
+                <div class='delete'>                      
+                    <div class="alert alert-danger" style='width:50vw; height: 120px; border: 1px solid lightgray;'>
+                        <h2 style='font-size:40px;'>&rarr; Selected Dog: <strong>{{ $dog->name }}</strong></h2>
+                    </div>
+                    
+                    <div class="alert alert-danger" style='width:50vw; border: 1px solid lightgray;'>
+                        <p><strong>**Deleting {{ $dog->name }} will also delete all tag associations and fun facts**</strong></p>
+                    </div>
+                    
                 </div>  
         
                 <form class='edit' method='post' style='display:none;' action='{{ action("AdminController@edit") }}'>
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <h3>*Name:</h3> 
-                    <input type='text' name='name' value='{{ $dog->name }}'>
+                    <input type='text' required name='name' value='{{ $dog->name }}'>
                     <h3>AliasOne:</h3>
                     <input type='text' name='aliasOne' placeholder='AliasOne' value='{{ $dog->aliasOne }}'>
                     <h3>AliasTwo:</h3>
@@ -179,18 +200,20 @@
                     
                     
                     <h3>*Energy:</h3>
-                    <input type='text' name='energy' value='{{ $dog->energy }}'>
+                    <input type='number' required min='1' max='5' name='energy' value='{{ $dog->energy }}'>
                     <h3>*Social:</h3>
-                    <input type='text' name='social' value='{{ $dog->social }}'>
+                    <input type='number' required min='1' max='5' name='social' value='{{ $dog->social }}'>
                     <h3>*Intelligence:</h3>
-                    <input type='text' name='intelligence' value='{{ $dog->intelligence }}'>
+                    <input type='number' required min='1' max='5' name='intelligence' value='{{ $dog->intelligence }}'>
                     <h3>*Cleanliness:</h3>
-                    <input type='text' name='cleanliness' value='{{ $dog->cleanliness }}'>
+                    <input type='number' required min='1' max='5' name='cleanliness' value='{{ $dog->cleanliness }}'>
                     <h3>*Fun:</h3>
-                    <input type='text' name='adventure' value='{{ $dog->adventure }}'>
+                    <input type='number' required min='1' max='5' name='adventure' value='{{ $dog->adventure }}'>
                     <br>
                     <br>
-                    <p>**Please review changes before submitting</p>
+                    <div class="alert alert-warning" style='width:50vw; border: 1px solid lightgray;'>
+                        <p><strong>**Please review changes before submitting**</strong></p>
+                    </div>
                     <input type='submit'>
                 </form>
                 
@@ -198,7 +221,6 @@
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <button>Delete {{ $dog->name}}</button>
-                    <p>Deleting {{ $dog->name }} will also delete all tag associations and fun facts</p>
                 </form>
             </div>
             <br><br><br>

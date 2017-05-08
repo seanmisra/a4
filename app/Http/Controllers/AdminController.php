@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Input; 
 use App\Dog; 
+use Session; 
 
 class AdminController extends Controller
 {
@@ -20,7 +21,7 @@ class AdminController extends Controller
         ]);
     }
     
-    public function search(Request $request) {
+    public function search(Request $request) {        
         # get all dog names
         $dogNames = Dog::all()->pluck('name')->toArray(); 
         sort($dogNames); 
@@ -95,16 +96,20 @@ class AdminController extends Controller
         
         $dog->save();   
         
-        dd("Successfully edited"); 
+        $adminMessage = $dog->name.' successfully edited!'; 
+        Session::flash('adminMessage', $adminMessage);
+        return redirect('/admin'); 
     }
     
-    public function delete(Request $request) {
+    public function delete(Request $request) {                
         $dog = Dog::find($request->id);
         
         $dog->tags()->detach(); 
         $dog->delete(); 
         
-        dd("Successfully deleted"); 
+        $adminMessage = $dog->name.' successfully deleted!'; 
+        Session::flash('adminMessage', $adminMessage);
+        return redirect('/admin'); 
     }
     
     public function add(Request $request) {
@@ -153,10 +158,10 @@ class AdminController extends Controller
         if($request->has('aliasThree'))
             $dog->aliasThree = $request->aliasThree; 
         
-        
         $dog->save();   
-    
-                
-        dd("Added dog!"); 
+        
+        $adminMessage = $dog->name.' successfully added!'; 
+        Session::flash('adminMessage', $adminMessage);
+        return redirect('/admin'); 
     }
 }
