@@ -82,6 +82,8 @@
                     <br><br><br>
                     <input type='text' name='keywords' id='keywords' placeholder='I want my dog to be...'>
                     <br><br>
+                    <p>One keyword <strong>required</strong>. At least 5 recommended.</p>
+                    <br>
                     <div class="keywordButtons"><i class="fa fa-eraser keywordButton" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-left keywordButton" aria-hidden="true"></i></div>
                 </div>
                 <br><br><br><br>

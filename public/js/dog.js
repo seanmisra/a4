@@ -57,7 +57,7 @@ $(".fa-refresh").click(function() {
 
     $("#factContent, #factSource").fadeOut(function() {
         $("#factContent").text(facts[randomElem]['content']).fadeIn('slow');
-        $("#factSource").text(facts[randomElem]['source']).fadeIn('slow');
+        $("#factSource").html("Source: <a target='_blank' href='" + facts[randomElem]['source'] + "'>" + facts[randomElem]['source'] + "</a>" ).fadeIn('slow');
     }); 
 }); 
 

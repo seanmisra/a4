@@ -33,4 +33,7 @@
     <li>Laravel 5 log viewer</li>
     <li>All images are used responsibly. Most are from Pixabay; some are from Wikipedia</li>
     <li>Dog research from dogtime.com, akc.org, and mentalfloss.com</li>
+    <li>HTML 5 slider starting point: http://codepen.io/the_ruther4d/pen/frbdH</li>
+    <li>Toggle checkbox starting point: http://callmenick.com/post/css-toggle-switch-examples</li>
+    <li>3D flip button starting point: https://codepen.io/robbue/pen/hJDlA</li>
 </ul> 
