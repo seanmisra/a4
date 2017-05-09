@@ -61,19 +61,14 @@ class DogTagTableSeeder extends Seeder
             'Yorkshire Terrier' => ['Apartment dog', 'Elegant', 'Feisty', 'Sensitive', 'Family-friendly', 'Energetic', 'Playful', 'Long life', 'Tiny', 'Mischievous', 'Spunky', 'Loyal']
         ]; 
         
-        
+        // loop through each Dog in $dogs and add corresponding keywords
         foreach($dogs as $dog => $tags) {
-            
             $dog = Dog::where('name', 'like', $dog)->first(); 
             
             foreach($tags as $tagName) {
                 $tag = Tag::where('name', 'LIKE', $tagName)->first(); 
-                
                 $dog->tags()->save($tag); 
             }
-            
         }
-        
-        
     }
 }

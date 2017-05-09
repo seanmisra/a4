@@ -17,6 +17,9 @@ class CreateTagsTable extends Migration
             $table->increments('id'); 
             $table->timestamps(); 
             $table->string('name'); 
+            
+            # true if tag is positive/neutral; else false 
+            $table->boolean('positive')->default(true); 
         }); 
     }
 

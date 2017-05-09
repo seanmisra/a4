@@ -13,13 +13,13 @@ class HomeController extends Controller
 {
     // for homepage load
     public function start() {
-        # get all dog names
+        # get all Dog names
         $allDogs = Dog::all()->pluck('name')->toArray(); 
         sort($allDogs); 
         $allDogs = json_encode($allDogs); 
         
-        # get all dog tags
-        $allTags = Tag::all()->pluck('name')->toArray(); 
+        # get all positive Dog tags
+        $allTags = Tag::all()->where('positive', 'LIKE', true)->pluck('name')->toArray();    
         shuffle($allTags); 
         $allTagsJSON = json_encode($allTags); 
         

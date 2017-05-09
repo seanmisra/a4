@@ -19,18 +19,7 @@ class DogsTableSeeder extends Seeder
         // small: 15 - 40 pounds
         // medium: 40 - 85 pounds
         // large: 85 pounds and above
-        
-        // source for apartments: http://www.petguide.com/blog/dog/top-10-best-dog-breeds-for-apartments/11
-        
-        
-        //SOURCE for stars: http://dogtime.com/dog-breeds
-        // energy >> corresponds to energy level ranking
-        // social >> corresponds to All Around Friendliness (4 rankings)
-        // intelligence >> corresponds to intelligence ranking
-        // cleanliness >> corresponds to Amount of Shedding (inverse), Drooling Potential (inverse), and Easy to Groom (3 rankings) 
-        // adventure >> exercise and potential for playfulness
-        
-        //added 
+
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
