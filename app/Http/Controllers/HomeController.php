@@ -136,7 +136,7 @@ class HomeController extends Controller
             $explanation .= ', which suits what you\'re looking for. ';
         
         $traitExplanation= ""; 
-        foreach($selectedTraits as $trait) 
+        foreach(array_unique($selectedTraits) as $trait) 
             $traitExplanation .= $trait.", ";
             
         if ($selectedTraits) {   
