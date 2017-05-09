@@ -141,17 +141,15 @@
                 <form class='edit' method='post' action='{{ action("AdminController@edit") }}'>
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
-                    <h3>*Name:</h3> 
-                    <input type='text' required name='name' value='{{ $dog->name }}'>
                     <h3>AliasOne:</h3>
-                    <input type='text' name='aliasOne' placeholder='AliasOne' value='{{ $dog->aliasOne }}'>
+                    <input type='text' name='aliasOneEdit' placeholder='AliasOne' value='{{ $dog->aliasOne }}'>
                     <h3>AliasTwo:</h3>
-                    <input type='text' name='aliasTwo' placeholder='AliasTwo' value='{{ $dog->aliasTwo }}'>
+                    <input type='text' name='aliasTwoEdit' placeholder='AliasTwo' value='{{ $dog->aliasTwo }}'>
                     <h3>AliasThree:</h3>
-                    <input type='text' name='aliasThree' placeholder='AliasThree' value='{{ $dog->aliasThree }}'>
+                    <input type='text' name='aliasThreeEdit' placeholder='AliasThree' value='{{ $dog->aliasThree }}'>
                     
                     <h3>*Group:</h3>
-                    <select class='form-control' name='group'>
+                    <select class='form-control' name='groupEdit'>
                         <option value='Herding' {{ ($dog->group == 'Herding') ? 'SELECTED' : '' }}> Herding</option>
                         <option value='Hound' {{ ($dog->group == 'Hound') ? 'SELECTED' : '' }}>Hound</option>
                         <option value='Non-Sporting' {{ ($dog->group == 'Non-Sporting') ? 'SELECTED' : '' }}>Non-Sporting</option>
@@ -161,13 +159,13 @@
                     </select>
                     
                     <h3>*Apartment:</h3>
-                    <select class='form-control' name='apartment'>                        
+                    <select class='form-control' name='apartmentEdit'>                    
                         <option value='0' {{ ($dog->apartment == 0) ? 'SELECTED' : '' }}>Not Apartment-Friendly</option>
                         <option value='1' {{ ($dog->apartment == 1) ? 'SELECTED' : '' }}> Apartment-Friendly</option>
                     </select>                    
                     
                     <h3>*Size:</h3>
-                    <select class='form-control' name='size'>
+                    <select class='form-control' name='sizeEdit'>
                         <option value='tiny' {{ ($dog->size == 'tiny') ? 'SELECTED' : '' }}>Tiny</option>
                         <option value='small' {{ ($dog->size == 'small') ? 'SELECTED' : '' }}> Small</option>
                         <option value='medium' {{ ($dog->size == 'medium') ? 'SELECTED' : '' }}>Medium</option>
@@ -176,15 +174,15 @@
                     
                     
                     <h3>*Energy:</h3>
-                    <input type='number' required min='1' max='5' name='energy' value='{{ $dog->energy }}'>
+                    <input type='number' required min='1' max='5' name='energyEdit' value='{{ $dog->energy }}'>
                     <h3>*Social:</h3>
-                    <input type='number' required min='1' max='5' name='social' value='{{ $dog->social }}'>
+                    <input type='number' required min='1' max='5' name='socialEdit' value='{{ $dog->social }}'>
                     <h3>*Intelligence:</h3>
-                    <input type='number' required min='1' max='5' name='intelligence' value='{{ $dog->intelligence }}'>
+                    <input type='number' required min='1' max='5' name='intelligenceEdit' value='{{ $dog->intelligence }}'>
                     <h3>*Cleanliness:</h3>
-                    <input type='number' required min='1' max='5' name='cleanliness' value='{{ $dog->cleanliness }}'>
+                    <input type='number' required min='1' max='5' name='cleanlinessEdit' value='{{ $dog->cleanliness }}'>
                     <h3>*Fun:</h3>
-                    <input type='number' required min='1' max='5' name='adventure' value='{{ $dog->adventure }}'>
+                    <input type='number' required min='1' max='5' name='adventureEdit' value='{{ $dog->adventure }}'>
                     <br>
                     <br>
                     <div class="alert alert-warning">

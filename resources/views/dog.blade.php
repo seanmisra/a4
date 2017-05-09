@@ -124,7 +124,7 @@
             <div id = "funFact">
                 <br>
                 <h2>Did you Know?</h2>
-                <p id="factContent">{!! isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." !!}<br><p id="factSource">{!! isset($source[0]) ? "Source: <a target='_blank' href='".$facts[0]['source']."'>".$facts[0]['source']."</a>" : 'No source' !!}</p>
+                <p id="factContent">{!! isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." !!}<br><p id="factSource">{!! isset($facts[0]) ? "Source: <a target='_blank' href='".$facts[0]['source']."'>".$facts[0]['source']."</a>" : 'No source' !!}</p>
                 
                 @if(sizeof($facts) > 1)
                     <p><i class="fa fa-refresh" aria-hidden="true"></i></p>

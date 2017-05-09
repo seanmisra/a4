@@ -70,24 +70,23 @@ class AdminController extends Controller
     public function edit(Request $request) {
         # validation rules for required fields
         $rules = [
-            'name' => 'required|regex:/^[\pL\s\-.]+$/u',
-            'group' => 'required|in:Herding,Hound,Non-Sporting,Sporting,Working,Toy',
-            'apartment' => 'required|boolean',
-            'size' => 'required|in:tiny,small,medium,large',
-            'energy' => 'required|integer|between:1,5',
-            'social' => 'required|integer|between:1,5',
-            'intelligence' => 'required|integer|between:1,5',
-            'cleanliness' => 'required|integer|between:1,5',
-            'adventure' => 'required|integer|between:1,5'
+            'groupEdit' => 'required|in:Herding,Hound,Non-Sporting,Sporting,Working,Toy',
+            'apartmentEdit' => 'required|boolean',
+            'sizeEdit' => 'required|in:tiny,small,medium,large',
+            'energyEdit' => 'required|integer|between:1,5',
+            'socialEdit' => 'required|integer|between:1,5',
+            'intelligenceEdit' => 'required|integer|between:1,5',
+            'cleanlinessEdit' => 'required|integer|between:1,5',
+            'adventureEdit' => 'required|integer|between:1,5'
         ];
         
         # validation rules for optional fields
-        if($request->has('aliasOne'))
-            $rules['aliasOne'] = 'regex:/^[\pL\s\-.]+$/u'; 
-        if($request->has('aliasTwo'))
-            $rules['aliasTwo'] = 'regex:/^[\pL\s\-.]+$/u'; 
-        if($request->has('aliasThree'))
-            $rules['aliasThree'] = 'regex:/^[\pL\s\-.]+$/u'; 
+        if($request->has('aliasOneEdit'))
+            $rules['aliasOneEdit'] = 'regex:/^[\pL\s\-.]+$/u'; 
+        if($request->has('aliasTwoEdit'))
+            $rules['aliasTwoEdit'] = 'regex:/^[\pL\s\-.]+$/u'; 
+        if($request->has('aliasThreeEdit'))
+            $rules['aliasThreeEdit'] = 'regex:/^[\pL\s\-.]+$/u'; 
 
         # if validation page redirect back to admin page
         $validator = Validator::make($request->all(), $rules); 
@@ -97,18 +96,17 @@ class AdminController extends Controller
         
         # find Dog object and update necessary MySQL fields
         $dog = Dog::find($request->id); 
-        $dog->name = $request->name; 
-        $dog->aliasOne = $request->aliasOne; 
-        $dog->aliasTwo = $request->aliasTwo; 
-        $dog->aliasThree = $request->aliasThree; 
-        $dog->group = $request->group; 
-        $dog->apartment = $request->apartment;
-        $dog->size = $request->size; 
-        $dog->energy = $request->energy;
-        $dog->social = $request->social; 
-        $dog->intelligence = $request->intelligence; 
-        $dog->cleanliness = $request->cleanliness; 
-        $dog->adventure = $request->adventure; 
+        $dog->aliasOne = $request->aliasOneEdit; 
+        $dog->aliasTwo = $request->aliasTwoEdit; 
+        $dog->aliasThree = $request->aliasThreeEdit; 
+        $dog->group = $request->groupEdit; 
+        $dog->apartment = $request->apartmentEdit;
+        $dog->size = $request->sizeEdit; 
+        $dog->energy = $request->energyEdit;
+        $dog->social = $request->socialEdit; 
+        $dog->intelligence = $request->intelligenceEdit; 
+        $dog->cleanliness = $request->cleanlinessEdit; 
+        $dog->adventure = $request->adventureEdit; 
         
         $dog->save();   
         
