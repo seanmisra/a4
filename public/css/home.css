@@ -64,6 +64,7 @@ input {
 
 .popover {
     font-size: 14px; 
+    width: 500px; 
 }
 
 .popover-title {

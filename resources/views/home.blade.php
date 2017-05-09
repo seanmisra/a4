@@ -41,7 +41,7 @@
                 <div class = 'form-group searchView'>
                     <input type='text' name='search' id='homeSearch' placeholder='Type breed...' required>
                     <br><br><br>
-                        <a href='#' data-toggle='popover' data-placement='bottom' data-html='true' id='info' title='<br>Dog Data —  Help<br><br>' data-content='Thanks for visiting! You can search for a dog here, or get "matched" with a dog by the clicking the Match option above. There are roughly 40 dogs in the database. If APP_ENV is set to "local" in the .env file, you can access an Admin Panel in the navigation bar.' data-trigger='hover'>
+                        <a href='#' data-toggle='popover' data-placement='right' data-html='true' id='info' title='<br>Dog Data —  Help<br><br>' data-content='<br>Thanks for visiting! You can search for a dog here, or get "matched" with a dog by the clicking the Match option above. There are roughly 40 dogs in the database. If APP_ENV is set to "local" in the .env file, you can access an Admin Panel in the navigation bar.<br><br>' data-trigger='hover'>
                             <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
                         </a>
                     <footer class="footerSearch">
