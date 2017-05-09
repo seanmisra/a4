@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  Illuminate\Validation\Rule; 
 use Validator;
 use Input; 
 use App\Dog; 
 use Session; 
+use Image; 
 
 class AdminController extends Controller
 {
@@ -150,7 +152,7 @@ class AdminController extends Controller
             'social' => 'required|integer|between:1,5',
             'intelligence' => 'required|integer|between:1,5',
             'cleanliness' => 'required|integer|between:1,5',
-            'adventure' => 'required|integer|between:1,5'
+            'adventure' => 'required|integer|between:1,5',
         ];
         
         # validation for optional fields
@@ -160,7 +162,10 @@ class AdminController extends Controller
             $rules['aliasTwo'] = 'regex:/^[\pL\s\-.]+$/u'; 
         if($request->has('aliasThree'))
             $rules['aliasThree'] = 'regex:/^[\pL\s\-.]+$/u'; 
-
+        if($request->hasFile('dogImg')) {
+            $rules['dogImg'] = Rule::dimensions()->maxWidth(1200)->maxHeight(1000)->minWidth(350)->minHeight(200);
+        }
+        
         # run validation and redirect if it failed
         $validator = Validator::make($request->all(), $rules); 
         if ($validator->fails()) {
@@ -195,6 +200,13 @@ class AdminController extends Controller
             $dog->aliasThree = $request->aliasThree; 
         
         $dog->save();   
+        
+        # create and save Image object 
+        if($request->hasFile('dogImg')) {
+            $img = Image::make($request->file('dogImg')); 
+            $imgName = str_replace(" ", "_", $request->name).".jpg";  
+            $img->save('images/'.$imgName); 
+        }
         
         # create success message via Sesssion
         $link = '/breeds/'.$dog->name; 

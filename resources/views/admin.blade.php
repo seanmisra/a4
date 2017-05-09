@@ -17,7 +17,7 @@
         </div>
         {{-- Display errors if found --}}
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
+            <div id='errorStrip' class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <strong>{{ $error }}</strong>
                 <br>
@@ -52,7 +52,7 @@
         
         
         {{-- Form to add a Dog --}}
-        <form class= "add" method="POST" action='{{ action("AdminController@add")}}'> 
+        <form class= "add" method="POST" action='{{ action("AdminController@add")}}' enctype= "multipart/form-data"> 
             {{ csrf_field() }}
             <h3>*Name:</h3> 
             <input type='text' required name='name' value='{{ old('name') }}' placeholder='Enter dog name'>
@@ -96,8 +96,8 @@
             <input type='number' required min='1' max='5' name='cleanliness' value='{{ old('cleanliness') }}' placeholder='Enter number 1-5'>
             <h3>*Fun:</h3>
             <input type='number' required min='1' max='5' name='adventure' value='{{ old('adventure') }}' placeholder='Enter number 1-5'>
-            <br>
-            <br>
+            <h3>Image: <span>Accepted Size: btw 350x200 and 1200x1000</span></h3>
+            <input type='file' name='dogImg' accept="image/*">
             <div class="alert alert-warning">
                 <p><strong>**Please review form before submitting**</strong></p>
             </div>

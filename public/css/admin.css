@@ -85,6 +85,10 @@ button, input[type=submit] {
     font-size: 30px; 
 }
 
+#errorStrip {
+    margin: 0 auto; 
+}
+
 .alert-warning, .alert-danger {
     width:50vw; 
     border: 1px solid lightgray;
@@ -100,4 +104,16 @@ button, input[type=submit] {
 
 .dogSection {
     margin-top: -160px;
+}
+
+input[type=file] {
+    font-size: 12px;
+}
+
+input[type=file]:focus {
+    outline: none; 
+}
+
+h3>span {
+    font-size: 10px; 
 }
