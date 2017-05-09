@@ -57,6 +57,10 @@ if (errors == true) {
     $("#searchOption").html("Search");
 }
 
+// create bootstrap popover
+$('#info').popover();   
+
+
 
 //*************************************HOME_MATCH*************************************//
 

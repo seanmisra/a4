@@ -53,6 +53,25 @@ input {
     font-size: 20px; 
 }
 
+.glyphicon-question-sign {
+    font-size: 50px; 
+    color: rgb(50, 50, 50); 
+}
+
+.glyphicon-question-sign:hover {
+    opacity: .8; 
+}
+
+.popover {
+    font-size: 14px; 
+}
+
+.popover-title {
+    text-align: center; 
+    font-size: 20px; 
+    font-weight: bold; 
+}
+
 
 
 /**********MATCH-VIEW CSS**********/
