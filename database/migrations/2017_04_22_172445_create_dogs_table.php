@@ -17,19 +17,22 @@ class CreateDogsTable extends Migration
     {
         Schema::create('dogs', function(Blueprint $table) {
             $table->increments('id'); 
-            
             $table->timestamps(); 
-            
             $table->string('name'); 
+            
             # aliases are alternative names for dog (for SEO)
             $table->string('aliasOne')->nullable(); 
             $table->string('aliasTwo')->nullable(); 
             $table->string('aliasThree')->nullable(); 
+            
             $table->string('group')->nullable();
+            
             # apartment: for dogs that do well in small spaces
             $table->boolean('apartment')->default(false); 
+            
             # size: lap (15 pounds), small (15 - 40 pounds), medium (40 - 85 pounds), large (85 pounds+) 
             $table->enum('size', array("tiny", "small", "medium", "large"))->nullable(); 
+            
             $table->enum('energy', array(1, 2, 3, 4, 5))->default(3); 
             $table->enum('social', array(1, 2, 3, 4, 5))->default(3); 
             $table->enum('intelligence', array(1, 2, 3, 4, 5))->default(3); 

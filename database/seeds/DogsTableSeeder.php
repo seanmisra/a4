@@ -33,7 +33,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 3
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -47,7 +46,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -62,7 +60,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -78,7 +75,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 2
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -92,7 +88,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -106,7 +101,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -121,7 +115,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -136,7 +129,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -151,7 +143,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added 
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -166,7 +157,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -181,7 +171,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -196,7 +185,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -210,7 +198,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 2
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -225,7 +212,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 2
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -239,7 +225,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -254,7 +239,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -269,7 +253,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -283,7 +266,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -297,7 +279,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -312,7 +293,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -326,7 +306,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -341,7 +320,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -355,7 +333,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -372,7 +349,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -386,7 +362,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -400,7 +375,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -415,7 +389,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -430,7 +403,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -445,7 +417,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -459,7 +430,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -473,7 +443,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -487,7 +456,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -502,7 +470,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -516,7 +483,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 4
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -532,7 +498,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -547,7 +512,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 5
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -564,7 +528,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 3
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -579,7 +542,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 3
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -593,7 +555,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 3
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -608,7 +569,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 3
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -623,7 +583,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 3
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -638,7 +597,6 @@ class DogsTableSeeder extends Seeder
             'adventure' => 3
         ]);
         
-        //added
         Dog::insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),

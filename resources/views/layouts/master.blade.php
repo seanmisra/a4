@@ -44,7 +44,7 @@
                         <li id="breeds"><a href="/breeds">Breeds</a>&nbsp;&nbsp;</li>
                         <li id="github"><a target='_blank' href="https://github.com/seanmisra/a4">GitHub</a></li>
                         @if(Config::get('app.env') == 'local')
-                            <li id="adming"><a href="/admin">Admin</a></li>
+                            <li id="admin"><a href="/admin">Admin</a></li>
                         @endif
                     </ul>
                 </div>

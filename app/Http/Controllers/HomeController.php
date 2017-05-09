@@ -47,14 +47,15 @@ class HomeController extends Controller
         $dog = (array_search($dog, $aliasOne)) ? $dogNames[array_search($dog, $aliasOne)] : $dog; 
         $dog = (array_search($dog, $aliasTwo)) ? $dogNames[array_search($dog, $aliasTwo)] : $dog; 
         $dog = (array_search($dog, $aliasThree)) ? $dogNames[array_search($dog, $aliasThree)] : $dog;         
+        
         # query must be alpha, w/ spaces, dashes, commas allowed
         $rules = ['search' => 'required|regex:/^[\pL\s\-.]+$/u'];
         $validator = Validator::make($request->all(), $rules); 
                 
         # check validation and if dog name is valid
         if ($validator->fails() || !(in_array($dog, $dogNames))) {
-            Session::flash('invalidSearchMessage', 'The breed <strong>'.$dog. '</strong> was not found. Search for breeds here.'); 
-            
+            Session::flash('invalidSearchMessage', 'The breed <strong>'
+                .$dog.'</strong> was not found. Search for breeds here.'); 
             return redirect('/breeds')->withErrors($validator)->withInput(Input::all());   
         }
         # if validation passes, redirect to a dog view
@@ -93,14 +94,13 @@ class HomeController extends Controller
             $preferredSize = "tiny"; 
         endif; 
         
-        
         # get collection of potential dogs
         if ($lifestyle)
-            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)->where('apartment', 'LIKE', true); 
+            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)
+            ->where('apartment', 'LIKE', true); 
         else 
             $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize);      
 
-        
         # score each potential dog
         $dogScores = [];  
         $matchedTraits = []; 
@@ -112,8 +112,7 @@ class HomeController extends Controller
                         $dogScores[$dog->name]++; 
                         array_push($matchedTraits[$dog->name], $tag);  
                 }
-            }
-                
+            }       
         }        
         
         # out of potential dogs, pick one with most matchedTraits
@@ -129,7 +128,8 @@ class HomeController extends Controller
         }
         
         # build explanation for picking dog 
-        $explanation = "The <strong>".$selectedDog."</strong> was selected! The ".$selectedDog." is a ".$preferredSize." dog";
+        $explanation = "The <strong>".$selectedDog.
+        "</strong> was selected! The ".$selectedDog." is a ".$preferredSize." dog";
         if ($lifestyle)
             $explanation .= ", who will fit well in your apartment. ";
         else 

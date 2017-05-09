@@ -152,6 +152,7 @@ $('#submitButton').click(function() {
     $("#matchView").submit();  
 }); 
 
+
 // refresh keywords
 $("#refresh").click(function() {
     var shuffledTags = shuffle(allTags); 

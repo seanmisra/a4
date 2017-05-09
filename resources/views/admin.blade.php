@@ -20,7 +20,7 @@
             <div id='errorStrip' class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <strong>{{ $error }}</strong>
-                <br>
+                    <br>
                 @endforeach
             </div>
         @endif
@@ -96,6 +96,7 @@
             <input type='number' required min='1' max='5' name='cleanliness' value='{{ old('cleanliness') }}' placeholder='Enter number 1-5'>
             <h3>*Fun:</h3>
             <input type='number' required min='1' max='5' name='adventure' value='{{ old('adventure') }}' placeholder='Enter number 1-5'>
+            
             <h3>Image: <span>Accepted Size: btw 350x200 and 1200x1000</span></h3>
             <input type='file' name='dogImg' accept="image/*">
             <div class="alert alert-warning">
@@ -172,7 +173,6 @@
                         <option value='large' {{ ($dog->size == 'large') ? 'SELECTED' : '' }}> Large</option>
                     </select>                                        
                     
-                    
                     <h3>*Energy:</h3>
                     <input type='number' required min='1' max='5' name='energyEdit' value='{{ $dog->energy }}'>
                     <h3>*Social:</h3>
@@ -183,8 +183,7 @@
                     <input type='number' required min='1' max='5' name='cleanlinessEdit' value='{{ $dog->cleanliness }}'>
                     <h3>*Fun:</h3>
                     <input type='number' required min='1' max='5' name='adventureEdit' value='{{ $dog->adventure }}'>
-                    <br>
-                    <br>
+                    <br><br>
                     <div class="alert alert-warning">
                         <p><strong>**Please review changes before submitting**</strong></p>
                     </div>

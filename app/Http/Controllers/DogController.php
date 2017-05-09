@@ -66,7 +66,6 @@ class DogController extends Controller
             'fiveStar' => $fiveStar, 
             'badStar' => $badStar, 
             'regularStar' => $regularStar
-        ]);  
-        
+        ]);     
     }
 }

@@ -253,7 +253,6 @@ input.cmn-toggle-yes-no + label:before {
     background-color: #428bca;
     font-size: 35px; 
     content: attr(data-off);
-
     -webkit-transition: -webkit-transform 1s;
     -moz-transition: -moz-transform 1s;
     -o-transition: -o-transform 1s;

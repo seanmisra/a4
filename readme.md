@@ -5,7 +5,7 @@
 
 <h2>Installation</h2>
 <ol>
-    <li>Clone repo: <code>git@github.com:seanmisra/a4.git</code></li>
+    <li>Clone repo: <code>git clone git@github.com:seanmisra/a4.git</code></li>
     <li>Within the a4 folder, add composer dependencies: <code>composer install</code></li>
     <li>Create an .env file: <code>cp .env.example .env</code></li>
     <li>Generate an app key: <code>php artisan key:generate</code></li>
@@ -31,9 +31,11 @@
     <li>Font Awesome</li>
     <li>Laravel Debugbar</li>
     <li>Laravel 5 log viewer</li>
+    <li>Intervention Image</li>
     <li>All images are used responsibly. Most are from Pixabay; some are from Wikipedia</li>
     <li>Dog research from dogtime.com, akc.org, and mentalfloss.com</li>
     <li>HTML 5 slider starting point: http://codepen.io/the_ruther4d/pen/frbdH</li>
     <li>Toggle checkbox starting point: http://callmenick.com/post/css-toggle-switch-examples</li>
     <li>3D flip button starting point: https://codepen.io/robbue/pen/hJDlA</li>
+    <li>JavaScript shuffle function: https://www.frankmitchell.org/2015/01/fisher-yates/</li>
 </ul> 
