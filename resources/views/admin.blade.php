@@ -100,12 +100,19 @@
             <h3>Image: <span>Accepted Size: btw 350x200 and 1200x1000</span></h3>
             <input type='file' name='dogImg' accept="image/*">
             <h3>Tags: </h3>
-            <h4><i class="fa fa-cog" aria-hidden="true"></i> Show Tags: <span>Add as many as desired</span></h4>
+            <h4 id="showTags"><i class="fa fa-cog" aria-hidden="true"></i> Show Tags: <span>For best results, check <strong>12</strong></span></h4>
             <div class='allTags'>
                 @foreach($allTags as $tag)
                     <input type='checkbox' class='tagBox' name='tags[]' value='{{ $tag['id'] }}'> {{ $tag['name'] }}
                     <br>
                 @endforeach
+            </div>
+            <br><br>
+            <h3>Facts: </h3>
+            <h4 id="addFact"><i class="fa fa-plus" aria-hidden="true"></i> Add Fact</h4>
+            <div class='allFacts'>
+                <br><br>
+                {{-- Add all facts here --}}
             </div>
             <br><br>
             <div class="alert alert-warning">

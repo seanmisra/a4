@@ -32,9 +32,16 @@ menu.change(function() {
 
 
 // toggle tags visibility
-$("h4").click(function() {
+$("#showTags").click(function() {
     $('.allTags').toggle('slow'); 
 }); 
+
+var factCount = 1;  
+// add fact input
+$("#addFact").click(function() {
+    $('.allFacts').append("<h3>Fact " + factCount + " Content:<h3><textarea name='facts[]' placeholder='Enter fact'></textarea><br>" + "<h3>Fact " + factCount + " Source:</h3><input type='url' placeholder='Enter URL' name='sources[]'><br><br><br>");
+    factCount++; 
+})
 
             
 // update drop-down view

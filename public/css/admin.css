@@ -47,13 +47,12 @@ a:hover {
     height: 350px; 
 }
 
-input, select, button, .form-control {
+input, select, button, .form-control, textarea {
     height: 100px; 
     width: 50vw; 
     font-size: 25px; 
     padding-left: 10px; 
 }
-
 
 #option, input[name=adminSearch] {
     height: 125px; 

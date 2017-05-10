@@ -10,6 +10,7 @@ use App\Dog;
 use Session; 
 use Image; 
 use App\Tag; 
+use App\Fact;
 
 class AdminController extends Controller
 {
@@ -198,8 +199,10 @@ class AdminController extends Controller
             return redirect('/admin')->withErrors($validator)->withInput(Input::all()); 
         }
            
-        # if there are tags, collect them in an array
+        # collect tags, facts, and fact sources
         $tags = ($request->tags) ? $request->tags : []; 
+        $facts = ($request->facts) ? $request->facts : []; 
+        $sources = ($request->sources) ? $request->sources : []; 
         
         # create a new dog and update required fields
         $dog = new Dog(); 
@@ -225,8 +228,21 @@ class AdminController extends Controller
         $dog->save();   
         $dog->tags()->sync($tags); 
         $dog->save();   
-
         
+        # create facts and associate with dog's id
+        if($request->facts) {
+            for($x = 0; $x<sizeof($facts); $x++) {
+                $newFact = new Fact(); 
+                $newFact->content = $facts[$x]; 
+                if($sources[$x] != null)
+                    $newFact->source = $sources[$x]; 
+                
+                $newFact->dog_id = $dog->id;  
+                $newFact->save(); 
+            }
+        }
+        
+
         # create and save Image object 
         if($request->hasFile('dogImg')) {
             $img = Image::make($request->file('dogImg')); 

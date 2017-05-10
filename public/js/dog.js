@@ -54,10 +54,16 @@ $('#similarBreedFour').attr('title', similarFour);
 //refresh facts
 $(".fa-refresh").click(function() {
     var randomElem = Math.floor(Math.random()*facts.length);
-
+    var source; 
+    
     $("#factContent, #factSource").fadeOut(function() {
+        if (facts[randomElem]['source'])
+            source = "Source: <a target='_blank' href='" + facts[randomElem]['source'] + "'>" + facts[randomElem]['source'] + "</a>"
+        else 
+            source = "No Source"; 
+        
         $("#factContent").text(facts[randomElem]['content']).fadeIn('slow');
-        $("#factSource").html("Source: <a target='_blank' href='" + facts[randomElem]['source'] + "'>" + facts[randomElem]['source'] + "</a>" ).fadeIn('slow');
+        $("#factSource").html(source).fadeIn('slow');
     }); 
 }); 
 
