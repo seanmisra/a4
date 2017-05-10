@@ -62,6 +62,12 @@ class AdminController extends Controller
             $tagsForThisDog[] = $tag->name;
         }
         
+        # get facts
+        $facts = []; 
+        foreach($dog->facts as $fact) {
+            $facts[] = $fact; 
+        }
+        
         # redirect back to admin page if validation fails
         if ($validator->fails()) {
             return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
@@ -76,6 +82,7 @@ class AdminController extends Controller
         return view('admin')->with([
             'dog' => $dog,
             'actionType' => $actionType,
+            'facts' => $facts,
             'allDogs' => $dogNames,
             'allTags' => $allTags,
             'tagsForThisDog' => $tagsForThisDog
@@ -111,9 +118,12 @@ class AdminController extends Controller
             return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
         }
         
-        # if there are tags, collect them in an array
+        # if there are tags/facts, collect them in an array
         $tags = ($request->tags) ? $request->tags : []; 
-        
+        $facts = ($request->facts) ? $request->facts : []; 
+        $sources = ($request->sources) ? $request->sources : []; 
+        $factIds = ($request->factIds) ? $request->factIds : []; 
+                
         # find Dog object and update necessary MySQL fields
         $dog = Dog::find($request->id); 
         $dog->aliasOne = $request->aliasOneEdit; 
@@ -131,6 +141,30 @@ class AdminController extends Controller
         #resync tags and save
         $dog->tags()->sync($tags); 
         $dog->save();   
+                
+        # edit facts and create them as needed
+        if($request->facts) {
+            for($x = 0; $x<sizeof($facts); $x++) {
+                # for existing facts
+                if(isset($factIds[$x])) {
+                    $currentFact = Fact::find($factIds[$x]);
+                    $currentFact->content = $facts[$x]; 
+                    if($sources[$x] != null)
+                        $currentFact->source = $sources[$x];
+                    
+                    $currentFact->save(); 
+                }
+                # for new facts
+                else {
+                    $newFact = new Fact(); 
+                    $newFact->content = $facts[$x]; 
+                    if($sources[$x] != null)
+                        $newFact->source = $sources[$x]; 
+                    $newFact->dog_id = $dog->id;  
+                    $newFact->save(); 
+                }
+            }
+        }
         
         # create success message via Session        
         $link = '/breeds/'.$dog->name; 
