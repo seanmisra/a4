@@ -47,13 +47,19 @@ class AdminController extends Controller
         
         # get Dog object (based on search term)
         $dog = $allDogs->where('name', $searchTerm)->first(); 
-                
+        
         #validate user input
         $rules = [
             'actionType' => 'in:add,edit,delete',
             'adminSearch' => 'required|regex:/^[\pL\s\-.]+$/u'
         ];
         $validator = Validator::make($request->all(), $rules); 
+        
+        # get tags for specific dog
+        $tagsForThisDog = [];
+        foreach($dog->tags as $tag) {
+            $tagsForThisDog[] = $tag->name;
+        }
         
         # redirect back to admin page if validation fails
         if ($validator->fails()) {
@@ -65,12 +71,13 @@ class AdminController extends Controller
             $errorMessage = '<strong>'.$searchTerm.'</strong> not found in database';  
             Session::flash('errorMessage', $errorMessage);
         }
-                   
+                         
         return view('admin')->with([
             'dog' => $dog,
             'actionType' => $actionType,
             'allDogs' => $dogNames,
-            'allTags' => $allTags
+            'allTags' => $allTags,
+            'tagsForThisDog' => $tagsForThisDog
         ]); 
     }
     
@@ -103,6 +110,9 @@ class AdminController extends Controller
             return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
         }
         
+        # if there are tags, collect them in an array
+        $tags = ($request->tags) ? $request->tags : []; 
+        
         # find Dog object and update necessary MySQL fields
         $dog = Dog::find($request->id); 
         $dog->aliasOne = $request->aliasOneEdit; 
@@ -117,6 +127,8 @@ class AdminController extends Controller
         $dog->cleanliness = $request->cleanlinessEdit; 
         $dog->adventure = $request->adventureEdit; 
         
+        #resync tags and save
+        $dog->tags()->sync($tags); 
         $dog->save();   
         
         # create success message via Session        
@@ -209,6 +221,7 @@ class AdminController extends Controller
         if($request->has('aliasThree'))
             $dog->aliasThree = $request->aliasThree; 
                 
+        # save to create id, sync tags, and save again
         $dog->save();   
         $dog->tags()->sync($tags); 
         $dog->save();   

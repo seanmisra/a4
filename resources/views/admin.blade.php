@@ -192,6 +192,14 @@
                     <input type='number' required min='1' max='5' name='cleanlinessEdit' value='{{ $dog->cleanliness }}'>
                     <h3>*Fun:</h3>
                     <input type='number' required min='1' max='5' name='adventureEdit' value='{{ $dog->adventure }}'>
+                    <h3>Tags:</h3>
+                    <h4><i class="fa fa-cog" aria-hidden="true"></i> Show Tags: <span>Add as many as desired</span></h4>
+                    <div class='allTags'>
+                        @foreach($allTags as $tag)
+                            <input type='checkbox' class='tagBox' name='tags[]' value='{{ $tag['id'] }}' {{ (in_array($tag['name'], $tagsForThisDog)) ? 'CHECKED' : '' }}> {{ $tag['name'] }}
+                            <br>
+                        @endforeach
+                    </div>
                     <br><br>
                     <div class="alert alert-warning">
                         <p><strong>**Please review changes before submitting**</strong></p>
