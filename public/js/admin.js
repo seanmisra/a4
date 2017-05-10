@@ -43,7 +43,7 @@ $("#addFact").click(function() {
     if (factCount == 6)
         $('.allFacts').append("<div class='alert alert-danger'>Can only add 5 facts at once!</div>");
     else if (factCount < 6)        
-        $('.allFacts').append("<h3>Fact " + factCount + " Content:</h3><textarea name='facts[]' placeholder='Enter fact'></textarea><br>" + "<h3>Fact " + factCount + " Source:</h3><input type='url' placeholder='Enter URL' name='sources[]'><br><br><br>");
+        $('.allFacts').append("<h3>Fact " + factCount + " Content:</h3><textarea required name='facts[]' placeholder='Enter fact'></textarea><br>" + "<h3>Fact " + factCount + " Source:</h3><input type='url' placeholder='Enter URL' name='sources[]'><br><br><br>");
     
     factCount++; 
 })
@@ -52,7 +52,7 @@ $("#addFact").click(function() {
 // add fact input (for editing Dog)
 var factCountEdit = 1;  
 $("#addFactEdit").click(function() {
-    $('.allFactsEdit').append("<h3>New Fact " + factCountEdit + " Content:</h3><textarea name='facts[]' placeholder='Enter fact'></textarea><br>" + "<h3>New Fact " + factCountEdit + " Source:</h3><input type='url' placeholder='Enter URL' name='sources[]'><br><br><br>");
+    $('.allFactsEdit').append("<h3>New Fact " + factCountEdit + " Content:</h3><textarea required name='facts[]' placeholder='Enter fact'></textarea><br>" + "<h3>New Fact " + factCountEdit + " Source:</h3><input type='url' placeholder='Enter URL' name='sources[]'><br><br><br>");
     factCountEdit++; 
 })
 
