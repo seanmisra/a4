@@ -16,13 +16,11 @@ class AdminController extends Controller
 {
     // default admin page 
     public function main() {
-        # get all dog names
-        $allDogs = Dog::all()->pluck('name')->toArray(); 
-        sort($allDogs); 
-        $allDogs = json_encode($allDogs); 
+        # get all Dog names as JSON string
+        $allDogs = Dog::namesForDropdown(); 
 
-        # get all tags
-        $allTags = Tag::orderBy('name', 'ASC')->get(); 
+        # get all Tags, sorted 
+        $allTags = Tag::sortedTags(); 
         
         return view('admin')->with([
             'allDogs' => $allDogs,
@@ -33,21 +31,19 @@ class AdminController extends Controller
 
     // method when user searches for dog to delete/edit 
     public function search(Request $request) {        
-        # get all dog names
-        $allDogs = Dog::all(); 
-        $dogNamesArray = $allDogs->pluck('name')->toArray(); 
-        sort($dogNamesArray); 
+        # get Dog data structures
+        $dogNamesArray = Dog::names(); 
         $dogNames = json_encode($dogNamesArray); 
         
-        # get all tags
-        $allTags = Tag::orderBy('name', 'ASC')->get(); 
+        # get all tags, sorted
+        $allTags = Tag::sortedTags(); 
         
         # get search term and actionType (edit or delete)
         $searchTerm = ucwords($request->input('adminSearch')); 
         $actionType = $request->input('actionType'); 
         
         # get Dog object (based on search term)
-        $dog = $allDogs->where('name', $searchTerm)->first(); 
+        $dog = Dog::with('tags')->where('name', $searchTerm)->first(); 
         
         #validate user input
         $rules = [
@@ -55,6 +51,17 @@ class AdminController extends Controller
             'adminSearch' => 'required|regex:/^[\pL\s\-.]+$/u'
         ];
         $validator = Validator::make($request->all(), $rules); 
+        
+        # redirect back to admin page if validation fails
+        if ($validator->fails()) {
+            return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
+        }
+        
+        # also redirect to admin page if searched dog is not found
+        if (!(in_array($searchTerm, $dogNamesArray))) {
+            $errorMessage = '<strong>'.$searchTerm.'</strong> not found in database';  
+            Session::flash('errorMessage', $errorMessage);
+        }
         
         # get tags for specific dog
         $tagsForThisDog = [];
@@ -66,17 +73,6 @@ class AdminController extends Controller
         $facts = []; 
         foreach($dog->facts as $fact) {
             $facts[] = $fact; 
-        }
-        
-        # redirect back to admin page if validation fails
-        if ($validator->fails()) {
-            return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
-        }
-        
-        # also redirect to admin page if searched dog is not found
-        if (!(in_array($searchTerm, $dogNamesArray))) {
-            $errorMessage = '<strong>'.$searchTerm.'</strong> not found in database';  
-            Session::flash('errorMessage', $errorMessage);
         }
                          
         return view('admin')->with([
@@ -125,7 +121,7 @@ class AdminController extends Controller
         $factIds = ($request->factIds) ? $request->factIds : []; 
                 
         # find Dog object and update necessary MySQL fields
-        $dog = Dog::find($request->id); 
+        $dog = Dog::with('tags')->find($request->id); 
         $dog->aliasOne = $request->aliasOneEdit; 
         $dog->aliasTwo = $request->aliasTwoEdit; 
         $dog->aliasThree = $request->aliasThreeEdit; 
@@ -168,9 +164,11 @@ class AdminController extends Controller
         
         # create success message via Session        
         $link = '/breeds/'.$dog->name; 
-        $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.'</a>'.' successfully edited!'; 
+        $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.
+        '</a>'.' successfully edited!'; 
                 
         Session::flash('adminMessage', $adminMessage);
+        
         return redirect('/admin'); 
     }
     
@@ -194,7 +192,7 @@ class AdminController extends Controller
     // add a new dog
     public function add(Request $request) {
         # get all dog names
-        $allDogs = Dog::all()->pluck('name')->toArray();  
+        $allDogs = Dog::names(); 
         
         # validation for required fields                    
         $rules = [
@@ -286,7 +284,8 @@ class AdminController extends Controller
         
         # create success message via Sesssion
         $link = '/breeds/'.$dog->name; 
-        $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.'</a>'.' successfully added!'; 
+        $adminMessage = '<a id="successMessage" href="'.$link.'">'.$dog->name.
+        '</a>'.' successfully added!'; 
         
         Session::flash('adminMessage', $adminMessage);
         return redirect('/admin'); 

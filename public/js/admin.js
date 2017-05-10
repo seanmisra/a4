@@ -37,10 +37,14 @@ $(".showTags").click(function() {
 }); 
 
 
-// add fact input (for adding Dog)
+// add fact input (for adding Dog) - can only add 5 facts at once
 var factCount = 1;  
 $("#addFact").click(function() {
-    $('.allFacts').append("<h3>Fact " + factCount + " Content:</h3><textarea name='facts[]' placeholder='Enter fact'></textarea><br>" + "<h3>Fact " + factCount + " Source:</h3><input type='url' placeholder='Enter URL' name='sources[]'><br><br><br>");
+    if (factCount == 6)
+        $('.allFacts').append("<div class='alert alert-danger'>Can only add 5 facts at once!</div>");
+    else if (factCount < 6)        
+        $('.allFacts').append("<h3>Fact " + factCount + " Content:</h3><textarea name='facts[]' placeholder='Enter fact'></textarea><br>" + "<h3>Fact " + factCount + " Source:</h3><input type='url' placeholder='Enter URL' name='sources[]'><br><br><br>");
+    
     factCount++; 
 })
 
