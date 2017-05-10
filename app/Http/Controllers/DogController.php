@@ -24,8 +24,9 @@ class DogController extends Controller
         $facts = $myDog->facts->toArray();
         $factsJSON = json_encode($facts);
         
-        # get dog's tags
+        # get dog's tags and shuffle thme
         $tags = $myDog->tags->pluck('name')->toArray(); 
+        shuffle($tags); 
         
         # get dog's "star scores"
         $energy = $myDog->energy; 

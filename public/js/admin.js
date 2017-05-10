@@ -31,6 +31,12 @@ menu.change(function() {
 });      
 
 
+// toggle tags visibility
+$("h4").click(function() {
+    $('.allTags').toggle('slow'); 
+}); 
+
+            
 // update drop-down view
 function changeDisplay(value) {
     switch(value) {

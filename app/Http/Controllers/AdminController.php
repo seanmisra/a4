@@ -9,6 +9,7 @@ use Input;
 use App\Dog; 
 use Session; 
 use Image; 
+use App\Tag; 
 
 class AdminController extends Controller
 {
@@ -18,9 +19,13 @@ class AdminController extends Controller
         $allDogs = Dog::all()->pluck('name')->toArray(); 
         sort($allDogs); 
         $allDogs = json_encode($allDogs); 
+
+        # get all tags
+        $allTags = Tag::orderBy('name', 'ASC')->get(); 
         
         return view('admin')->with([
-            'allDogs' => $allDogs
+            'allDogs' => $allDogs,
+            'allTags' => $allTags
         ]);
     }
     
@@ -32,6 +37,9 @@ class AdminController extends Controller
         $dogNamesArray = $allDogs->pluck('name')->toArray(); 
         sort($dogNamesArray); 
         $dogNames = json_encode($dogNamesArray); 
+        
+        # get all tags
+        $allTags = Tag::orderBy('name', 'ASC')->get(); 
         
         # get search term and actionType (edit or delete)
         $searchTerm = ucwords($request->input('adminSearch')); 
@@ -61,7 +69,8 @@ class AdminController extends Controller
         return view('admin')->with([
             'dog' => $dog,
             'actionType' => $actionType,
-            'allDogs' => $dogNames
+            'allDogs' => $dogNames,
+            'allTags' => $allTags
         ]); 
     }
     
@@ -176,6 +185,9 @@ class AdminController extends Controller
             Session::flash('errorMessage', $errorMessage); 
             return redirect('/admin')->withErrors($validator)->withInput(Input::all()); 
         }
+           
+        # if there are tags, collect them in an array
+        $tags = ($request->tags) ? $request->tags : []; 
         
         # create a new dog and update required fields
         $dog = new Dog(); 
@@ -196,8 +208,11 @@ class AdminController extends Controller
             $dog->aliasTwo = $request->aliasTwo; 
         if($request->has('aliasThree'))
             $dog->aliasThree = $request->aliasThree; 
-        
+                
         $dog->save();   
+        $dog->tags()->sync($tags); 
+        $dog->save();   
+
         
         # create and save Image object 
         if($request->hasFile('dogImg')) {
