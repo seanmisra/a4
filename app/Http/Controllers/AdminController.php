@@ -122,9 +122,9 @@ class AdminController extends Controller
         
         # find Dog object and update necessary MySQL fields
         $dog = Dog::with('tags')->find($request->id); 
-        $dog->aliasOne = $request->aliasOneEdit; 
-        $dog->aliasTwo = $request->aliasTwoEdit; 
-        $dog->aliasThree = $request->aliasThreeEdit; 
+        $dog->alias_one = $request->aliasOneEdit; 
+        $dog->alias_two = $request->aliasTwoEdit; 
+        $dog->alias_three = $request->aliasThreeEdit; 
         $dog->group = $request->groupEdit; 
         $dog->apartment = $request->apartmentEdit;
         $dog->size = $request->sizeEdit; 
@@ -252,11 +252,11 @@ class AdminController extends Controller
         
         # update optional fields if provided
         if($request->has('aliasOne'))
-            $dog->aliasOne = $request->aliasOne; 
+            $dog->alias_one = $request->aliasOne; 
         if($request->has('aliasTwo'))
-            $dog->aliasTwo = $request->aliasTwo; 
+            $dog->alias_two = $request->aliasTwo; 
         if($request->has('aliasThree'))
-            $dog->aliasThree = $request->aliasThree; 
+            $dog->alias_three = $request->aliasThree; 
                 
         # save to create id, sync tags, and save again
         $dog->save();   

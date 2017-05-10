@@ -21,9 +21,9 @@ class CreateDogsTable extends Migration
             $table->string('name'); 
             
             # aliases are alternative names for dog (for SEO)
-            $table->string('aliasOne')->nullable(); 
-            $table->string('aliasTwo')->nullable(); 
-            $table->string('aliasThree')->nullable(); 
+            $table->string('alias_one')->nullable(); 
+            $table->string('alias_two')->nullable(); 
+            $table->string('alias_three')->nullable(); 
             
             $table->string('group')->nullable();
             

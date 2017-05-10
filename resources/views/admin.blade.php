@@ -159,11 +159,11 @@
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <h3>AliasOne:</h3>
-                    <input type='text' name='aliasOneEdit' placeholder='AliasOne' value='{{ $dog->aliasOne }}'>
+                    <input type='text' name='aliasOneEdit' placeholder='AliasOne' value='{{ $dog->alias_one }}'>
                     <h3>AliasTwo:</h3>
-                    <input type='text' name='aliasTwoEdit' placeholder='AliasTwo' value='{{ $dog->aliasTwo }}'>
+                    <input type='text' name='aliasTwoEdit' placeholder='AliasTwo' value='{{ $dog->alias_two }}'>
                     <h3>AliasThree:</h3>
-                    <input type='text' name='aliasThreeEdit' placeholder='AliasThree' value='{{ $dog->aliasThree }}'>
+                    <input type='text' name='aliasThreeEdit' placeholder='AliasThree' value='{{ $dog->alias_three }}'>
                     
                     <h3>*Group:</h3>
                     <select class='form-control' name='groupEdit'>

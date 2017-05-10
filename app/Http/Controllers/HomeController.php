@@ -37,9 +37,9 @@ class HomeController extends Controller
         # get dog names and aliases
         $allDogs = Dog::all(); 
         $dogNames = $allDogs->pluck('name')->toArray();
-        $aliasOne = $allDogs->pluck('aliasOne')->toArray();
-        $aliasTwo = $allDogs->pluck('aliasTwo')->toArray(); 
-        $aliasThree = $allDogs->pluck('aliasThree')->toArray();  
+        $aliasOne = $allDogs->pluck('alias_one')->toArray();
+        $aliasTwo = $allDogs->pluck('alias_two')->toArray(); 
+        $aliasThree = $allDogs->pluck('alias_three')->toArray();  
         
         # check if query is alias -- if so, convert to regular name
         $dog = (array_search($dog, $aliasOne)) ? $dogNames[array_search($dog, $aliasOne)] : $dog; 
