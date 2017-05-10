@@ -215,7 +215,7 @@
                         @for($x = 0; $x<sizeof($facts); $x++)
                             <input type='hidden' name='factIds[]' value='{{ $facts[$x]['id']}}'>
                             <h3>Fact {{ $x + 1}} Content:</h3>
-                            <textarea name='facts[]' required placeholder='Enter fact'>{{ $facts[$x]['content'] }}</textarea>
+                            <textarea name='facts[]' placeholder='Enter fact'>{{ $facts[$x]['content'] }}</textarea>
                             <br>
                             <h3>Fact {{ $x + 1}} Source: </h3>
                             <input type='url' placeholder='Enter URL' value= '{{ $facts[$x]['source'] }}' name='sources[]'>

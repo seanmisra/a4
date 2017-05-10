@@ -119,7 +119,7 @@ class AdminController extends Controller
         $facts = ($request->facts) ? $request->facts : []; 
         $sources = ($request->sources) ? $request->sources : []; 
         $factIds = ($request->factIds) ? $request->factIds : []; 
-                
+        
         # find Dog object and update necessary MySQL fields
         $dog = Dog::with('tags')->find($request->id); 
         $dog->aliasOne = $request->aliasOneEdit; 
@@ -137,27 +137,29 @@ class AdminController extends Controller
         #resync tags and save
         $dog->tags()->sync($tags); 
         $dog->save();   
-                
+                        
         # edit facts and create them as needed
         if($request->facts) {
             for($x = 0; $x<sizeof($facts); $x++) {
-                # for existing facts
-                if(isset($factIds[$x])) {
-                    $currentFact = Fact::find($factIds[$x]);
-                    $currentFact->content = $facts[$x]; 
-                    if($sources[$x] != null)
-                        $currentFact->source = $sources[$x];
-                    
-                    $currentFact->save(); 
-                }
-                # for new facts
-                else {
-                    $newFact = new Fact(); 
-                    $newFact->content = $facts[$x]; 
-                    if($sources[$x] != null)
-                        $newFact->source = $sources[$x]; 
-                    $newFact->dog_id = $dog->id;  
-                    $newFact->save(); 
+                if ($facts[$x] != null) {
+                    # for existing facts
+                    if(isset($factIds[$x])) {
+                        $currentFact = Fact::find($factIds[$x]);
+                        $currentFact->content = $facts[$x]; 
+                        if($sources[$x] != null)
+                            $currentFact->source = $sources[$x];
+
+                        $currentFact->save(); 
+                    }
+                    # for new facts
+                    else {
+                        $newFact = new Fact(); 
+                        $newFact->content = $facts[$x]; 
+                        if($sources[$x] != null)
+                            $newFact->source = $sources[$x]; 
+                        $newFact->dog_id = $dog->id;  
+                        $newFact->save(); 
+                    }
                 }
             }
         }
@@ -264,13 +266,15 @@ class AdminController extends Controller
         # create facts and associate with dog's id
         if($request->facts) {
             for($x = 0; $x<sizeof($facts); $x++) {
-                $newFact = new Fact(); 
-                $newFact->content = $facts[$x]; 
-                if($sources[$x] != null)
-                    $newFact->source = $sources[$x]; 
-                
-                $newFact->dog_id = $dog->id;  
-                $newFact->save(); 
+                if ($facts[$x] != null) {
+                    $newFact = new Fact(); 
+                    $newFact->content = $facts[$x]; 
+                    if($sources[$x] != null)
+                        $newFact->source = $sources[$x]; 
+
+                    $newFact->dog_id = $dog->id;  
+                    $newFact->save(); 
+                }
             }
         }
         
