@@ -15,7 +15,8 @@
             <a href='/'>GO HOME</a><br><br>
             <br>
         </div>
-        {{-- Display errors if found --}}
+        
+        {{-- Display validation errors if found --}}
         @if (count($errors) > 0)
             <div id='errorStrip' class="alert alert-danger">
                 @foreach ($errors->all() as $error)
@@ -25,14 +26,14 @@
             </div>
         @endif
         
-        {{-- Display success message if available --}}
+        {{-- Display Session success message if available --}}
         @if (Session::get('adminMessage') != null)
             <div class="alert alert-success sessionMessage">
                 {!! Session::get('adminMessage') !!}
             </div>
         @endif 
         
-        {{-- Display error message if available; these won't be in the error bag --}}
+        {{-- Display Sesssion error message if available; these won't be in the error bag --}}
         @if (Session::get('errorMessage') != null)
             <div class="alert alert-danger sessionMessage">
                 {!! Session::get('errorMessage') !!}
@@ -46,11 +47,13 @@
         <select class='form-control' id='option' name='option'>
             <option value='Add'>ADD Dog</option>
             <option value='Edit' 
+                {{-- TWO TERNARIES: check if edit should be selected --}}        
                 {{ isset($actionType) ? (($actionType == 'edit') ? 'SELECTED' : ''):'' }}
                 {{ (old('actionType') == 'edit') ? 'SELECTED' : ''}}>
                 EDIT Dog
             </option>
             <option value='Delete'
+                {{-- TWO TERNARIES: check if delete should be selected --}}        
                 {{ isset($actionType) ? (($actionType == 'delete') ? 'SELECTED' : ''):'' }}
                 {{ (old('actionType') == 'delete') ? 'SELECTED' : ''}}>
                 DELETE Dog
@@ -145,8 +148,11 @@
             <br><br><br>
         </form>
         
+        
         {{-- Edit/Delete HTML Forms --}}
         @if(isset($dog))
+        
+            {{-- Show selected Dog --}}
             <div class='dogSection'>
                 <div class='edit'>       
                     <div class="alert alert-warning selected-dog">
@@ -163,7 +169,7 @@
                 </div>  
         
                 {{-- Form to edit a Dog --}}
-                <form class='edit' method='post' action='{{ action("AdminController@edit") }}'>
+                <form class='edit' method='POST' action='{{ action("AdminController@edit") }}'>
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <h3>AliasOne:</h3>
@@ -207,6 +213,7 @@
                     <input type='number' required min='1' max='5' name='cleanlinessEdit' value='{{ old('cleanlinessEdit') ? old('cleanlinessEdit') : $dog->cleanliness }}'>
                     <h3>*Fun:</h3>
                     <input type='number' required min='1' max='5' name='adventureEdit' value='{{ old('adventureEdit') ? old('adventureEdit') : $dog->adventure }}'>
+                   
                     <h3>Tags:</h3>
                     <h4 class="showTags"><i class="fa fa-cog" aria-hidden="true"></i> Show Tags: <span>Add as many as desired</span></h4>
                     <div class='allTags'>
@@ -216,6 +223,7 @@
                         @endforeach
                     </div>
                     <br><br>
+                    
                     <h3>Facts: <span>Cannot delete existing facts</span></h3>
                     <h4 id="addFactEdit"><i class="fa fa-plus" aria-hidden="true"></i> Add Fact</h4>
                     <div class='allFactsEdit'>
@@ -229,7 +237,7 @@
                             <input type='url' placeholder='Enter URL' value= '{{ $facts[$x]['source'] }}' name='sources[]'>
                             <br><br><br>
                         @endfor
-                        {{-- Add facts here with JS --}}
+                        {{-- Add additional facts here with JS --}}
                     </div>
                     <br><br>
                     <div class="alert alert-warning">
@@ -239,7 +247,7 @@
                 </form>
                 
                 {{-- Form to delete a Dog --}}
-                <form class='delete' method='post' action='{{ action("AdminController@delete") }}'>
+                <form class='delete' method='POST' action='{{ action("AdminController@delete") }}'>
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <button>Delete {{ $dog->name}}</button>

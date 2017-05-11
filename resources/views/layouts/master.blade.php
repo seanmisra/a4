@@ -8,7 +8,7 @@
         <meta name='keywords' content='Dogs, Pets, Harvard Extension, Laravel, PHP, DWA15, Sean Misra'>
         
         <title>
-            @yield('title', 'Foobooks')
+            @yield('title', 'Dog Data')
         </title>
         
         {{-- Global CSS: Bootstrap, Font Awesome, jQuery UI, master.css --}}
@@ -16,14 +16,13 @@
         <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
         <link href='/css/master.css' rel='stylesheet'> 
-    
         
         {{-- Any additional CSS dependencies should go here --}}
         @stack('head')
     </head>
 
     <body>
-        {{-- Code for loader gif if applicable, should go here --}}
+        {{-- Code for loader gif, if applicable, should go here --}}
         @stack('loader')
     
         {{-- Code for navbar present on each page --}}
@@ -43,6 +42,8 @@
                         <li id="about"><a href="#">About</a>&nbsp;&nbsp;</li>
                         <li id="breeds"><a href="/breeds">Breeds</a>&nbsp;&nbsp;</li>
                         <li id="github"><a target='_blank' href="https://github.com/seanmisra/a4">GitHub</a></li>
+                        
+                        {{-- Admin Panel only available locally --}}
                         @if(Config::get('app.env') == 'local')
                             <li id="admin"><a href="/admin">Admin</a></li>
                         @endif

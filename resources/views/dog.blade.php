@@ -38,7 +38,7 @@
                 <tbody>
                     <tr class="active">
                         <td>Energy</td>
-                        <td>Fill</td>
+                        <td>Fill</td> {{-- Fill is thin line between traits and stars --}}
                         <td>
                             @for($x = 0; $x<$energy; $x++)
                                 @if($energy == 5)
@@ -54,7 +54,7 @@
                     </tr>
                     <tr class="active">
                         <td>Social Skills</td>
-                        <td>Fill</td>
+                        <td>Fill</td> {{-- Fill is thin line between traits and stars --}}
                         <td>
                             @for($x = 0; $x<$social; $x++)
                                 @if($social == 5)
@@ -70,7 +70,7 @@
                     </tr>
                     <tr class="active">
                         <td>Intelligence</td>
-                        <td>Fill</td>
+                        <td>Fill</td> {{-- Fill is thin line between traits and stars --}}
                         <td>
                             @for($x = 0; $x<$intelligence; $x++)
                                 @if($intelligence == 5)
@@ -86,7 +86,7 @@
                     </tr>
                     <tr class="active">
                         <td>Cleanliness</td>
-                        <td>Fill</td>
+                        <td>Fill</td> {{-- Fill is thin line between traits and stars --}}
                         <td>
                             @for($x = 0; $x<$cleanliness; $x++)
                                 @if($cleanliness== 5)
@@ -102,7 +102,7 @@
                     </tr>
                     <tr class="active">
                         <td>Fun</td>
-                        <td>Fill</td>
+                        <td>Fill</td> {{-- Fill is thin line between traits and stars --}}
                         <td>
                             @for($x = 0; $x<$adventure; $x++)
                                 @if($adventure == 5)
@@ -124,8 +124,11 @@
             <div id = "funFact">
                 <br>
                 <h2>Did you Know?</h2>
+                
+                {{-- Spits out Lorem Ipsum if dog has no facts --}}
                 <p id="factContent">{!! isset($facts[0]) ? $facts[0]['content'] : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet mauris neque. Ut scelerisque lacus vitae congue placerat. Nullam aliquam nisi sit amet fringilla egestas. In sit amet scelerisque tortor." !!}<br><p id="factSource">{!! isset($facts[0]['source']) ? "Source: <a target='_blank' href='".$facts[0]['source']."'>".$facts[0]['source']."</a>" : 'No source' !!}</p>
                 
+                {{-- Only show refresh button if at least two facts --}}
                 @if(sizeof($facts) > 1)
                     <p><i class="fa fa-refresh" aria-hidden="true"></i></p>
                 @else
@@ -154,7 +157,6 @@
                 <br><br><br><br><br>
 
             {{-- Similar Breeds Section --}}
-            
             @if(isset($similarBreeds[0]))
                 <h2>Similar Breeds</h2>
                 <a href="/breeds/{{ str_replace(" ", "%20", $similarBreeds[0]) }}"><img class = "similarBreed" id="similarBreedOne" alt='{{ $similarBreeds[0] }}' height=130 src='blank.jpg'></a>&nbsp;
@@ -185,4 +187,3 @@
 
     <script src='/js/dog.js'></script>
 @endpush
-
