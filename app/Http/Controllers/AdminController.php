@@ -219,7 +219,7 @@ class AdminController extends Controller
             $dog = Dog::find($request->id); 
             $dogName = $dog->name; 
                         
-            $redirectLink = '/'.Config::get("app.key").'admin/search?actionType=edit&adminSearch='.$dogName; 
+            $redirectLink = '/'.Config::get("app.key").'/admin/search?actionType=edit&adminSearch='.$dogName; 
             
             return redirect($redirectLink)->withErrors($validator)->withInput(Input::all());   
         }
