@@ -10,7 +10,6 @@ class DogsTableSeeder extends Seeder
      *
      * @return void
      *
-     * to update, run: php artisan migrate:refresh --seed
      */
     public function run()
     {

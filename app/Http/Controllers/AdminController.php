@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use  Illuminate\Validation\Rule; 
 use Validator;
 use Input; 
-use App\Dog; 
 use Session; 
 use Image; 
+use App\Dog; 
 use App\Tag; 
 use App\Fact;
 
@@ -34,16 +34,13 @@ class AdminController extends Controller
         # get Dog data structures
         $dogNamesArray = Dog::names(); 
         $dogNames = json_encode($dogNamesArray); 
-        
+                
         # get all tags, sorted
         $allTags = Tag::sortedTags(); 
         
         # get search term and actionType (edit or delete)
         $searchTerm = ucwords($request->input('adminSearch')); 
         $actionType = $request->input('actionType'); 
-        
-        # get Dog object (based on search term)
-        $dog = Dog::with('tags')->where('name', $searchTerm)->first(); 
         
         #validate user input
         $rules = [
@@ -61,7 +58,11 @@ class AdminController extends Controller
         if (!(in_array($searchTerm, $dogNamesArray))) {
             $errorMessage = '<strong>'.$searchTerm.'</strong> not found in database';  
             Session::flash('errorMessage', $errorMessage);
+            return redirect('/admin');
         }
+        
+        # get Dog object (based on search term)
+        $dog = Dog::with('tags')->where('name', $searchTerm)->first(); 
         
         # get tags for specific dog
         $tagsForThisDog = [];

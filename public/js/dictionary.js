@@ -1,4 +1,5 @@
- // update drop-down menu on page load 
+// update drop-down menu
+
 var menu = $('#breedMenu');
 var selected = menu.val(); 
 

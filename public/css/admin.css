@@ -1,7 +1,16 @@
 /**********ADMIN CSS**********/
 
+.navbar {
+    display:none; /* Don't display navbar on Admin panel */
+}
+
 main {
     margin-left: 25vw; 
+}
+
+.jumbotron {
+    background-color: lightblue;
+    height: 350px; 
 }
 
 header {
@@ -10,6 +19,19 @@ header {
 
 h2 {
     font-size:40px;
+}
+
+h3>span, h4>span {
+    font-size: 10px; 
+}
+
+h4 {
+    cursor: pointer; 
+}
+
+h4:hover {
+    opacity: .8; 
+    color: darkblue;
 }
 
 span {
@@ -38,14 +60,36 @@ a:hover {
     opacity: .8; 
 }
 
-.navbar {
-    display:none; /* Don't display navbar on Admin panel */
+.add, .edit, .delete {
+    display:none;
 }
 
-.jumbotron {
-    background-color: lightblue;
-    height: 350px; 
+.selected-dog {
+    height: 120px; 
 }
+
+.dogSection {
+    margin-top: -160px;
+}
+
+.allTags {
+    display: none; 
+}
+
+.tagBox {
+    width: 13px; 
+    height: 13px; 
+    padding: 0; 
+    margin:0; 
+    vertical-align: bottom; 
+    position: relative; 
+    top: -1px; 
+    overflow: hidden;
+}
+
+
+
+/**********INPUT CSS**********/
 
 input, select, button, .form-control, textarea {
     height: 100px; 
@@ -60,10 +104,6 @@ input, select, button, .form-control, textarea {
     font-weight: bold; 
 } 
 
-.add, .edit, .delete {
-    display:none;
-}
-
 input[name=adminSearch] {
     margin-bottom: 200px; 
     margin-top:-70px; 
@@ -75,6 +115,22 @@ button, input[type=submit] {
     font-weight: bold; 
     font-size: 30px; 
 }
+
+textarea, input[type=url] {
+    font-size: 16px;
+}
+
+input[type=file] {
+    font-size: 12px;
+}
+
+input[type=file]:focus {
+    outline: none; 
+}
+
+
+
+/**********MESSAGES CSS**********/
 
 #successMessage {
     color: #468847;
@@ -95,52 +151,4 @@ button, input[type=submit] {
 
 .sessionMessage {
     width: 100vw; 
-}
-
-.selected-dog {
-    height: 120px; 
-}
-
-.dogSection {
-    margin-top: -160px;
-}
-
-input[type=file] {
-    font-size: 12px;
-}
-
-input[type=file]:focus {
-    outline: none; 
-}
-
-h3>span, h4>span {
-    font-size: 10px; 
-}
-
-.allTags {
-    display: none; 
-}
-
-textarea, input[type=url] {
-    font-size: 16px;
-}
-
-.tagBox {
-    width: 13px; 
-    height: 13px; 
-    padding: 0; 
-    margin:0; 
-    vertical-align: bottom; 
-    position: relative; 
-    top: -1px; 
-    overflow: hidden;
-}
-
-h4 {
-    cursor: pointer; 
-}
-
-h4:hover {
-    opacity: .8; 
-    color: darkblue;
 }

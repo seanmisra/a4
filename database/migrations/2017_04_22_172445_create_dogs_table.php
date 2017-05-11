@@ -11,7 +11,6 @@ class CreateDogsTable extends Migration
      *
      * @return void
      *
-     * COMMAND-LINE: php artisan migrate:refresh --seed
      */
     public function up()
     {
@@ -20,7 +19,7 @@ class CreateDogsTable extends Migration
             $table->timestamps(); 
             $table->string('name'); 
             
-            # aliases are alternative names for dog (for SEO)
+            # aliases are alternative names for dog (for internal "SEO")
             $table->string('alias_one')->nullable(); 
             $table->string('alias_two')->nullable(); 
             $table->string('alias_three')->nullable(); 

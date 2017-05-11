@@ -35,7 +35,8 @@ class HomeController extends Controller
         $dog = ucwords($request->input('search')); 
         
         # get dog names and aliases
-        $allDogs = Dog::all(); 
+        $allDogs = Dog::select(array('name', 'alias_one', 'alias_two', 'alias_three'))->get();
+        
         $dogNames = $allDogs->pluck('name')->toArray();
         $aliasOne = $allDogs->pluck('alias_one')->toArray();
         $aliasTwo = $allDogs->pluck('alias_two')->toArray(); 
@@ -66,10 +67,10 @@ class HomeController extends Controller
     // process homepage match queries 
     public function match(Request $request) {
         
-        # validate user input
+        # validate user input; the regex allows letters, spaces, dashes, and commas
         $this->validate($request, [
-            'size' => 'required|between:0,100', 
-            'keywords' => 'required'
+            'size' => 'required|numeric|between:0,100', 
+            'keywords' => 'required|regex:/^[\pL\s\-,.]+$/u'
         ]); 
         
         # get input variables
@@ -94,10 +95,10 @@ class HomeController extends Controller
         
         # get collection of potential dogs
         if ($lifestyle)
-            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize)
+            $potentialDogs = Dog::with('tags')->where('size', 'LIKE', $preferredSize)->get()
             ->where('apartment', 'LIKE', true); 
         else 
-            $potentialDogs = Dog::all()->where('size', 'LIKE', $preferredSize);      
+            $potentialDogs = Dog::with('tags')->where('size', 'LIKE', $preferredSize)->get();      
 
         # score each potential dog
         $dogScores = [];  
@@ -154,5 +155,5 @@ class HomeController extends Controller
         # return view of selected dog
         return redirect('/breeds/'.$selectedDog);        
     }
-    
+
 }

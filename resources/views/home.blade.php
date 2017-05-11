@@ -80,7 +80,7 @@
                     <br><br><br>
                     <span class="label label-default keywordTag" id="tagThirteen">{{ $allTags[12] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-primary keywordTag" id="tagFourteen">{{ $allTags[13] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-default keywordTag" id="tagFifteen">{{ $allTags[14] }}</span>&nbsp;&nbsp;&nbsp;<span class="label label-info keywordTag" id="tagSixteen">{{ $allTags[15] }}</span> 
                     <br><br><br>
-                    <input type='text' name='keywords' id='keywords' placeholder='I want my dog to be...'>
+                    <input type='text' name='keywords' id='keywords' value='{{old('keywords') }}' placeholder='I want my dog to be...'>
                     <br><br>
                     <p>One keyword <strong>required</strong>. At least 5 recommended.</p>
                     <br>
@@ -93,13 +93,13 @@
                 <p class = 'matchView'>Where do you live?</p>
                 <div class = 'form-group'>
                     <div class="switch">
-                        <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-yes-no" name= 'lifestyle' type="checkbox">
-                        <label for="cmn-toggle-7" data-on="Apartment&nbsp;&nbsp;&nbsp;&#x1f3e2;" data-off="House&nbsp;&nbsp;&nbsp;&#127968;"></label>
+                        <input id="toggle" name= 'lifestyle' type="checkbox">
+                        <label for="toggle" data-on="Apartment&nbsp;&nbsp;&nbsp;&#x1f3e2;" data-off="House&nbsp;&nbsp;&nbsp;&#127968;"></label>
                     </div>
                 </div>
 
                 {{-- 3D Submit Button --}}
-                <div id="submitButton" class="cube flip-to-top">
+                <div id="submitButton" class="cube">
                     <div class="default-state">
                         <span>FIND YOUR DOG</span>
                     </div>

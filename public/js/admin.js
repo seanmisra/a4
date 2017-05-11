@@ -16,20 +16,7 @@ $("input[name=adminSearch]").autocomplete({
         response(result);
     }
 }); 
-
-
-// update drop-down view on page load 
-var menu = $('select[name=option]');
-selected = menu.val(); 
-changeDisplay(selected); 
-
-
-// update drop-down view when changed
-menu.change(function() {
-    var selected = menu.val(); 
-    changeDisplay(selected); 
-});      
-
+   
 
 // toggle tags visibility
 $(".showTags").click(function() {
@@ -49,7 +36,7 @@ $("#addFact").click(function() {
 })
 
 
-// add fact input (for editing Dog)
+// add fact input (for editing Dog) - can only add 5 facts at once
 var factCountEdit = 1;  
 $("#addFactEdit").click(function() {
     if (factCountEdit == 6)
@@ -59,6 +46,19 @@ $("#addFactEdit").click(function() {
     
     factCountEdit++; 
 })
+
+
+// update drop-down view on page load 
+var menu = $('select[name=option]');
+selected = menu.val(); 
+changeDisplay(selected); 
+
+
+// update drop-down view when changed
+menu.change(function() {
+    var selected = menu.val(); 
+    changeDisplay(selected); 
+});   
 
             
 // update drop-down view

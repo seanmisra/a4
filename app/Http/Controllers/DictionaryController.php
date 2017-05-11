@@ -10,14 +10,17 @@ class DictionaryController extends Controller
     // default function for Dictionary
     public function __invoke() {
         # query all dogs
-        $allDogs = Dog::all();       
+        $allDogs = Dog::select(array('group', 'name'))->get();      
         
         # get all dog groups
-        $allGroups = $allDogs->pluck('group')->unique()->toArray();                
+        $allGroups = $allDogs->pluck('group')->unique()->toArray(); 
+        
         # map each dog to a group 
         $dogMap = []; 
-        foreach ($allGroups as $group)
+        foreach ($allGroups as $group) {
             $dogMap[$group] = $allDogs->where('group', $group)->pluck('name')->toArray(); 
+            sort($dogMap[$group]); 
+        }
 
             
         return view('dictionary')->with([

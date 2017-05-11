@@ -24,7 +24,7 @@ class DogController extends Controller
         $facts = $myDog->facts->toArray();
         $factsJSON = json_encode($facts);
         
-        # get dog's tags and shuffle thme
+        # get dog's tags and shuffle them
         $tags = $myDog->tags->pluck('name')->toArray(); 
         shuffle($tags); 
         
@@ -35,7 +35,7 @@ class DogController extends Controller
         $cleanliness = $myDog->cleanliness;
         $adventure = $myDog->adventure;
         
-        # get 4 similar breeds (based for now only on Group)
+        # get similar breeds (based for now only on Group)
         $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->pluck('name')->toArray();
         shuffle($similarBreeds); 
         
@@ -45,7 +45,7 @@ class DogController extends Controller
             $similarBreedImgs [] = "/images/".str_replace(" ", "_", $breed).".jpg";
         }
 
-        # star html (passing as php for readability sake in view)
+        # star html (creating in php for readability sake in view)
         $fiveStar = '<span class="glyphicon glyphicon-star five-star"></span>'; 
         $badStar = '<span class="glyphicon glyphicon-star bad-star"></span>';
         $regularStar = '<span class="glyphicon glyphicon-star regular-star"></span>'; 

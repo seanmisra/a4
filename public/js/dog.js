@@ -51,12 +51,13 @@ $('#similarBreedThree').attr('title', similarThree);
 $('#similarBreedFour').attr('title', similarFour); 
 
 
-//refresh facts
+//refresh facts (element only available if more than 2 facts)
 $(".fa-refresh").click(function() {
     var randomElem = Math.floor(Math.random()*facts.length);
     var source; 
     
     $("#factContent, #factSource").fadeOut(function() {
+        // create <a> tag if source found, if not use default message
         if (facts[randomElem]['source'])
             source = "Source: <a target='_blank' href='" + facts[randomElem]['source'] + "'>" + facts[randomElem]['source'] + "</a>"
         else 

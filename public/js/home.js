@@ -113,6 +113,7 @@ $(".label").click(function() {
             $("#keywords").val(newKey); 
     }
     
+    // shrink and grow input width depending on input value len
     if (currentText.length > 150) {
         $("#keywords").css('font-size', '10px'); 
     }
@@ -129,6 +130,7 @@ $(".label").click(function() {
 
 
 // update 3D submit button
+// change message on button's backside depending on number of keywords entered
 $(".cube").mouseenter(function() {
     var keywords = $("#keywords").val(); 
     if (keywords == "") {
@@ -137,7 +139,7 @@ $(".cube").mouseenter(function() {
     else {
         var words = keywords.split(", ")
 
-        if (words.length > 2) {
+        if (words.length > 4) {
             $(".active-state").css({'color':'#5cb85c', 'font-size':'70px', 'background-color':'white'}).html('<i class="fa fa-paw" aria-hidden="true"></i>');
         }
         else {
@@ -211,7 +213,7 @@ $(".fa-arrow-left").click(function() {
     for (var i = 0; i<keyArray.length; i++)
         newVal += keyArray[i] += ", "; 
 
-    //cut last extraneous comma
+    //cut last extraneous comma and space
     var newVal = newVal.substring(0, newVal.length - 2); 
 
     $("#keywords").val(newVal); 

@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'a4.mizranca.com'),
+    'url' => env('APP_URL', 'http://a4.mizranca.com/'),
 
     /*
     |--------------------------------------------------------------------------

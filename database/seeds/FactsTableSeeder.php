@@ -234,7 +234,7 @@ class FactsTableSeeder extends Seeder
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'dog_id' => Dog::where('name', 'LIKE', 'Irish Setter')->pluck('id')->first(), 
-            'content' => 'Three US Presidents - Harry Truman , Ronald Reagan, and Richard Nixon - all owned Irish Setters.',
+            'content' => 'Three US Presidents - Harry Truman, Ronald Reagan, and Richard Nixon - all owned Irish Setters.',
             'source' => 'https://mom.me/pets/19389-cool-facts-about-irish-setters/item/richard-nixon-irish-setter/'
         ]); 
         
