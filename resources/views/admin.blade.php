@@ -42,11 +42,19 @@
     </header>
 
     <main>
-        {{-- Drop-down Menu to select action --}}
+        {{-- Drop-down Menu to select action --}}        
         <select class='form-control' id='option' name='option'>
             <option value='Add'>ADD Dog</option>
-            <option value='Edit' {{ isset($actionType) ? (($actionType == 'edit') ? 'SELECTED' : ''):'' }}>EDIT Dog</option>
-            <option value='Delete' {{ isset($actionType) ? (($actionType == 'delete') ? 'SELECTED' : ''):'' ? 'SELECTED' : '' }}>DELETE Dog</option>
+            <option value='Edit' 
+                {{ isset($actionType) ? (($actionType == 'edit') ? 'SELECTED' : ''):'' }}
+                {{ (old('actionType') == 'edit') ? 'SELECTED' : ''}}>
+                EDIT Dog
+            </option>
+            <option value='Delete'
+                {{ isset($actionType) ? (($actionType == 'delete') ? 'SELECTED' : ''):'' }}
+                {{ (old('actionType') == 'delete') ? 'SELECTED' : ''}}>
+                DELETE Dog
+        </option>
         </select>
         <p>*Denotes a <strong>required</strong> field</p><br><br>
         
@@ -126,14 +134,14 @@
         <form class ='edit' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='edit'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to edit...' name='adminSearch'>  
+            <input type='text' placeholder='Search dog to edit...' name='adminSearch' value='{{ old('adminSearch') }}'>  
         </form>
         
         {{-- Form to search for a Dog to Delete --}}
         <form class ='delete' method="GET" action='{{ action("AdminController@search") }}'> 
             <input type='hidden' name='actionType' value='delete'>
             <h3>Search: </h3>
-            <input type='text' placeholder='Search dog to delete...' name='adminSearch'>  
+            <input type='text' placeholder='Search dog to delete...' name='adminSearch' value='{{ old('adminSearch') }}'>  
             <br><br><br>
         </form>
         
@@ -159,11 +167,11 @@
                     {{ csrf_field() }}
                     <input type='hidden' name='id' value='{{ $dog->id }}'>
                     <h3>AliasOne:</h3>
-                    <input type='text' name='aliasOneEdit' placeholder='AliasOne' value='{{ $dog->alias_one }}'>
+                    <input type='text' name='aliasOneEdit' placeholder='AliasOne' value='{{ old('aliasOneEdit') ? old('aliasOneEdit') : $dog->alias_one }}'>
                     <h3>AliasTwo:</h3>
-                    <input type='text' name='aliasTwoEdit' placeholder='AliasTwo' value='{{ $dog->alias_two }}'>
+                    <input type='text' name='aliasTwoEdit' placeholder='AliasTwo' value='{{ old('aliasTwoEdit') ? old('aliasTwoEdit') : $dog->alias_two }}'>
                     <h3>AliasThree:</h3>
-                    <input type='text' name='aliasThreeEdit' placeholder='AliasThree' value='{{ $dog->alias_three }}'>
+                    <input type='text' name='aliasThreeEdit' placeholder='AliasThree' value='{{ old('aliasThreeEdit') ? old('aliasThreeEdit') : $dog->alias_three  }}'>
                     
                     <h3>*Group:</h3>
                     <select class='form-control' name='groupEdit'>
@@ -190,15 +198,15 @@
                     </select>                                        
                     
                     <h3>*Energy:</h3>
-                    <input type='number' required min='1' max='5' name='energyEdit' value='{{ $dog->energy }}'>
+                    <input type='number' required min='1' max='5' name='energyEdit' value='{{ old('energyEdit') ? old('energyEdit') : $dog->energy }}'>                            
                     <h3>*Social:</h3>
-                    <input type='number' required min='1' max='5' name='socialEdit' value='{{ $dog->social }}'>
+                    <input type='number' required min='1' max='5' name='socialEdit' value='{{ old('socialEdit') ? old('socialEdit') : $dog->social }}'>
                     <h3>*Intelligence:</h3>
-                    <input type='number' required min='1' max='5' name='intelligenceEdit' value='{{ $dog->intelligence }}'>
+                    <input type='number' required min='1' max='5' name='intelligenceEdit' value='{{ old('intelligenceEdit') ? old('intelligenceEdit') : $dog->intelligence }}'>
                     <h3>*Cleanliness:</h3>
-                    <input type='number' required min='1' max='5' name='cleanlinessEdit' value='{{ $dog->cleanliness }}'>
+                    <input type='number' required min='1' max='5' name='cleanlinessEdit' value='{{ old('cleanlinessEdit') ? old('cleanlinessEdit') : $dog->cleanliness }}'>
                     <h3>*Fun:</h3>
-                    <input type='number' required min='1' max='5' name='adventureEdit' value='{{ $dog->adventure }}'>
+                    <input type='number' required min='1' max='5' name='adventureEdit' value='{{ old('adventureEdit') ? old('adventureEdit') : $dog->adventure }}'>
                     <h3>Tags:</h3>
                     <h4 class="showTags"><i class="fa fa-cog" aria-hidden="true"></i> Show Tags: <span>Add as many as desired</span></h4>
                     <div class='allTags'>

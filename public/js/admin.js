@@ -83,3 +83,10 @@ function changeDisplay(value) {
         }    
     }
 }
+
+// shrink the selected Dog text if the len is too long
+// a quick patch, but fine for now
+var selectedTextLen = $("h2").text().length; 
+if (selectedTextLen > 50) {
+    $("h2").css('font-size', '30px'); 
+}

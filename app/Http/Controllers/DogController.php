@@ -36,7 +36,8 @@ class DogController extends Controller
         $adventure = $myDog->adventure;
         
         # get similar breeds (based for now only on Group)
-        $similarBreeds = Dog::where('name', '!=', $dog)->where('group', 'LIKE', $group)->pluck('name')->toArray();
+        $similarBreeds = Dog::where('name', '!=', $dog)
+        ->where('group', 'LIKE', $group)->pluck('name')->toArray();
         shuffle($similarBreeds); 
         
         # create similar breed image paths
