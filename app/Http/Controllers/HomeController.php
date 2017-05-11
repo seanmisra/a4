@@ -53,6 +53,10 @@ class HomeController extends Controller
                 
         # check validation and if dog name is valid
         if ($validator->fails() || !(in_array($dog, $dogNames))) {
+            
+            # sanitize string here, as it will be echoed w/o sanitizing
+            $dog = filter_var($dog, FILTER_SANITIZE_STRING);
+            
             Session::flash('invalidSearchMessage', 'The breed <strong>'
                 .$dog.'</strong> was not found. Search for breeds here.'); 
             return redirect('/breeds')->withErrors($validator)->withInput(Input::all());   
