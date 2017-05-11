@@ -45,7 +45,7 @@
                         
                         {{-- Admin Panel only available locally --}}
                         @if(Config::get('app.env') == 'local')
-                            <li id="admin"><a href="/admin">Admin</a></li>
+                            <li id="admin"><a href="{{ '/'.Config::get("app.key").'/admin' }}">Admin</a></li>
                         @endif
                     </ul>
                 </div>

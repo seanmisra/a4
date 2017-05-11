@@ -11,6 +11,7 @@ use Image;
 use App\Dog; 
 use App\Tag; 
 use App\Fact;
+use Config; 
 
 class AdminController extends Controller
 {
@@ -40,7 +41,7 @@ class AdminController extends Controller
         
         # redirect back to admin page if validation fails
         if ($validator->fails()) {
-            return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
+            return redirect('/'.Config::get("app.key").'/admin')->withErrors($validator)->withInput(Input::all());   
         }
         
         # get Dog names
@@ -58,7 +59,7 @@ class AdminController extends Controller
         if (!(in_array($searchTerm, $dogNamesArray))) {
             $errorMessage = '<strong>'.$searchTerm.'</strong> not found in database';  
             Session::flash('errorMessage', $errorMessage);
-            return redirect('/admin')->withErrors($validator)->withInput(Input::all());
+            return redirect('/'.Config::get("app.key").'/admin')->withErrors($validator)->withInput(Input::all());
         }
         
         # get Dog object (based on search term)
@@ -120,14 +121,14 @@ class AdminController extends Controller
         # run validation and redirect if it failed
         $validator = Validator::make($request->all(), $rules); 
         if ($validator->fails()) {
-            return redirect('/admin')->withErrors($validator)->withInput(Input::all());   
+            return redirect('/'.Config::get("app.key").'/admin')->withErrors($validator)->withInput(Input::all());   
         }
         
         #ensure that dog name is not being repeated
         if(in_array(ucwords($request->name), $allDogs)) {
             $errorMessage = '<strong>'.$request->name.'</strong> already in database';  
             Session::flash('errorMessage', $errorMessage); 
-            return redirect('/admin')->withErrors($validator)->withInput(Input::all()); 
+            return redirect('/'.Config::get("app.key").'/admin')->withErrors($validator)->withInput(Input::all()); 
         }
            
         # collect tags, facts, and fact sources
@@ -184,7 +185,7 @@ class AdminController extends Controller
         '</a>'.' successfully added!'; 
         Session::flash('adminMessage', $adminMessage);
         
-        return redirect('/admin'); 
+        return redirect('/'.Config::get("app.key").'/admin'); 
     }
     
     
@@ -217,7 +218,8 @@ class AdminController extends Controller
             #create redirect link
             $dog = Dog::find($request->id); 
             $dogName = $dog->name; 
-            $redirectLink = '/admin/search?actionType=edit&adminSearch='.$dogName; 
+                        
+            $redirectLink = '/'.Config::get("app.key").'admin/search?actionType=edit&adminSearch='.$dogName; 
             
             return redirect($redirectLink)->withErrors($validator)->withInput(Input::all());   
         }
@@ -279,7 +281,7 @@ class AdminController extends Controller
                 
         Session::flash('adminMessage', $adminMessage);
         
-        return redirect('/admin'); 
+        return redirect('/'.Config::get("app.key").'/admin'); 
     }
     
     
@@ -295,7 +297,7 @@ class AdminController extends Controller
         # create success message via Sesssion
         $adminMessage = '<strong>'.$dog->name.'</strong> successfully deleted!'; 
         Session::flash('adminMessage', $adminMessage);
-        return redirect('/admin'); 
+        return redirect('/'.Config::get("app.key").'/admin'); 
     }
 
 }

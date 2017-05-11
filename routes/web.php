@@ -19,13 +19,12 @@ Route::get('/breeds', 'DictionaryController');
 
 Route::get('/breeds/{dog}', 'DogController'); 
 
-if (Config::get('app.env') == 'local') {
-    Route::get('/admin', 'AdminController@main');
-    Route::get('/admin/search', 'AdminController@search'); 
-    Route::post('/admin/edit', 'AdminController@edit'); 
-    Route::post('/admin/delete', 'AdminController@delete'); 
-    Route::post('/admin/add', 'AdminController@add'); 
-}
+// must know app key to access admin features
+Route::get('/'.Config::get("app.key").'/admin', 'AdminController@main');
+Route::get('/'.Config::get("app.key").'/admin/search', 'AdminController@search');
+Route::post('/'.Config::get("app.key").'/admin/edit', 'AdminController@edit');
+Route::post('/'.Config::get("app.key").'/admin/delete', 'AdminController@delete');
+Route::post('/'.Config::get("app.key").'/admin/add', 'AdminController@add');
 
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
